@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>Welcome.png</file>
+        <file>Artboard 1.png</file>
+    </qresource>
+</RCC>
