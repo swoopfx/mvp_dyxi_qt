@@ -4,7 +4,7 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Network)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -22,6 +22,9 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Buttons/PulseButton.qml
         QML_FILES Pages/SelectionPage.qml
         QML_FILES Basee.qml
+        SOURCES src/connectionservice.h src/connectionservice.cpp
+        QML_FILES Buttons/NeonButton.qml
+        QML_FILES Games/Dyslexia/Game1.qml
 )
 
 qt_add_resources(appmvpDyxi
@@ -43,7 +46,8 @@ set_target_properties(appmvpDyxi PROPERTIES
 )
 
 target_link_libraries(appmvpDyxi
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::Network
+
 )
 
 include(GNUInstallDirs)

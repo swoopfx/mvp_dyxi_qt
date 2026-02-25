@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Controls
+import QtQuick.Controls.Universal
 import QtQuick.Layouts
 
 Page {
@@ -12,6 +12,7 @@ Page {
     height: dashboard.board_height
 
 
+
     // title: qsTr("Home")
     Image {
         id: bg_image
@@ -20,10 +21,12 @@ Page {
         anchors.fill: parent
     }
 
-    Rectangle{
-        anchors.fill:  parent *0.15
-        color: "#ccc"
-    }
+    // Rectangle{
+    //     anchors.fill:  parent *0.15
+    //     color: "#ccc"
+    // }
+
+
 
     ColumnLayout{
         anchors.centerIn: parent
@@ -60,6 +63,7 @@ Page {
             Layout.fillWidth: true
             font.pixelSize: 38
             height: 100
+            visible: !service.isLoadingData
             background: Rectangle{
                 radius: 10
                 color: "#4CAF50"
@@ -67,8 +71,39 @@ Page {
 
             onClicked:{
                 console.log("Submit button clicked")
+                service.helloworld();
+                service.getStudentDetailsApiRequest("https://yahoo..com");
             }
         }
     }
+
+    Rectangle{
+        anchors.centerIn: parent
+        id: opaqueIndicatorBg
+        color: "#E0E0E0"
+
+
+
+
+        BusyIndicator{
+            id: indi
+            anchors.centerIn: parent
+            width: 100
+            height: 100
+            running: service.isLoadingData
+            visible: running
+            // contentItem: Item{
+            //     opacity: indi.running ? 1 : 0
+            // }
+
+            // background: {
+            //     color: "grey"
+            //     opacity: 0.5
+            // }
+        }
+
+    }
+
+
 
 }
