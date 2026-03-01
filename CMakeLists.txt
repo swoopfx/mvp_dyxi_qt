@@ -4,7 +4,7 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Network)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Network Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -25,13 +25,20 @@ qt_add_qml_module(appmvpDyxi
         SOURCES src/connectionservice.h src/connectionservice.cpp
         QML_FILES Buttons/NeonButton.qml
         QML_FILES Games/Dyslexia/Game1.qml
+        QML_FILES Buttons/ConfetiButton.qml
+        QML_FILES Buttons/DefaultButton.qml
+        QML_FILES Pages/SelectGamePage.qml
+        SOURCES src/AllString.h
+        SOURCES src/settings.h src/settings.cpp
 )
 
 qt_add_resources(appmvpDyxi
     "assets"
      PREFIX "/img"
-     FILES "Welcome.png"
-     FILES "Artboard 1.png"
+     FILES "images/Welcome Dyxi.png"
+     FILES "images/Artboard.png"
+     FILES "images/kidi.jpg"
+     FILES "images/playground.jpg"
  )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

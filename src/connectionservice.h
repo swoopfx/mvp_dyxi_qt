@@ -10,6 +10,7 @@
 #include <QUrl>
 #include <QVariantMap>
 #include <QDebug>
+#include  <QSettings>
 
 class ConnectionService : public QObject
 {
@@ -33,6 +34,7 @@ signals:
     void isLoadingDataChanged();
     void requestFinished(const QString &response);
     void  requestFailed(const QString &error);
+    void changePage(const QString &pageName);
 
 private slots:
     void onGetStudentDetailApiFinished(QNetworkReply *reply);

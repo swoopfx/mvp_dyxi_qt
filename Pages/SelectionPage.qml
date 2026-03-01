@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls.Universal
 import QtQuick.Layouts
+import QtQuick.Dialogs
+// import "Buttons"
 
 Page {
     id:dashboard
@@ -16,8 +18,10 @@ Page {
     // title: qsTr("Home")
     Image {
         id: bg_image
-        source: "qrc:/img/Artboard 1.png"
-        fillMode: Image.Stretch
+        source: "qrc:/img/images/Artboard.png"
+        fillMode: Image.PreserveAspectCrop
+        mipmap: true
+        smooth: true
         anchors.fill: parent
     }
 
@@ -58,8 +62,11 @@ Page {
             }
         }
 
+
+
         Button{
             text: "Submit"
+             // buttonText: "Submit"
             Layout.fillWidth: true
             font.pixelSize: 38
             height: 100
@@ -70,9 +77,9 @@ Page {
             }
 
             onClicked:{
-                console.log("Submit button clicked")
-                service.helloworld();
-                service.getStudentDetailsApiRequest("https://yahoo..com");
+                // console.log("Submit button clicked")
+                // service.helloworld();
+                service.getStudentDetailsApiRequest("https://mvp.dyxi.site/application/get-student-details?studentId="+studentinput.text);
             }
         }
     }
@@ -101,6 +108,37 @@ Page {
             //     opacity: 0.5
             // }
         }
+
+    }
+
+    MessageDialog{
+        id:errorDialog
+        title:"Error"
+        buttons: MessageDialog.Ok
+    }
+
+
+    Connections{
+        target: service
+        // onChangePage:{
+        //     // if(pageName == "SelectGamePage"){ // define the page that needs  to go to
+        //     //     StackView.push("SelectGamePage.qml");
+        //     // }
+        // }
+        function onChangePage(pageName){
+            // console.log("Select Page Emitted")
+         if(pageName === "SelectGamePage"){ // define the page that needs  to go to
+                stackView.push("SelectGamePage.qml");
+             }
+        }
+
+        function onRequestFailed(stt){
+            // console.log(stt);
+            errorDialog.text = stt;
+            errorDialog.open();
+        }
+
+
 
     }
 

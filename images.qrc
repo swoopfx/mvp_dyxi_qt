@@ -2,5 +2,9 @@
     <qresource prefix="/img">
         <file>Welcome.png</file>
         <file>Artboard 1.png</file>
+        <file>images/Artboard.png</file>
+        <file>images/kidi.jpg</file>
+        <file>images/playground.jpg</file>
+        <file>images/Welcome Dyxi.png</file>
     </qresource>
 </RCC>

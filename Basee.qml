@@ -16,8 +16,10 @@ Page {
     // title: qsTr("Home")
     Image {
         id: bg_image
-        source: "qrc:/img/Welcome.png"
-        fillMode: Image.Stretch
+        source: "qrc:/img/images/Welcome Dyxi.png"
+        fillMode: Image.PreserveAspectCrop
+        mipmap: true
+        smooth: true
         anchors.fill: parent
     }
     // Label {
