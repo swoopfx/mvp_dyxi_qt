@@ -30,6 +30,7 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Pages/SelectGamePage.qml
         SOURCES src/AllString.h
         SOURCES src/settings.h src/settings.cpp
+        SOURCES Games/Dyslexia/dyxlearnengine.h Games/Dyslexia/dyxlearnengine.cpp
 )
 
 qt_add_resources(appmvpDyxi

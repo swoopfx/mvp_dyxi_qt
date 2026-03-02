@@ -12,11 +12,15 @@ class Settings : public QObject
 public:
     explicit Settings(QObject *parent = nullptr);
 
+    QVariantMap studentMap() const;
+    void setStudentMap(const QVariantMap &newStudentMap);
+
 signals:
 
 private:
     QSettings *m_settings;
     QVariantMap m_studentMap;
+    Q_PROPERTY(QSettings *settings READ Settings CONSTANT FINAL)
 };
 
 #endif // SETTINGS_H
