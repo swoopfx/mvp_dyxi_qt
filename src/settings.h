@@ -13,6 +13,10 @@ public:
     explicit Settings(QObject *parent = nullptr);
 
 signals:
+
+private:
+    QSettings *m_settings;
+    QVariantMap m_studentMap;
 };
 
 #endif // SETTINGS_H

@@ -20,6 +20,12 @@ void ConnectionService::getStudentDetailsApiRequest(const QString &url)
 
 }
 
+void ConnectionService::setStudentDataMap(QVariantMap studentDataMap)
+{
+    m_studentDataMap = studentDataMap;
+    emit studentDataMapChanged();
+}
+
 void ConnectionService::onGetStudentDetailApiFinished(QNetworkReply *reply)
 {
     QVariant statusCodeVariant = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
@@ -39,6 +45,7 @@ void ConnectionService::onGetStudentDetailApiFinished(QNetworkReply *reply)
                     if(!m_studentDetails.isEmpty()){
                         QVariant data = m_studentDetails.value("data");
                         QVariantMap dataMap = data.toMap();
+                        setStudentDataMap(dataMap);
                         QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
                         settings.setValue(AllString::activeUserId, dataMap.value("id"));
                         settings.setValue(AllString::activeUserName, dataMap.value("studentName"));

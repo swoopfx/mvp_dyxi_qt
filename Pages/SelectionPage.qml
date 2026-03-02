@@ -9,6 +9,9 @@ Page {
 
     property int board_width: 600
     property int board_height: 400
+    property string activeUserName:""
+    property string activeUserUuid: ""
+    property string activeUserId:""
 
     width: dashboard.board_width
     height: dashboard.board_height
@@ -66,7 +69,7 @@ Page {
 
         Button{
             text: "Submit"
-             // buttonText: "Submit"
+            // buttonText: "Submit"
             Layout.fillWidth: true
             font.pixelSize: 38
             height: 100
@@ -127,15 +130,23 @@ Page {
         // }
         function onChangePage(pageName){
             // console.log("Select Page Emitted")
-         if(pageName === "SelectGamePage"){ // define the page that needs  to go to
-                stackView.push("SelectGamePage.qml");
-             }
+            if(pageName === "SelectGamePage"){ // define the page that needs  to go to
+                stackView.push("SelectGamePage.qml", {
+                                   "activeUserName" : dashboard.activeUserName
+                               });
+            }
         }
 
         function onRequestFailed(stt){
             // console.log(stt);
             errorDialog.text = stt;
             errorDialog.open();
+        }
+
+        function onStudentDataMapChanged(){
+            let dataMap = service.studentDataMap;
+            dashboard.activeUserName = dataMap["studentName"]
+
         }
 
 

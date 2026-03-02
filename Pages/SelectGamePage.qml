@@ -1,16 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls
-import Qt.QtCore
 
  Page {
 
 
 
      id: selectGamePage
+     property string activeUserName: ""
 
-     Settings{
-         id:userSettings
-     }
+
 
      Image {
          id: bg_image
@@ -22,7 +20,7 @@ import Qt.QtCore
      }
 
      Label{
-         text: userSettings.activeUserName
+         text: selectGamePage.activeUserName
          font.pixelSize: 28
          color: "black"
          horizontalAlignment: Text.AlignHCenter
