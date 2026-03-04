@@ -10,8 +10,8 @@ class DyxLearnEngine : public QObject
 public:
     explicit DyxLearnEngine(QObject *parent = nullptr);
 
-    Q_INVOKABLE void recordAnswer(QString letter , bool correct);
-    Q_INVOKABLE QString  getNextLetter();
+    // Q_INVOKABLE void recordAnswer(QString letter , bool correct);
+    // Q_INVOKABLE QString  getNextLetter();
 
 signals:
 

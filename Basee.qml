@@ -23,34 +23,34 @@ Page {
         smooth: true
         anchors.fill: parent
     }
-    Label {
-        color: "#f91b02"
-        text: Application.organization
-        font.pointSize: 50
-        font.bold: true
-        styleColor: "#f95030"
-        anchors.centerIn: parent
-    }
-
-    // PulseButton {
-    //     buttonText: "ENTER"
-    //     isBold: true
-    //     // anchors.centerIn: parent
-    //     anchors.top: parent.top
-    //     anchors.topMargin: parent.height * (2/3)
-    //     anchors.horizontalCenter: parent.horizontalCenter
-    //     textFontSize: 40
-
-    //     onButtonClicked: {
-
-    //         console.log("Pulsing Button Clicked!")
-    //         stackView.push(Qt.resolvedUrl("Pages/SelectionPage.qml"), {
-    //                            "board_width": test.test_width,
-    //                            "board_height": test.test_height
-    //                        })
-    //     }
-
+    // Label {
+    //     color: "#f91b02"
+    //     text: Application.organization
+    //     font.pointSize: 50
+    //     font.bold: true
+    //     styleColor: "#f95030"
+    //     anchors.centerIn: parent
     // }
+
+    PulseButton {
+        buttonText: "ENTER"
+        isBold: true
+        // anchors.centerIn: parent
+        anchors.top: parent.top
+        anchors.topMargin: parent.height * (2/3)
+        anchors.horizontalCenter: parent.horizontalCenter
+        textFontSize: 40
+
+        onButtonClicked: {
+
+            console.log("Pulsing Button Clicked!")
+            stackView.push(Qt.resolvedUrl("Pages/SelectionPage.qml"), {
+                               "board_width": test.test_width,
+                               "board_height": test.test_height
+                           })
+        }
+
+    }
 
     // Button {
     //     text: "Go to Detail Page"

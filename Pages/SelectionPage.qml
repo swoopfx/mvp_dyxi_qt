@@ -54,6 +54,7 @@ Page {
             font.pixelSize: 38
             Layout.fillWidth: true
             height: 100
+            focus:  true
 
 
             background: Rectangle{
@@ -120,6 +121,10 @@ Page {
         buttons: MessageDialog.Ok
     }
 
+
+    Component.onCompleted: {
+        studentinput.forceActiveFocus();
+    }
 
     Connections{
         target: service

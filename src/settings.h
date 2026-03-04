@@ -20,7 +20,7 @@ signals:
 private:
     QSettings *m_settings;
     QVariantMap m_studentMap;
-    Q_PROPERTY(QSettings *settings READ Settings CONSTANT FINAL)
+    // Q_PROPERTY(QSettings *settings READ Settings CONSTANT FINAL)
 };
 
 #endif // SETTINGS_H

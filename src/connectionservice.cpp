@@ -60,15 +60,18 @@ void ConnectionService::onGetStudentDetailApiFinished(QNetworkReply *reply)
 
                 }else{
                     emit requestFailed("Failsed to Process Document");
+                    setIsLoadingData(false);
                 }
             }
         }else{
-            emit requestFailed(reply->errorString());
+            emit requestFailed("Can Find User");
             emit changePage(AllString::selectGamePage);
+            setIsLoadingData(false);
         }
     }else{
-        qDebug() << "Hey here";
-        emit requestFailed(reply->errorString());
+        // qDebug() << "Hey here";
+        emit requestFailed("Network Error");
+        setIsLoadingData(false);
     }
 
     reply->deleteLater();

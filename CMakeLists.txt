@@ -31,6 +31,9 @@ qt_add_qml_module(appmvpDyxi
         SOURCES src/AllString.h
         SOURCES src/settings.h src/settings.cpp
         SOURCES Games/Dyslexia/dyxlearnengine.h Games/Dyslexia/dyxlearnengine.cpp
+        QML_FILES Components/ImageButton.qml
+        QML_FILES Games/ADHD/Game1.qml
+        QML_FILES Games/ADHD/NewGame2.qml
 )
 
 qt_add_resources(appmvpDyxi
@@ -40,6 +43,9 @@ qt_add_resources(appmvpDyxi
      FILES "images/Artboard.png"
      FILES "images/kidi.jpg"
      FILES "images/playground.jpg"
+     FILES "images/ADHD_Symbol.png"
+     FILES "images/Dyslexia_Symbol.png"
+
  )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

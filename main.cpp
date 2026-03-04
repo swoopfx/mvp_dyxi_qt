@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     QVariantMap activeUserData;
-    QScopedPointer<QSettings> appSetting(new QSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName()));
+    // QScopedPointer<QSettings> appSetting(new QSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName()));
     ConnectionService service ;
     engine.rootContext()->setContextProperty("service", &service);
-    engine.rootContext()->setContextProperty("appSettings", appSetting.data());
+    // engine.rootContext()->setContextProperty("appSettings", appSetting.data());
     engine.rootContext()->setContextProperty("sharedActiveUserData", QVariant::fromValue(activeUserData));
     // simple call sharedActiveUserData.key any where in the file
     QObject::connect(
