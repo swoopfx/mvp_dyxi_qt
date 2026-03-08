@@ -34,6 +34,15 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Components/ImageButton.qml
         QML_FILES Games/ADHD/Game1.qml
         QML_FILES Games/ADHD/NewGame2.qml
+        QML_FILES Components/LeftNavigation.qml
+        QML_FILES Components/Playground.qml
+        SOURCES
+        SOURCES src/timer.h src/timer.cpp
+        QML_FILES Games/Dyslexia/Level1_Writing_English_Dyslexia.qml
+        QML_FILES js/script.js
+        QML_FILES Games/Dyslexia/Level1_Recognition_English_Dyslexia.qml
+        QML_FILES Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml
+        QML_FILES Games/Dyslexia/Level0_Tracing_English_Dyslexia.qml
 )
 
 qt_add_resources(appmvpDyxi

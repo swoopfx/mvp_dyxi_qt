@@ -21,6 +21,8 @@ Page {
           anchors.fill: parent
      }
 
+
+
      // Label{
      //     text: selectGamePage.activeUserName
      //     font.pixelSize: 28
@@ -29,40 +31,71 @@ Page {
      //     // Layout.alignment: Qt.AlignHCenter
      // }
      ColumnLayout{
+          id: cLay
           anchors.centerIn:  parent
           spacing : 20
 
-          Row{
-               // anchors.centerIn: parent
-               // spacing: 20
-
-               Label{
-                    text: "Select A Category"
-                    font.pixelSize: 28
-                    color: "black"
-                    // horizontalAlignment: Text.AlignHCenter
-                    Layout.alignment: Qt.AlignHCenter
-               }
-          }
 
           Row{
-               // anchors.centerIn: parent
-               spacing: 60
+                    // anchors.centerIn: parent
+                    spacing: 60
+                    Rectangle{
+                         // anchors.fill: parent
+                         width:400
+                         height:400
+                         color: "transparent"
+                         border.color: "black"
+                         radius: 10
 
-               ImageButton{
-                    // source: "qrc:/img/images/ADHD_Symbol.png"
-                    source: "qrc:/img/images/Dyslexia_Symbol.png"
-                    onClicked: stackView.push("../Games/ADHD/NewGame2.qml")
+                         ImageButton{
+                              id: dyslexia
+                              // source: "qrc:/img/images/ADHD_Symbol.png"
+                              source: "qrc:/img/images/Dyslexia_Symbol.png"
+                              onClicked: stackView.push("../Games/ADHD/NewGame2.qml")
+                               anchors.horizontalCenter: parent.horizontalCenter
+
+                         }
+
+                         Text {
+                              text: "DYSLEXIA"
+                              font.pixelSize: 32
+                              font.bold: true
+                              anchors.top: dyslexia.bottom
+                              anchors.horizontalCenter: parent.horizontalCenter
+                              // anchors.top: parent.top
+                              // anchors.topMargin: 20
+                         }
+                    }
+
+                    Rectangle{
+                         width:400
+                         height:400
+                         color: "transparent"
+                         border.color: "black"
+                         radius: 10
+
+
+                         ImageButton{
+                              id: adhd
+                              source: "qrc:/img/images/ADHD_Symbol.png"
+                              onClicked: stackView.push("../Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml")
+                               anchors.horizontalCenter: parent.horizontalCenter
+
+                         }
+
+                         Text {
+                              text: "ADHD"
+                              font.pixelSize: 32
+                              font.bold: true
+                              anchors.top: adhd.bottom
+                              anchors.horizontalCenter: parent.horizontalCenter
+                              // anchors.top: parent.top
+                              // anchors.topMargin: 20
+                         }
+                    }
 
                }
 
-               ImageButton{
 
-                     source: "qrc:/img/images/ADHD_Symbol.png"
-                    onClicked: stackView.push("../Games/ADHD/Game1.qml")
-
-               }
-
-          }
      }
 }

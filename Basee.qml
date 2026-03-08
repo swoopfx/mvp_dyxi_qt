@@ -7,6 +7,7 @@ import "Buttons"
 
 Page {
     id: test
+    // anchors.fill: parent
 
     property int test_width: 1280
     property int test_height: 800

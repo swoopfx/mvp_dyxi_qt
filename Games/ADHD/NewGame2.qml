@@ -5,8 +5,8 @@ import QtQuick.Layouts 1.15
 
 Page {
     id: window
-    width: 1280
-    height: 800
+    // width: 1280
+    // height: 800
     visible: true
     title: "Smart ADHD Playground"
 
@@ -33,37 +33,8 @@ Page {
         anchors.fill: parent
 
         // ================= NAVIGATION =================
-        Rectangle {
-            Layout.preferredWidth: 250
-            Layout.fillHeight: true
-            color: "#1E88E5"
-
-            Column {
-                anchors.centerIn: parent
-                spacing: 20
-
-                Button {
-                    text: "⬅ Back"
-                }
-
-                Button {
-                    text: "🔊 Read"
-                    onClicked: {
-                        ttsEngine.speak("Drag the word to the correct box")
-                    }
-                }
-
-                Button {
-                    text: "❓ Help"
-                }
-
-                Button {
-                    text: "📊 Show Focus"
-                    onClicked: {
-                        focusPopup.open()
-                    }
-                }
-            }
+        LeftNavigation{
+            z:10
         }
 
         // ================= GAME AREA =================

@@ -15,15 +15,15 @@ import "Pages"
     Window {
         id: main_window
         visible: true
-        width: 640
-        height: 480
+        // width: 640
+        // height: 480
         // title: qsTr("Stack")
-        // visibility: Window.Maximized
+        visibility: Window.Maximized
 
 
         property int screen_maximumHeight: 800
         property int screen_maximumWidth: 1280
-        readonly property real aspectRatio: 4.0/3.0
+        // readonly property real aspectRatio: 4.0/3.0
 
         // maximumHeight: Screen.desktopAvailaleHeight
         // maximumWidth: Screen.desktopAvailaleWidth
@@ -31,18 +31,20 @@ import "Pages"
         minimumHeight: main_window.screen_maximumHeight
         minimumWidth: main_window.screen_maximumWidth
 
+        // visibility: "FullScreen"
 
-        onWidthChanged: {
-            if(visibility === Window.Windowed){
-                height = width / aspectRatio
-            }
-        }
 
-        onHeightChanged: {
-            if(visibility === Window.Windowed){
-                width = height * aspectRatio
-            }
-        }
+        // onWidthChanged: {
+        //     if(visibility === Window.Windowed){
+        //         height = width / aspectRatio
+        //     }
+        // }
+
+        // onHeightChanged: {
+        //     if(visibility === Window.Windowed){
+        //         width = height * aspectRatio
+        //     }
+        // }
 
 
         // Image {

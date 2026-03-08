@@ -6,15 +6,16 @@ import QtQuick.Dialogs
 
 Page {
     id:dashboard
+    // anchors.fill: parent
 
-    property int board_width: 600
-    property int board_height: 400
+    property int board_width: 0
+    property int board_height: 0
     property string activeUserName:""
     property string activeUserUuid: ""
     property string activeUserId:""
 
-    width: dashboard.board_width
-    height: dashboard.board_height
+    // width: dashboard.board_width
+    // height: dashboard.board_height
 
 
 
