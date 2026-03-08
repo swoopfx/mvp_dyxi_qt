@@ -78,7 +78,7 @@ Page {
                          ImageButton{
                               id: adhd
                               source: "qrc:/img/images/ADHD_Symbol.png"
-                              onClicked: stackView.push("../Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml")
+                              onClicked: stackView.push("../Games/Dyslexia/Level1_Phonics_English_Dyslexia.qml")
                                anchors.horizontalCenter: parent.horizontalCenter
 
                          }

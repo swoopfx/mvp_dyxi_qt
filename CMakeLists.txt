@@ -43,6 +43,7 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/Dyslexia/Level1_Recognition_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level0_Tracing_English_Dyslexia.qml
+        QML_FILES Games/Dyslexia/Level1_Phonics_English_Dyslexia.qml
 )
 
 qt_add_resources(appmvpDyxi
