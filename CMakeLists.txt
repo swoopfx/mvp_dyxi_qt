@@ -4,7 +4,7 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Network Core)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2  Network Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -44,6 +44,14 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level0_Tracing_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level1_Phonics_English_Dyslexia.qml
+        QML_FILES Games/Dyslexia/LevelT_Tracing_English_Dyslexia.qml
+        QML_FILES Games/Dyslexia/Component/MainMenu.qml
+        QML_FILES Games/Dyslexia/Component/GameLevel.qml
+        QML_FILES Games/Dyslexia/Component/PhonicsData.qml
+        QML_FILES Games/Dyslexia/GameTest.qml
+
+
+
 )
 
 qt_add_resources(appmvpDyxi
