@@ -58,6 +58,8 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/Dyslexia/Component/PhonicsData.qml
         QML_FILES Games/Dyslexia/GameTest.qml
         QML_FILES ${QML_FILES}
+        SOURCES
+        SOURCES src/itemgametypeconnection.h src/itemgametypeconnection.cpp
 
 
 
