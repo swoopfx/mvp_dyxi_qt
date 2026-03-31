@@ -13,6 +13,14 @@ qt_add_executable(appmvpDyxi
     images.qrc
 )
 
+file(GLOB_RECURSE QML_FILES RELATIVE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    "${CMAKE_CURRENT_SOURCE_DIR}/Components/*qml"
+     "${CMAKE_CURRENT_SOURCE_DIR}/Buttons/*qml"
+      "${CMAKE_CURRENT_SOURCE_DIR}/Games/*qml"
+       "${CMAKE_CURRENT_SOURCE_DIR}/Pages/*qml"
+)
+
 qt_add_qml_module(appmvpDyxi
     URI mvpDyxi
     QML_FILES
@@ -32,11 +40,11 @@ qt_add_qml_module(appmvpDyxi
         SOURCES src/settings.h src/settings.cpp
         SOURCES Games/Dyslexia/dyxlearnengine.h Games/Dyslexia/dyxlearnengine.cpp
         QML_FILES Components/ImageButton.qml
+         QML_FILES Components/GameItem.qml
         QML_FILES Games/ADHD/Game1.qml
         QML_FILES Games/ADHD/NewGame2.qml
         QML_FILES Components/LeftNavigation.qml
         QML_FILES Components/Playground.qml
-        SOURCES
         SOURCES src/timer.h src/timer.cpp
         QML_FILES Games/Dyslexia/Level1_Writing_English_Dyslexia.qml
         QML_FILES js/script.js
@@ -49,6 +57,7 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/Dyslexia/Component/GameLevel.qml
         QML_FILES Games/Dyslexia/Component/PhonicsData.qml
         QML_FILES Games/Dyslexia/GameTest.qml
+        QML_FILES ${QML_FILES}
 
 
 
@@ -63,6 +72,11 @@ qt_add_resources(appmvpDyxi
      FILES "images/playground.jpg"
      FILES "images/ADHD_Symbol.png"
      FILES "images/Dyslexia_Symbol.png"
+     FILES "images/phonics.jpg"
+     FILES "images/reading.png"
+     FILES "images/recognition.png"
+     FILES "images/tracing.webp"
+     FILES "images/writing.png"
 
  )
 
