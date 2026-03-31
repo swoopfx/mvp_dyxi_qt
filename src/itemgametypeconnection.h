@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QUrl>
 #include <QVariantMap>
+#include <QList>
 
 
 class ItemGameTypeConnection : public QObject
@@ -24,12 +25,13 @@ class ItemGameTypeConnection : public QObject
     bool m_isLoadingData = false;
 
     void setIsLoadingData(bool loading);
-    Q_INVOKABLE void getItemGameType(const QString &url);
+    // Q_INVOKABLE void getItemGameType(const QString &url);
 
 public:
     explicit ItemGameTypeConnection(QObject *parent = nullptr);
     Q_INVOKABLE void itemGameTypeApiRequest(const QString &url);
     void setItemGameType(QList<QVariantMap> itemGameType);
+    QList<QVariantMap> itemGameType() const{return m_itemGameType;}
 
 signals:
     void itemGameTypeChanged();
