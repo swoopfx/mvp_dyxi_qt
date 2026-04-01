@@ -54,6 +54,28 @@ import "Pages"
         //     anchors.fill: parent
         // }
 
+        Rectangle{
+                id: errorScreen
+                anchors.fill: parent
+                color:"red"
+                visible: false
+                z:1000
+                Text{
+                        anchors.centerIn: parent
+                        text:"Screen size too small"
+                        color:"white"
+                        font.pixelSize:30
+                }
+        }
+
+        Component.onCompleted: {
+                console.log(Screen.width);
+                if(Screen.width < screen_maximumWidth || Screen.height < screen_maximumHeight){
+                        errorScreen.visible = true;
+
+                }
+        }
+
         StackView {
             id: stackView
             initialItem: "Basee.qml"

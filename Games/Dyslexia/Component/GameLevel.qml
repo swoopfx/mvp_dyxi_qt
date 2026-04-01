@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
+// import QtGraphicalEffects 1.15
 
 Item {
     id: levelRoot
@@ -92,12 +92,12 @@ Item {
                     radius: 20
                     border.color: "#333"
                     layer.enabled: true
-                    layer.effect: DropShadow {
-                        transparentBorder: true
-                        horizontalOffset: 2
-                        verticalOffset: 2
-                        color: "#80000000"
-                    }
+                    // layer.effect: DropShadow {
+                    //     transparentBorder: true
+                    //     horizontalOffset: 2
+                    //     verticalOffset: 2
+                    //     color: "#80000000"
+                    // }
                     Text {
                         text: currentSoundData ? "Can you find the sound '" + currentSoundData.sound + "' and drag it to the " + currentSoundData.word + "?" : ""
                         anchors.centerIn: parent
