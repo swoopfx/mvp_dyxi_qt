@@ -60,6 +60,7 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES ${QML_FILES}
         SOURCES
         SOURCES src/itemgametypeconnection.h src/itemgametypeconnection.cpp
+        QML_FILES Pages/ItemGameTypePage.qml
 
 
 
@@ -94,7 +95,7 @@ set_target_properties(appmvpDyxi PROPERTIES
 )
 
 target_link_libraries(appmvpDyxi
-    PRIVATE Qt6::Quick Qt6::Network
+    PRIVATE Qt6::Qml Qt6::Gui Qt6::Quick Qt6::Network
 
 )
 

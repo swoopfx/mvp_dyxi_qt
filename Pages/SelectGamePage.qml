@@ -165,19 +165,13 @@ Page {
      //                     radius: 10
 
 
-<<<<<<< HEAD
-                         ImageButton{
-                              id: adhd
-                              source: "qrc:/img/images/ADHD_Symbol.png"
-                              onClicked: stackView.push("../Games/Dyslexia/Level1_Phonics_English_Dyslexia.qml", {levelId: 1})
-                               anchors.horizontalCenter: parent.horizontalCenter
-=======
+
      //                     ImageButton{
      //                          id: adhd
      //                          source: "qrc:/img/images/ADHD_Symbol.png"
      //                          onClicked: stackView.push("../Games/Dyslexia/GameTest.qml", {levelId: 1})
      //                           anchors.horizontalCenter: parent.horizontalCenter
->>>>>>> d4befe3ebaa476b9ead1ae300170f27b6689a863
+
 
      //                     }
 

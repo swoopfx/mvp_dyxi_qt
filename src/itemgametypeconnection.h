@@ -18,6 +18,7 @@ class ItemGameTypeConnection : public QObject
 
 
     Q_PROPERTY(QList<QVariantMap> itemGameType READ itemGameType  NOTIFY itemGameTypeChanged)
+    Q_PROPERTY(bool isLoadinData READ isLoadinData  NOTIFY isLoadinDataChanged )
 
     QNetworkAccessManager *manager;
     QList<QVariantMap> m_itemGameType;
@@ -38,6 +39,7 @@ signals:
     void isLoadingDataChanged();
     void requestFinished();
     void requestFailed(const QString $str);
+    void requesFinished(const QString $response);
 
 private slots:
     void onGetItemGameTypeFinished(QNetworkReply *reply);
