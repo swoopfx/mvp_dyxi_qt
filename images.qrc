@@ -8,5 +8,10 @@
         <file>images/Welcome Dyxi.png</file>
         <file>images/ADHD_Symbol.png</file>
         <file>images/Dyslexia_Symbol.png</file>
+        <file>images/phonics.jpg</file>
+        <file>images/reading.png</file>
+        <file>images/recognition.png</file>
+        <file>images/tracing.webp</file>
+        <file>images/writing.png</file>
     </qresource>
 </RCC>

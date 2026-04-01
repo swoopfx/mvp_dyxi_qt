@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QScopedPointer>
 #include "src/connectionservice.h"
+#include "src/itemgametypeconnection.h"
 #include "src/AllString.h"
 #include <QVariant>
 #include "src/timer.h"
@@ -19,11 +20,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(AllString::appName);
 
     QQmlApplicationEngine engine;
+
     QVariantMap activeUserData;
     // QScopedPointer<QSettings> appSetting(new QSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName()));
     ConnectionService service ;
+     ItemGameTypeConnection itemGameTypeConnection;
     Timer  timer ;
     engine.rootContext()->setContextProperty("service", &service);
+    engine.rootContext()->setContextProperty("itemGameTypeConnection", &itemGameTypeConnection);
     engine.rootContext()->setContextProperty("timer", &timer);
     // engine.rootContext()->setContextProperty("appSettings", appSetting.data());
     engine.rootContext()->setContextProperty("sharedActiveUserData", QVariant::fromValue(activeUserData));
