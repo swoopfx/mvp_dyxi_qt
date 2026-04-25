@@ -4,7 +4,7 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2  Network Core)
+find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core )
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -16,10 +16,16 @@ qt_add_executable(appmvpDyxi
 file(GLOB_RECURSE QML_FILES RELATIVE
     ${CMAKE_CURRENT_SOURCE_DIR}
     "${CMAKE_CURRENT_SOURCE_DIR}/Components/*qml"
-     "${CMAKE_CURRENT_SOURCE_DIR}/Buttons/*qml"
-      "${CMAKE_CURRENT_SOURCE_DIR}/Games/*qml"
-       "${CMAKE_CURRENT_SOURCE_DIR}/Pages/*qml"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Buttons/*qml"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Games/*qml"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Pages/*qml"
+     "${CMAKE_CURRENT_SOURCE_DIR}/Recognition/*qml"
 )
+
+# file(GLOB_RECURSE PROJECT_SOURCES "src/*.cpp")
+# file(GLOB_RECURSE PROJECT_HEADER "src/*.h")
+
+# add_executable(appmvpDyxi ${PROJECT_SOURCES} ${PROJECT_HEADER})
 
 qt_add_qml_module(appmvpDyxi
     URI mvpDyxi
@@ -30,6 +36,7 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Buttons/PulseButton.qml
         QML_FILES Pages/SelectionPage.qml
         QML_FILES Basee.qml
+        QML_FILES Pages/LoadingPage.qml
         SOURCES src/connectionservice.h src/connectionservice.cpp
         QML_FILES Buttons/NeonButton.qml
         QML_FILES Games/Dyslexia/Game1.qml
@@ -58,9 +65,19 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/Dyslexia/Component/PhonicsData.qml
         QML_FILES Games/Dyslexia/GameTest.qml
         QML_FILES ${QML_FILES}
-        SOURCES
+        SOURCES src/tracingengine.h src/tracingengine.cpp
+        # SOURCES src/audioengine.h src/audioengine.cpp
+        SOURCES src/metricsmanager.h src/metricsmanager.cpp
+        SOURCES src/wordmanager.h src/wordmanager.cpp
         SOURCES src/itemgametypeconnection.h src/itemgametypeconnection.cpp
         QML_FILES Pages/ItemGameTypePage.qml
+        QML_FILES Components/ItemList.qml
+        QML_FILES Pages/RobotPage.qml
+        QML_FILES Components/Robot.qml
+        QML_FILES Components/ColorDrop.qml
+        QML_FILES Components/MetricTracker.qml
+        QML_FILES Components/ColorCircle.qml
+        QML_FILES Pages/ABC123.qml
 
 
 
@@ -80,6 +97,17 @@ qt_add_resources(appmvpDyxi
      FILES "images/recognition.png"
      FILES "images/tracing.webp"
      FILES "images/writing.png"
+     FILES "images/dyxi_logo_42.png"
+     FILES "images/robot_body.svg"
+     FILES "images/robot_head.svg"
+     FILES "images/robot_limb.svg"
+     FILES "Recognition/assets/images/background_main.png"
+     FILES "Recognition/assets/images/button_play.png"
+     FILES "Recognition/assets/images/button_play_original.png"
+     FILES "Recognition/assets/images/card_base.png"
+     FILES "Recognition/assets/images/card_base_original.png"
+     FILES "Recognition/assets/images/character_guide.png"
+     FILES "Recognition/assets/images/character_guide_original.png"
 
  )
 
@@ -95,7 +123,7 @@ set_target_properties(appmvpDyxi PROPERTIES
 )
 
 target_link_libraries(appmvpDyxi
-    PRIVATE Qt6::Qml Qt6::Gui Qt6::Quick Qt6::Network
+    PRIVATE Qt6::Qml Qt6::Gui Qt6::Quick Qt6::Network Qt6::quickmultimedia
 
 )
 

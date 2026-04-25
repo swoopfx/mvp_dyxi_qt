@@ -43,7 +43,13 @@ Item {
     Connections{
         target: itemGameTypeConnection
 
-        // function
+        function onItemGameTypeChange(){
+
+            // load model
+            //display model
+
+
+        }
     }
 
 }

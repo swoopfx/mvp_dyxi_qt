@@ -8,6 +8,10 @@
 #include "src/AllString.h"
 #include <QVariant>
 #include "src/timer.h"
+#include "src/tracingengine.h"
+// #include "src/audioengine.h"
+#include "src/metricsmanager.h"
+#include "src/wordmanager.h"
 
 
 
@@ -24,6 +28,10 @@ int main(int argc, char *argv[])
     QVariantMap activeUserData;
     // QScopedPointer<QSettings> appSetting(new QSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName()));
     ConnectionService service ;
+    TracingEngine tracingEngine;
+    // AudioEngine audioEngine;
+    MetricsManager metricsManager;
+    WordManager wordManager;
      ItemGameTypeConnection itemGameTypeConnection;
     Timer  timer ;
     engine.rootContext()->setContextProperty("service", &service);

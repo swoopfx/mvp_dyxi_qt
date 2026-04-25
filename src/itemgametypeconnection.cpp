@@ -58,9 +58,11 @@ void ItemGameTypeConnection::onGetItemGameTypeFinished(QNetworkReply *reply)
                     foreach (const QVariant& variant, variantList) {
                         if (variant.canConvert<QVariantMap>()) {
                             variantMapList.append(variant.toMap());
+                            // setItemGameType(variantMapList);
                         } else {
                             //TODO  throw error if converting from and log error
                             qWarning() << "QVariant is not a QVariantMap, skipping.";
+                             emit requestFailed("Data Conversion Error");
                         }
                     }
 
@@ -72,7 +74,7 @@ void ItemGameTypeConnection::onGetItemGameTypeFinished(QNetworkReply *reply)
         }else{
               emit requestFailed("Can Find User");
             setIsLoadingData(false);
-        }
+        } // TODO define else condition
     }
 
      reply->deleteLater();

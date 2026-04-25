@@ -62,14 +62,14 @@ Page {
                  labelText: "Phonics Fun"
                  imageSource: "qrc:/img/images/phonics.jpg"
                  accentColor: "#FF8A65"
-                   onClicked: stackView.push("../Games/ADHD/NewGame2.qml")
+                   onClicked: stackView.push("RobotPage.qml")
              }
 
              GameItem {
                  labelText: "Word Tracing"
                  imageSource: "qrc:/img/images/tracing.webp"
                  accentColor: "#4DB6AC"
-                 onClicked: stackView.push("../Games/ADHD/NewGame2.qml")
+                 onClicked: stackView.push("ABC123.qml")
              }
 
              GameItem {

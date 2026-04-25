@@ -18,13 +18,13 @@ class ItemGameTypeConnection : public QObject
 
 
     Q_PROPERTY(QList<QVariantMap> itemGameType READ itemGameType  NOTIFY itemGameTypeChanged)
-    Q_PROPERTY(bool isLoadinData READ isLoadinData  NOTIFY isLoadinDataChanged )
+    Q_PROPERTY(bool isLoadingData READ isLoadingData  NOTIFY isLoadingDataChanged )
 
     QNetworkAccessManager *manager;
     QList<QVariantMap> m_itemGameType;
 
     bool m_isLoadingData = false;
-
+    bool isLoadingData() const{return m_isLoadingData;}
     void setIsLoadingData(bool loading);
     // Q_INVOKABLE void getItemGameType(const QString &url);
 
