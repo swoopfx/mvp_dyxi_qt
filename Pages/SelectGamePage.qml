@@ -76,19 +76,21 @@ Page {
                  labelText: "Recognition"
                  imageSource: "qrc:/img/images/recognition.png"
                  accentColor: "#9575CD"
-                 onClicked: stackView.push("../Games/ADHD/NewGame2.qml")
+                 onClicked: stackView.push("Tracing.qml")
              }
 
              GameItem {
                  labelText: "Reading Time"
                  imageSource: "qrc:img/images/reading.png"
                  accentColor: "#F06292"
+                 onClicked: stackView.push("Tracing.qml")
              }
 
              GameItem {
                  labelText: "Writing Practice"
                  imageSource: "qrc:/img/images/writing.png"
                  accentColor: "#FFD54F"
+                  onClicked: stackView.push("MainPlaygroundPage.qml")
              }
          }
 

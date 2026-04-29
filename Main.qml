@@ -3,6 +3,11 @@ import QtQuick.Controls
 import QtQuick.Window
 import "Buttons"
 import "Pages"
+import mvpDyxi
+import DyslexiaModule
+import AdhdModule
+
+
 
 
 // Item {
@@ -19,6 +24,11 @@ import "Pages"
         // height: 480
         // title: qsTr("Stack")
         visibility: Window.Maximized
+
+        // MMM{}
+        // ANO{}
+        // TT{}
+        // APA{}
 
 
         property int screen_maximumHeight: 600

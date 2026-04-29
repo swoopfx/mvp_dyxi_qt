@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls.Universal
 import QtQuick.Layouts
 import QtQuick.Dialogs
+import mvpDyxi
 // import "Buttons"
 
 Page {
@@ -13,6 +14,10 @@ Page {
     property string activeUserName:""
     property string activeUserUuid: ""
     property string activeUserId:""
+
+     ConnectionService{
+        id:service
+    }
 
     // width: dashboard.board_width
     // height: dashboard.board_height

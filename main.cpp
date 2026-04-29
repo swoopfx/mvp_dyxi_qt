@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
+// #include <QQmlContext>
 #include <QSettings>
 #include <QScopedPointer>
 #include "src/connectionservice.h"
@@ -25,20 +25,23 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    QVariantMap activeUserData;
+    // QVariantMap activeUserData;
     // QScopedPointer<QSettings> appSetting(new QSettings(QCoreApplication::organizationName(), QCoreApplication::applicationName()));
-    ConnectionService service ;
-    TracingEngine tracingEngine;
-    // AudioEngine audioEngine;
-    MetricsManager metricsManager;
-    WordManager wordManager;
-     ItemGameTypeConnection itemGameTypeConnection;
-    Timer  timer ;
-    engine.rootContext()->setContextProperty("service", &service);
-    engine.rootContext()->setContextProperty("itemGameTypeConnection", &itemGameTypeConnection);
-    engine.rootContext()->setContextProperty("timer", &timer);
-    // engine.rootContext()->setContextProperty("appSettings", appSetting.data());
-    engine.rootContext()->setContextProperty("sharedActiveUserData", QVariant::fromValue(activeUserData));
+    // ConnectionService service ;
+    // TracingEngine tracingEngine;
+    // // AudioEngine audioEngine;
+    // MetricsManager metricsManager;
+    // WordManager wordManager;
+    //  ItemGameTypeConnection itemGameTypeConnection;
+    // Timer  timer ;
+    // engine.rootContext()->setContextProperty("service", &service);
+    // engine.rootContext()->setContextProperty("itemGameTypeConnection", &itemGameTypeConnection);
+    // engine.rootContext()->setContextProperty("timer", &timer);
+    // // engine.rootContext()->setContextProperty("appSettings", appSetting.data());
+    // engine.rootContext()->setContextProperty("sharedActiveUserData", QVariant::fromValue(activeUserData));
+
+    // Add module library
+    engine.addImportPath(QString("%1/modules").arg(QGuiApplication::applicationDirPath()));
     // simple call sharedActiveUserData.key any where in the file
     QObject::connect(
         &engine,

@@ -4,6 +4,12 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/)
+set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
+    CACHE STRING "Import Path for qt Creator"
+    FORCE
+)
+
 find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core )
 
 qt_standard_project_setup(REQUIRES 6.8)
@@ -26,6 +32,10 @@ file(GLOB_RECURSE QML_FILES RELATIVE
 # file(GLOB_RECURSE PROJECT_HEADER "src/*.h")
 
 # add_executable(appmvpDyxi ${PROJECT_SOURCES} ${PROJECT_HEADER})
+
+
+
+
 
 qt_add_qml_module(appmvpDyxi
     URI mvpDyxi
@@ -78,10 +88,21 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Components/MetricTracker.qml
         QML_FILES Components/ColorCircle.qml
         QML_FILES Pages/ABC123.qml
-
+        QML_FILES Pages/Tracing.qml
+        SOURCES src/traceabletextitem.h src/traceabletextitem.cpp
+        SOURCES mmm.h mmm.cpp
+        SOURCES src/ano.h src/ano.cpp
+        QML_FILES Pages/LoadingnPage.qml
+        QML_FILES Pages/PlayGroundPage.qml
+        QML_FILES Pages/TracePage.qml
+        SOURCES src/traceabletexte.h src/traceabletexte.cpp
+        QML_FILES Games/GameTelemetry.qml
+        QML_FILES Pages/MainPlaygroundPage.qml
+        QML_FILES Components/TelemetryLogger.qml
 
 
 )
+
 
 qt_add_resources(appmvpDyxi
     "assets"
@@ -111,6 +132,10 @@ qt_add_resources(appmvpDyxi
 
  )
 
+add_subdirectory(modules/AdhdModule)
+add_subdirectory(modules/DyslexiaModule)
+# add_subdirectory(modules/DyscalculiaModule)
+
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
@@ -122,8 +147,18 @@ set_target_properties(appmvpDyxi PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+target_include_directories(appmvpDyxi PUBLIC src )
+
 target_link_libraries(appmvpDyxi
-    PRIVATE Qt6::Qml Qt6::Gui Qt6::Quick Qt6::Network Qt6::quickmultimedia
+    PRIVATE
+    Qt6::Qml
+    Qt6::Gui
+    Qt6::Quick
+    Qt6::Network
+    Qt6::quickmultimedia
+    appDyslexiaModule
+    AdhdModulelib
+    # appDyscalculiaModule
 
 )
 
@@ -133,3 +168,10 @@ install(TARGETS appmvpDyxi
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+
+
+
+
+# add_subdirectory(modules/Wiat4Module)
+# add_subdirectory(modules/CTOPP2Module)

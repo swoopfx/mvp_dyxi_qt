@@ -11,11 +11,12 @@
 #include <QVariantMap>
 #include <QDebug>
 #include  <QSettings>
+#include <QQmlEngine>
 
 class ConnectionService : public QObject
 {
     Q_OBJECT
-
+    QML_ELEMENT
     QNetworkAccessManager *manager;
     Q_PROPERTY(QVariantMap studentDetails READ studentDetails NOTIFY studentDetailsChanged);
     Q_PROPERTY(QVariantMap studentDataMap READ studentDataMap WRITE setStudentDataMap  NOTIFY studentDataMapChanged )
