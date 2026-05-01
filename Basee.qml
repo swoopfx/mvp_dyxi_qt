@@ -4,6 +4,7 @@ import QtQuick.Controls.Basic
 import QtMultimedia
 // import "Pages"
 import "Buttons"
+import mvpDyxi
 
 Page {
     id: test
@@ -33,8 +34,9 @@ Page {
     //     anchors.centerIn: parent
     // }
 
+
     PulseButton {
-        buttonText: "ENTER"
+        buttonText:"Enter"
         isBold: true
         // anchors.centerIn: parent
         anchors.top: parent.top
@@ -52,6 +54,7 @@ Page {
         }
 
     }
+
 
     // Button {
     //     text: "Go to Detail Page"

@@ -56,3 +56,5 @@ install(TARGETS appDyslexiaModule
 
 target_include_directories(appDyslexiaModule PRIVATE
 src)
+
+ add_subdirectory(modules/Phonics)

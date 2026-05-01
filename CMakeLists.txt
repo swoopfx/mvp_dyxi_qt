@@ -26,6 +26,7 @@ file(GLOB_RECURSE QML_FILES RELATIVE
     "${CMAKE_CURRENT_SOURCE_DIR}/Games/*qml"
     "${CMAKE_CURRENT_SOURCE_DIR}/Pages/*qml"
      "${CMAKE_CURRENT_SOURCE_DIR}/Recognition/*qml"
+      "${CMAKE_CURRENT_SOURCE_DIR}/PageNew/*qml"
 )
 
 # file(GLOB_RECURSE PROJECT_SOURCES "src/*.cpp")
@@ -42,6 +43,7 @@ qt_add_qml_module(appmvpDyxi
     QML_FILES
         Main.qml
         RESOURCES images.qrc
+        SOURCES src/AllString.h
         QML_FILES Pages/Welcome.qml
         QML_FILES Buttons/PulseButton.qml
         QML_FILES Pages/SelectionPage.qml
@@ -99,6 +101,11 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES Games/GameTelemetry.qml
         QML_FILES Pages/MainPlaygroundPage.qml
         QML_FILES Components/TelemetryLogger.qml
+        QML_FILES PageNew/GameCategorySelectPage.qml
+        QML_FILES PageNew/GameItemListPage.qml
+        QML_FILES PageNew/PageLoader.qml
+        QML_FILES Components/Delegate.qml Components/InfoModal.qml
+        QML_FILES PageNew/PageDefaultPlaygroundLoader.qml
 
 
 )
@@ -129,6 +136,7 @@ qt_add_resources(appmvpDyxi
      FILES "Recognition/assets/images/card_base_original.png"
      FILES "Recognition/assets/images/character_guide.png"
      FILES "Recognition/assets/images/character_guide_original.png"
+     FILES "images/logo.png"
 
  )
 
@@ -175,3 +183,5 @@ install(TARGETS appmvpDyxi
 
 # add_subdirectory(modules/Wiat4Module)
 # add_subdirectory(modules/CTOPP2Module)
+# add_subdirectory(modules/AdhdModule/modules/Phonics)
+#

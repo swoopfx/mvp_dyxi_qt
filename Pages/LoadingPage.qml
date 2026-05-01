@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
 
-Window {
+Rectangle {
     id: root
-    width: 600
-    height: 800
+    // width: 600
+    // height: 800
+    anchors.fill: parent
     visible: true
-    title: "DYXI Loading Page"
+    // title: "DYXI Loading Page"
     color: "#FFFFFF"
 
     // Main Container
@@ -24,7 +25,7 @@ Window {
 
             Image {
                 id: logoImage
-                source: "qrc:/img/images/dyxi_logo_42.png" // Ensure the logo is in the same directory
+                source: "qrc:/img/images/logo.png" // Ensure the logo is in the same directory
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
                 opacity: 0

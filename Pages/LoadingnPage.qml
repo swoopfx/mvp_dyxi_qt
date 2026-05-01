@@ -9,7 +9,7 @@ Rectangle {
     // The logo container
     Image {
         id: logo
-        source: "logo.png"
+        source: "qrc:/img/images/logo.png"
         anchors.centerIn: parent
 
         // "Small but visible" - setting a fixed small size or relative to parent

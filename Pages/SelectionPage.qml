@@ -141,11 +141,11 @@ Page {
         // }
         function onChangePage(pageName){
             // console.log("Select Page Emitted")
-            if(pageName === "SelectGamePage"){ // define the page that needs  to go to
-                stackView.push("SelectGamePage.qml", {
+            // if(pageName === "SelectGamePage"){ // define the page that needs  to go to
+                stackView.push(pageName+".qml", { //
                                    "activeUserName" : dashboard.activeUserName
                                });
-            }
+            // }
         }
 
         function onRequestFailed(stt){

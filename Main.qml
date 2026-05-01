@@ -4,8 +4,8 @@ import QtQuick.Window
 import "Buttons"
 import "Pages"
 import mvpDyxi
-import DyslexiaModule
-import AdhdModule
+import DyslexiaModule as Dyslexia
+import Adhd.AdhdModule as Adhd
 
 
 
@@ -25,10 +25,12 @@ import AdhdModule
         // title: qsTr("Stack")
         visibility: Window.Maximized
 
+
+
         // MMM{}
         // ANO{}
-        // TT{}
-        // APA{}
+        Dyslexia.TT{}
+        Adhd.APA{}
 
 
         property int screen_maximumHeight: 600

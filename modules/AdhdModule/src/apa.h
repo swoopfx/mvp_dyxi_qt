@@ -4,6 +4,11 @@
 #include <QObject>
 #include <QQmlEngine>
 
+namespace AdhdModule {
+
+ Q_NAMESPACE
+
+
 class APA : public QObject
 {
     Q_OBJECT
@@ -13,5 +18,7 @@ public:
 
 signals:
 };
+
+} // namespace AdhdModule
 
 #endif // APA_H

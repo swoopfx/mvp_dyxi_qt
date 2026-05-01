@@ -5,16 +5,19 @@ project(AdhdModule VERSION 0.1 LANGUAGES CXX)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core)
 
+# qt_add_executable()
+
 qt_add_qml_module(
     ${PROJECT_NAME}lib
     STATIC
-    URI ${PROJECT_NAME}
+    URI Adhd.${PROJECT_NAME}
 
     QML_FILES
     SOURCES src/apa.h src/apa.cpp
     SOURCES src/tracabletext.h src/tracabletext.cpp
 
 )
+
 
 
 
