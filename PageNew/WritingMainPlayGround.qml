@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import "../Components"
 import mvpDyxi
 
 Page {
@@ -41,13 +40,6 @@ Page {
                     font.pixelSize: 24
                     font.bold: true
                     Layout.alignment: Qt.AlignHCenter
-                }
-
-
-                Button {
-                    text: "Go Back"
-                      Layout.fillWidth: true
-                    onClicked: stackView.pop()
                 }
 
                 // Color Palette
@@ -115,50 +107,42 @@ Page {
             Layout.fillHeight: true
             color: "white"
 
-            Tracable{
+            Canvas {
+                id: drawingCanvas
+                anchors.fill: parent
 
+                property var lastX: 0
+                property var lastY: 0
+
+                onPaint: {
+                    var ctx = getContext("2d");
+                    ctx.lineWidth = root.brushRadius * 2;
+                    ctx.lineCap = "round";
+                    ctx.strokeStyle = root.selectedColor;
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.stroke();
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onPressed: {
+                        drawingCanvas.lastX = mouseX;
+                        drawingCanvas.lastY = mouseY;
+                        telemetry.recordTouch(mouseX, mouseY, "pressed", root.selectedColor, root.brushRadius);
+                    }
+                    onPositionChanged: {
+                        drawingCanvas.requestPaint();
+                        telemetry.recordTouch(mouseX, mouseY, "moved", root.selectedColor, root.brushRadius);
+                        drawingCanvas.lastX = mouseX;
+                        drawingCanvas.lastY = mouseY;
+                    }
+                    onReleased: {
+                        telemetry.recordTouch(mouseX, mouseY, "released", root.selectedColor, root.brushRadius);
+                    }
+                }
             }
-
-            WritingCanvas{
-                id: writingCanvas
-            }
-
-            // Canvas {
-            //     id: drawingCanvas
-            //     anchors.fill: parent
-
-            //     property var lastX: 0
-            //     property var lastY: 0
-
-            //     onPaint: {
-            //         var ctx = getContext("2d");
-            //         ctx.lineWidth = root.brushRadius * 2;
-            //         ctx.lineCap = "round";
-            //         ctx.strokeStyle = root.selectedColor;
-            //         ctx.beginPath();
-            //         ctx.moveTo(lastX, lastY);
-            //         ctx.lineTo(mouseX, mouseY);
-            //         ctx.stroke();
-            //     }
-
-            //     MouseArea {
-            //         anchors.fill: parent
-            //         onPressed: {
-            //             drawingCanvas.lastX = mouseX;
-            //             drawingCanvas.lastY = mouseY;
-            //             telemetry.recordTouch(mouseX, mouseY, "pressed", root.selectedColor, root.brushRadius);
-            //         }
-            //         onPositionChanged: {
-            //             drawingCanvas.requestPaint();
-            //             telemetry.recordTouch(mouseX, mouseY, "moved", root.selectedColor, root.brushRadius);
-            //             drawingCanvas.lastX = mouseX;
-            //             drawingCanvas.lastY = mouseY;
-            //         }
-            //         onReleased: {
-            //             telemetry.recordTouch(mouseX, mouseY, "released", root.selectedColor, root.brushRadius);
-            //         }
-            //     }
-            // }
         }
     }
 

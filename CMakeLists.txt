@@ -10,7 +10,7 @@ set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
     FORCE
 )
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core )
+find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core TextToSpeech )
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -67,6 +67,7 @@ qt_add_qml_module(appmvpDyxi
         SOURCES src/timer.h src/timer.cpp
         QML_FILES Games/Dyslexia/Level1_Writing_English_Dyslexia.qml
         QML_FILES js/script.js
+
         QML_FILES Games/Dyslexia/Level1_Recognition_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml
         QML_FILES Games/Dyslexia/Level0_Tracing_English_Dyslexia.qml
@@ -106,6 +107,16 @@ qt_add_qml_module(appmvpDyxi
         QML_FILES PageNew/PageLoader.qml
         QML_FILES Components/Delegate.qml Components/InfoModal.qml
         QML_FILES PageNew/PageDefaultPlaygroundLoader.qml
+        QML_FILES PageNew/CanvasPage.qml
+        SOURCES src/readtexttospeech.h src/readtexttospeech.cpp
+        QML_FILES PageNew/WritingMainPlayGround.qml
+        QML_FILES Components/WritingCanvas.qml
+        SOURCES src/traceabletext.h src/traceabletext.cpp
+        QML_FILES Components/ADHDWhackamole.qml
+        QML_FILES Components/ADHDWhackamoleManus.qml
+        RESOURCES js/TelemetryManager.js
+        QML_FILES Components/Mole.qml
+        # QML_FILES Components/Tracable.qml
 
 
 )
@@ -137,6 +148,28 @@ qt_add_resources(appmvpDyxi
      FILES "Recognition/assets/images/character_guide.png"
      FILES "Recognition/assets/images/character_guide_original.png"
      FILES "images/logo.png"
+     FILES "images/background.png"
+     FILES "images/cloud.png"
+     FILES "images/rabbit.png"
+     FILES "images/hole.png"
+     FILES "images/grass.png"
+     FILES "images/hole_original.png"
+     FILES "images/assets/background.png"
+     FILES "images/assets/circle.png"
+     FILES "images/assets/circle_original.png"
+     FILES "images/assets/failure.wav"
+     FILES "images/assets/rabbit.png"
+     FILES  "images/assets/rabbit_appear.wav"
+     FILES "images/assets/rabbit_original.png"
+     FILES "images/assets/square.png"
+     FILES "images/assets/square_original.png"
+     FILES "images/assets/star.png"
+     FILES "images/assets/star_original.png"
+     FILES "images/assets/success.wav"
+     FILES "images/assets/triangle.png"
+     FILES "images/assets/triangle_original.png"
+
+
 
  )
 
@@ -164,6 +197,8 @@ target_link_libraries(appmvpDyxi
     Qt6::Quick
     Qt6::Network
     Qt6::quickmultimedia
+    Qt6::TextToSpeech
+    Qt6::TextToSpeechQml
     appDyslexiaModule
     AdhdModulelib
     # appDyscalculiaModule

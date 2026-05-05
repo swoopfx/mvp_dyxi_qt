@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import mvpDyxi
 
-Page{
+Page {
     id: pageDefaultPlaygroundLoader
 
     Loader {
@@ -11,27 +11,24 @@ Page{
         anchors.fill: parent
         asynchronous: true
         source: "../Pages/LoadingPage.qml"
-
-
-}
+    }
 
     Timer {
-           id: loadTimer
-           interval: 5000     // 2 seconds
-           running: true      // Starts automatically
-           repeat: false      // Only run once
+        id: loadTimer
+        interval: 5000     // 2 seconds
+        running: true      // Starts automatically
+        repeat: false      // Only run once
 
-           onTriggered: {
-               console.log("Timer finished, loading component...")
-               contentLoader.source = "../Pages/MainPlaygroundPage.qml"
-           }
-       }
+        onTriggered: {
+            console.log("Timer finished, loading component...");
+            contentLoader.source = "../Pages/MainPlaygroundPage.qml";
+        }
+    }
 
-       // Placeholder shown while waiting
-       Text {
-           visible: contentLoader.status !== Loader.Ready
-           text: "Loading in 2 seconds..."
-           anchors.centerIn: parent
-       }
-
+    // Placeholder shown while waiting
+    Text {
+        visible: contentLoader.status !== Loader.Ready
+        text: "Loading in 2 seconds..."
+        anchors.centerIn: parent
+    }
 }

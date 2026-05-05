@@ -58,3 +58,4 @@ target_include_directories(appDyslexiaModule PRIVATE
 src)
 
  add_subdirectory(modules/Phonics)
+ add_subdirectory(modules/Writing)

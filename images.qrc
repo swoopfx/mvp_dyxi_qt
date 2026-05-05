@@ -14,4 +14,7 @@
         <file>images/tracing.webp</file>
         <file>images/writing.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>Components/ADHDWhackamole.qml</file>
+    </qresource>
 </RCC>

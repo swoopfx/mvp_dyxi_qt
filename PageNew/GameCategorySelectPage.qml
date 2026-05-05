@@ -92,15 +92,29 @@ Page {
                  labelText: "Reading Time"
                  imageSource: "qrc:img/images/reading.png"
                  accentColor: "#F06292"
-                 onClicked: stackView.push("Tracing.qml")
+                 onClicked: stackView.push("../Pages/MainPlaygroundPage.qml")
              }
 
              GameItem {
                  labelText: "Writing Practice"
                  imageSource: "qrc:/img/images/writing.png"
                  accentColor: "#FFD54F"
-                  onClicked: stackView.push("MainPlaygroundPage.qml")
+                  onClicked: stackView.push("CanvasPage.qml")
              }
+
+             GameItem {
+                 labelText: "Writing Practice"
+                 imageSource: "qrc:/img/images/writing.png"
+                 accentColor: "#FFD54F"
+                  onClicked: stackView.push("../Components/ADHDWhackamole.qml")
+             }
+             GameItem {
+                 labelText: "Reading Time"
+                 imageSource: "qrc:img/images/reading.png"
+                 accentColor: "#F06292"
+                 onClicked: stackView.push("../Components/ADHDWhackamoleManus.qml")
+             }
+
          }
 
          // Interactive Footer
