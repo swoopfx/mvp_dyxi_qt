@@ -8,7 +8,7 @@ Item {
     property real visibilityStartTime: 0
     
     Image {
-        source: "../assets/rabbit.png"
+        source: "qrc:/img/images/assets/rabbit.png"
         anchors.fill: parent
         fillMode: Image.PreserveAspectFit
     }

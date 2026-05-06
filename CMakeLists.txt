@@ -4,13 +4,15 @@ project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/)
 set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
     CACHE STRING "Import Path for qt Creator"
     FORCE
 )
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia QuickControls2  Network Core TextToSpeech )
+find_package(Qt6 REQUIRED COMPONENTS Quick Gui Multimedia QuickControls2  Network Core TextToSpeech )
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -117,6 +119,10 @@ qt_add_qml_module(appmvpDyxi
         RESOURCES js/TelemetryManager.js
         QML_FILES Components/Mole.qml
         # QML_FILES Components/Tracable.qml
+        QML_FILES ShapeExplorer/SMain.qml ShapeExplorer/QuitButton.qml ShapeExplorer/Rabbit.qml ShapeExplorer/Shape.qml ShapeExplorer/TargetSlot.qml
+        RESOURCES ShapeExplorer/Telemetry.js
+        SOURCES src/GameEngine.cpp src/GameEngine.h
+        QML_FILES Components/WigglyWord.qml
 
 
 )
@@ -159,7 +165,7 @@ qt_add_resources(appmvpDyxi
      FILES "images/assets/circle_original.png"
      FILES "images/assets/failure.wav"
      FILES "images/assets/rabbit.png"
-     FILES  "images/assets/rabbit_appear.wav"
+     FILES "images/assets/rabbit_appear.wav"
      FILES "images/assets/rabbit_original.png"
      FILES "images/assets/square.png"
      FILES "images/assets/square_original.png"
@@ -168,6 +174,9 @@ qt_add_resources(appmvpDyxi
      FILES "images/assets/success.wav"
      FILES "images/assets/triangle.png"
      FILES "images/assets/triangle_original.png"
+     FILES "images/assets/game_background.png"
+     FILES "images/assets/replay_button.png"
+     FILES "images/assets/replay_button_original.png"
 
 
 
@@ -213,7 +222,7 @@ install(TARGETS appmvpDyxi
 )
 
 
-
+set_property(SOURCE resources.qrc PROPERTY QT_RESOURCE_BIG ON)
 
 
 # add_subdirectory(modules/Wiat4Module)

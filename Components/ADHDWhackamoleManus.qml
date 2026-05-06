@@ -22,6 +22,37 @@ Page {
         anchors.fill: parent
         source:"qrc:/img/images/background.png"
         fillMode: Image.PreserveAspectCrop
+
+        Button {
+            id: backButton
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.margins: 25
+            width: 120; height: 50
+            z: 100
+
+            background: Rectangle {
+                color: backButton.pressed ? "#c0392b" : "#e74c3c"
+                radius: 25
+                border.color: "white"
+                border.width: 3
+            }
+
+            contentItem: Text {
+                text: "⬅ BACK"
+                color: "white"
+                font.bold: true
+                font.pixelSize: 18
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            onClicked: {
+                // gameEngine.logActivity("navigation", {"action": "back_clicked"})
+                stackView.pop()
+                // Logic for going back can be added here
+            }
+        }
     }
 
     Grid {

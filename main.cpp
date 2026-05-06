@@ -1,22 +1,24 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QProcessEnvironment>
 // #include <QQmlContext>
 #include <QSettings>
 #include <QScopedPointer>
-#include "src/connectionservice.h"
-#include "src/itemgametypeconnection.h"
+// #include "src/connectionservice.h"
+// #include "src/itemgametypeconnection.h"
 #include "src/AllString.h"
 #include <QVariant>
-#include "src/timer.h"
-#include "src/tracingengine.h"
+// #include "src/timer.h"
+// #include "src/tracingengine.h"
 // #include "src/audioengine.h"
-#include "src/metricsmanager.h"
-#include "src/wordmanager.h"
+// #include "src/metricsmanager.h"
+// #include "src/wordmanager.h"
 
 
 
 int main(int argc, char *argv[])
 {
+    qputenv("QT_MEDIA_BACKEND", "windows");
     QGuiApplication app(argc, argv);
 
 

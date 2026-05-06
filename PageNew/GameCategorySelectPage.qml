@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Window
 import "../Buttons"
 import "../Components"
+import "../ShapeExplorer"
 
 Page {
 
@@ -113,6 +114,18 @@ Page {
                  imageSource: "qrc:img/images/reading.png"
                  accentColor: "#F06292"
                  onClicked: stackView.push("../Components/ADHDWhackamoleManus.qml")
+             }
+             GameItem {
+                 labelText: "Writing Practice"
+                 imageSource: "qrc:/img/images/writing.png"
+                 accentColor: "#FFD54F"
+                  onClicked: stackView.push("../ShapeExplorer/SMain.qml")
+             }
+             GameItem {
+                 labelText: "Writing Practice"
+                 imageSource: "qrc:/img/images/writing.png"
+                 accentColor: "#FFD54F"
+                  onClicked: stackView.push("../Components/WigglyWord.qml")
              }
 
          }
