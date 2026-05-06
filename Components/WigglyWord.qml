@@ -285,7 +285,7 @@ Page {
                     }
 
                     contentItem: Text {
-                        text: keyBtn.text
+                        text:modelData
                         font.pixelSize: 40
                         font.bold: true
                         color: "white"
