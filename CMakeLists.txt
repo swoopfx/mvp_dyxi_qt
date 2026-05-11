@@ -12,14 +12,22 @@ set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
     FORCE
 )
 
+
 find_package(Qt6 REQUIRED COMPONENTS Quick Gui Multimedia QuickControls2  Network Core TextToSpeech )
 
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appmvpDyxi
+    MANUAL_FINALIZATION
     main.cpp
     images.qrc
 )
+
+ # set_property(TARGET appmvpDyxi PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+ #           "${CMAKE_CURRENT_SOURCE_DIR}/android")
+
+set_property(TARGET appmvpDyxi PROPERTY QT_ANDROID_TARGET_SDK_VERSION 30)
+
 
 file(GLOB_RECURSE QML_FILES RELATIVE
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -195,6 +203,7 @@ set_target_properties(appmvpDyxi PROPERTIES
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
+    QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
 )
 
 target_include_directories(appmvpDyxi PUBLIC src )
@@ -229,3 +238,5 @@ set_property(SOURCE resources.qrc PROPERTY QT_RESOURCE_BIG ON)
 # add_subdirectory(modules/CTOPP2Module)
 # add_subdirectory(modules/AdhdModule/modules/Phonics)
 #
+
+qt_finalize_executable(appmvpDyxi)

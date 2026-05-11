@@ -80,18 +80,18 @@ import Adhd.AdhdModule as Adhd
                 }
         }
 
-        Component.onCompleted: {
-                console.log(Screen.width);
-                if(Screen.width < screen_maximumWidth || Screen.height < screen_maximumHeight){
-                        errorScreen.visible = true;
-                console.log(Screen.width);
-                        console.log(Screen.height);
-                        console.log(screen_maximumHeight);
-                        console.log(screen_maximumWidth);
+        // Component.onCompleted: {
+        //         console.log(Screen.width);
+        //         if(Screen.width < screen_maximumWidth || Screen.height < screen_maximumHeight){
+        //                 errorScreen.visible = true;
+        //         console.log(Screen.width);
+        //                 console.log(Screen.height);
+        //                 console.log(screen_maximumHeight);
+        //                 console.log(screen_maximumWidth);
 
 
-                }
-        }
+        //         }
+        // }
 
         StackView {
             id: stackView
