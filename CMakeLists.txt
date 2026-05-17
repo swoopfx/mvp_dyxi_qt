@@ -1,242 +1,47 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(mvpDyxi VERSION 0.1 LANGUAGES CXX)
+project(mvpDyxiV1 VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(Qt6 REQUIRED COMPONENTS Quick)
 
+qt_standard_project_setup(REQUIRES 6.10)
 
-set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/)
-set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
-    CACHE STRING "Import Path for qt Creator"
-    FORCE
-)
-
-
-find_package(Qt6 REQUIRED COMPONENTS Quick Gui Multimedia QuickControls2  Network Core TextToSpeech )
-
-qt_standard_project_setup(REQUIRES 6.8)
-
-qt_add_executable(appmvpDyxi
-    MANUAL_FINALIZATION
-    main.cpp
-    images.qrc
-)
-
- # set_property(TARGET appmvpDyxi PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
- #           "${CMAKE_CURRENT_SOURCE_DIR}/android")
-
-set_property(TARGET appmvpDyxi PROPERTY QT_ANDROID_TARGET_SDK_VERSION 30)
-
-
-file(GLOB_RECURSE QML_FILES RELATIVE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    "${CMAKE_CURRENT_SOURCE_DIR}/Components/*qml"
-    "${CMAKE_CURRENT_SOURCE_DIR}/Buttons/*qml"
-    "${CMAKE_CURRENT_SOURCE_DIR}/Games/*qml"
-    "${CMAKE_CURRENT_SOURCE_DIR}/Pages/*qml"
-     "${CMAKE_CURRENT_SOURCE_DIR}/Recognition/*qml"
-      "${CMAKE_CURRENT_SOURCE_DIR}/PageNew/*qml"
-)
-
-# file(GLOB_RECURSE PROJECT_SOURCES "src/*.cpp")
-# file(GLOB_RECURSE PROJECT_HEADER "src/*.h")
-
-# add_executable(appmvpDyxi ${PROJECT_SOURCES} ${PROJECT_HEADER})
+add_subdirectory(src)
 
 
 
+# qt_add_qml_module(mvpDyxiV1
+#     URI mvpDyxiV1
+#     # QML_FILES
+#     #     Main.qml
+# )
 
 
-qt_add_qml_module(appmvpDyxi
-    URI mvpDyxi
-    QML_FILES
-        Main.qml
-        RESOURCES images.qrc
-        SOURCES src/AllString.h
-        QML_FILES Pages/Welcome.qml
-        QML_FILES Buttons/PulseButton.qml
-        QML_FILES Pages/SelectionPage.qml
-        QML_FILES Basee.qml
-        QML_FILES Pages/LoadingPage.qml
-        SOURCES src/connectionservice.h src/connectionservice.cpp
-        QML_FILES Buttons/NeonButton.qml
-        QML_FILES Games/Dyslexia/Game1.qml
-        QML_FILES Buttons/ConfetiButton.qml
-        QML_FILES Buttons/DefaultButton.qml
-        QML_FILES Pages/SelectGamePage.qml
-        SOURCES src/AllString.h
-        SOURCES src/settings.h src/settings.cpp
-        SOURCES Games/Dyslexia/dyxlearnengine.h Games/Dyslexia/dyxlearnengine.cpp
-        QML_FILES Components/ImageButton.qml
-         QML_FILES Components/GameItem.qml
-        QML_FILES Games/ADHD/Game1.qml
-        QML_FILES Games/ADHD/NewGame2.qml
-        QML_FILES Components/LeftNavigation.qml
-        QML_FILES Components/Playground.qml
-        SOURCES src/timer.h src/timer.cpp
-        QML_FILES Games/Dyslexia/Level1_Writing_English_Dyslexia.qml
-        QML_FILES js/script.js
-
-        QML_FILES Games/Dyslexia/Level1_Recognition_English_Dyslexia.qml
-        QML_FILES Games/Dyslexia/Level1_Tracing_English_Dyslexia.qml
-        QML_FILES Games/Dyslexia/Level0_Tracing_English_Dyslexia.qml
-        QML_FILES Games/Dyslexia/Level1_Phonics_English_Dyslexia.qml
-        QML_FILES Games/Dyslexia/LevelT_Tracing_English_Dyslexia.qml
-        QML_FILES Games/Dyslexia/Component/MainMenu.qml
-        QML_FILES Games/Dyslexia/Component/GameLevel.qml
-        QML_FILES Games/Dyslexia/Component/PhonicsData.qml
-        QML_FILES Games/Dyslexia/GameTest.qml
-        QML_FILES ${QML_FILES}
-        SOURCES src/tracingengine.h src/tracingengine.cpp
-        # SOURCES src/audioengine.h src/audioengine.cpp
-        SOURCES src/metricsmanager.h src/metricsmanager.cpp
-        SOURCES src/wordmanager.h src/wordmanager.cpp
-        SOURCES src/itemgametypeconnection.h src/itemgametypeconnection.cpp
-        QML_FILES Pages/ItemGameTypePage.qml
-        QML_FILES Components/ItemList.qml
-        QML_FILES Pages/RobotPage.qml
-        QML_FILES Components/Robot.qml
-        QML_FILES Components/ColorDrop.qml
-        QML_FILES Components/MetricTracker.qml
-        QML_FILES Components/ColorCircle.qml
-        QML_FILES Pages/ABC123.qml
-        QML_FILES Pages/Tracing.qml
-        SOURCES src/traceabletextitem.h src/traceabletextitem.cpp
-        SOURCES mmm.h mmm.cpp
-        SOURCES src/ano.h src/ano.cpp
-        QML_FILES Pages/LoadingnPage.qml
-        QML_FILES Pages/PlayGroundPage.qml
-        QML_FILES Pages/TracePage.qml
-        SOURCES src/traceabletexte.h src/traceabletexte.cpp
-        QML_FILES Games/GameTelemetry.qml
-        QML_FILES Pages/MainPlaygroundPage.qml
-        QML_FILES Components/TelemetryLogger.qml
-        QML_FILES PageNew/GameCategorySelectPage.qml
-        QML_FILES PageNew/GameItemListPage.qml
-        QML_FILES PageNew/PageLoader.qml
-        QML_FILES Components/Delegate.qml Components/InfoModal.qml
-        QML_FILES PageNew/PageDefaultPlaygroundLoader.qml
-        QML_FILES PageNew/CanvasPage.qml
-        SOURCES src/readtexttospeech.h src/readtexttospeech.cpp
-        QML_FILES PageNew/WritingMainPlayGround.qml
-        QML_FILES Components/WritingCanvas.qml
-        SOURCES src/traceabletext.h src/traceabletext.cpp
-        QML_FILES Components/ADHDWhackamole.qml
-        QML_FILES Components/ADHDWhackamoleManus.qml
-        RESOURCES js/TelemetryManager.js
-        QML_FILES Components/Mole.qml
-        # QML_FILES Components/Tracable.qml
-        QML_FILES ShapeExplorer/SMain.qml ShapeExplorer/QuitButton.qml ShapeExplorer/Rabbit.qml ShapeExplorer/Shape.qml ShapeExplorer/TargetSlot.qml
-        RESOURCES ShapeExplorer/Telemetry.js
-        SOURCES src/GameEngine.cpp src/GameEngine.h
-        QML_FILES Components/WigglyWord.qml
-
-
-)
-
-
-qt_add_resources(appmvpDyxi
-    "assets"
-     PREFIX "/img"
-     FILES "images/Welcome Dyxi.png"
-     FILES "images/Artboard.png"
-     FILES "images/kidi.jpg"
-     FILES "images/playground.jpg"
-     FILES "images/ADHD_Symbol.png"
-     FILES "images/Dyslexia_Symbol.png"
-     FILES "images/phonics.jpg"
-     FILES "images/reading.png"
-     FILES "images/recognition.png"
-     FILES "images/tracing.webp"
-     FILES "images/writing.png"
-     FILES "images/dyxi_logo_42.png"
-     FILES "images/robot_body.svg"
-     FILES "images/robot_head.svg"
-     FILES "images/robot_limb.svg"
-     FILES "Recognition/assets/images/background_main.png"
-     FILES "Recognition/assets/images/button_play.png"
-     FILES "Recognition/assets/images/button_play_original.png"
-     FILES "Recognition/assets/images/card_base.png"
-     FILES "Recognition/assets/images/card_base_original.png"
-     FILES "Recognition/assets/images/character_guide.png"
-     FILES "Recognition/assets/images/character_guide_original.png"
-     FILES "images/logo.png"
-     FILES "images/background.png"
-     FILES "images/cloud.png"
-     FILES "images/rabbit.png"
-     FILES "images/hole.png"
-     FILES "images/grass.png"
-     FILES "images/hole_original.png"
-     FILES "images/assets/background.png"
-     FILES "images/assets/circle.png"
-     FILES "images/assets/circle_original.png"
-     FILES "images/assets/failure.wav"
-     FILES "images/assets/rabbit.png"
-     FILES "images/assets/rabbit_appear.wav"
-     FILES "images/assets/rabbit_original.png"
-     FILES "images/assets/square.png"
-     FILES "images/assets/square_original.png"
-     FILES "images/assets/star.png"
-     FILES "images/assets/star_original.png"
-     FILES "images/assets/success.wav"
-     FILES "images/assets/triangle.png"
-     FILES "images/assets/triangle_original.png"
-     FILES "images/assets/game_background.png"
-     FILES "images/assets/replay_button.png"
-     FILES "images/assets/replay_button_original.png"
-
-
-
- )
-
-add_subdirectory(modules/AdhdModule)
-add_subdirectory(modules/DyslexiaModule)
-# add_subdirectory(modules/DyscalculiaModule)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
-set_target_properties(appmvpDyxi PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appmvpDyxi
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-    QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
-)
+# set_target_properties(appmvpDyxiV1 PROPERTIES
+# #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appmvpDyxiV1
+#     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+#     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+#     MACOSX_BUNDLE TRUE
+#     WIN32_EXECUTABLE TRUE
+# )
 
-target_include_directories(appmvpDyxi PUBLIC src )
+# target_link_libraries(mvpDyxiV1
+#     PRIVATE Qt6::Quick
+#     # coreLib
+# )
 
-target_link_libraries(appmvpDyxi
-    PRIVATE
-    Qt6::Qml
-    Qt6::Gui
-    Qt6::Quick
-    Qt6::Network
-    Qt6::quickmultimedia
-    Qt6::TextToSpeech
-    Qt6::TextToSpeechQml
-    appDyslexiaModule
-    AdhdModulelib
-    # appDyscalculiaModule
-
-)
-
-include(GNUInstallDirs)
-install(TARGETS appmvpDyxi
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
-
+# install(TARGETS appmvpDyxiV1
+#     BUNDLE DESTINATION .
+#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+# )
 
 set_property(SOURCE resources.qrc PROPERTY QT_RESOURCE_BIG ON)
-
-
-# add_subdirectory(modules/Wiat4Module)
-# add_subdirectory(modules/CTOPP2Module)
-# add_subdirectory(modules/AdhdModule/modules/Phonics)
-#
-
-qt_finalize_executable(appmvpDyxi)
