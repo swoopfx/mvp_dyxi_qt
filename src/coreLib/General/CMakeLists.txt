@@ -24,6 +24,11 @@ qt_add_qml_module(General
   SOURCES CoreSettings.hpp
   SOURCES neworkaccessmanager.h neworkaccessmanager.cpp
   SOURCES usersession.h usersession.cpp
+  SOURCES networkaccessitemlist.h networkaccessitemlist.cpp
+  SOURCES
+  SOURCES abstracterrorprocessing.h abstracterrorprocessing.cpp
+  SOURCES poststudentactivity.h poststudentactivity.cpp
+  SOURCES postactivity.h postactivity.cpp
 )
 
 target_link_libraries(General

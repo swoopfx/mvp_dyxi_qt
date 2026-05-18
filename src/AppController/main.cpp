@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     // engine.addImportPath(QString("%1/src/coreLib").arg(QGuiApplication::applicationDirPath()));
     // engine.addImportPath(":/");
 
+    // QObject::connect();
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,

@@ -23,9 +23,12 @@ target_link_libraries(AppController
 
     UIModule
     Generalplugin
+    Datasetplugin
 
 )
 
 target_link_libraries(AppController PRIVATE Generalplugin)
+target_link_libraries(AppController PRIVATE Datasetplugin)
+
 
 

@@ -32,7 +32,7 @@ Page {
          // Header
          Rectangle {
              width: parent.width
-             height: 120
+             height: 60
              color: "white"
              radius: 60
              border.color: "#AED581"
@@ -40,10 +40,10 @@ Page {
 
              Text {
                  anchors.centerIn: parent
-                 text: "My Learning World"
+                 text: "Dyxi Learning World"
                  color: "#558B2F"
                  font.family: "Verdana", "Arial"
-                 font.pixelSize: 42
+                 font.pixelSize: 12
                  font.bold: true
                  // letterSpacing: 2
              }
@@ -94,24 +94,24 @@ Page {
          }
 
          // Interactive Footer
-         Rectangle {
-             width: parent.width * 0.7
-             height: 80
-             anchors.horizontalCenter: parent.horizontalCenter
-             color: "#FFFFFF"
-             radius: 40
-             border.color: "#C5E1A5"
-             border.width: 3
+         // Rectangle {
+         //     width: parent.width * 0.7
+         //     height:
+         //     anchors.horizontalCenter: parent.horizontalCenter
+         //     color: "#FFFFFF"
+         //     radius: 40
+         //     border.color: "#C5E1A5"
+         //     border.width: 3
 
-             Text {
-                 anchors.centerIn: parent
-                 text: "Pick an activity to start your adventure!"
-                 color: "#7CB342"
-                 font.family: "Verdana"
-                 font.pixelSize: 24
-                 font.bold: true
-             }
-         }
+         //     Text {
+         //         anchors.centerIn: parent
+         //         text: "Pick an activity to start your adventure!"
+         //         color: "#7CB342"
+         //         font.family: "Verdana"
+         //         font.pixelSize: 24
+         //         font.bold: true
+         //     }
+         // }
      }
 
      // Label{

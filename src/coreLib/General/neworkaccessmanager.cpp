@@ -3,7 +3,7 @@
 #include "CoreSettings.hpp"
 
 NeworkAccessManager::NeworkAccessManager(QObject *parent)
-    : QObject{parent}
+    : AbstractErrorProcessing{parent}
 {
     setIsLoadingData(false);
     manager = new QNetworkAccessManager(this);
@@ -18,6 +18,10 @@ void NeworkAccessManager::getProfileApiRequest(const QString &url)
 
 }
 
+/*!
+ * \brief NeworkAccessManager::getGamesApiRequest
+ * \param url
+ */
 void NeworkAccessManager::getGamesApiRequest(const QString &url)
 {
     setIsLoadingData(true);
@@ -25,11 +29,18 @@ void NeworkAccessManager::getGamesApiRequest(const QString &url)
     manager->get(request);
 }
 
+
+
 QVariantMap NeworkAccessManager::profile() const
 {
     return m_profile;
 }
 
+
+/*!
+ * \brief NeworkAccessManager::setProfile
+ * \param newProfile
+ */
 void NeworkAccessManager::setProfile(const QVariantMap &newProfile)
 {
     if (m_profile == newProfile)
@@ -51,6 +62,13 @@ void NeworkAccessManager::setprofileDataMap(const QVariantMap &newProfileDataMap
     emit profileDataMapChanged();
 }
 
+
+/**
+ * @brief NeworkAccessManager::onGetProfileDetailsApiFinished
+ * @param reply
+ * @param
+ *
+ */
 void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
 {
     QVariant statusCodeVariant = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
@@ -100,6 +118,9 @@ void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
      reply->deleteLater();
 }
 
+
+
+
 void NeworkAccessManager::setIsLoadingData(bool loading)
 {
     if (m_isLoadingData == loading)
@@ -107,3 +128,27 @@ void NeworkAccessManager::setIsLoadingData(bool loading)
     m_isLoadingData = loading;
     emit isLoadingDataChanged();
 }
+
+// void NeworkAccessManager::setItemGameType(QList<QVariantMap> item)
+// {
+//     m_itemGameType = item;
+//     emit itemGameTypeChanged();
+// }
+
+// QList<QVariantMap> NeworkAccessManager::itemGameType() const
+// {
+//     return m_itemGameType;
+// }
+
+// bool NeworkAccessManager::isLoadedData() const
+// {
+//     return m_isLoadedData;
+// }
+
+// void NeworkAccessManager::setIsLoadedData(bool newIsLoadedData)
+// {
+//     if (m_isLoadedData == newIsLoadedData)
+//         return;
+//     m_isLoadedData = newIsLoadedData;
+//     emit isLoadedDataChanged();
+// }
