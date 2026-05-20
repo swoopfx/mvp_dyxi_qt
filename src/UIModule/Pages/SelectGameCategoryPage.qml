@@ -61,7 +61,7 @@ Page {
                  labelText: "Phonics Fun"
                  imageSource: "qrc:/ui/images/phonics.png"
                  accentColor: "#FF8A65"
-                   onClicked: stackView.push("RobotPage.qml")
+                   onClicked: stackView.push("GameLoaderPage.qml")
              }
 
              GameItem {

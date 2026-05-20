@@ -33,6 +33,9 @@ qt_add_qml_module(UIModule
    QML_FILES Components/Buttons/DefaultButton.qml
    QML_FILES Components/Buttons/NeonButton.qml
    QML_FILES Components/Buttons/PulseButton.qml
+   QML_FILES Components/LoadingnPage.qml
+   QML_FILES Components/LoadingPage.qml
+   QML_FILES Pages/GameLoaderPage.qml
 
 
 )
