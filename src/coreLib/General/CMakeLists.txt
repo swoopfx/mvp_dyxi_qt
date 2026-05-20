@@ -27,7 +27,7 @@ qt_add_qml_module(General
   SOURCES networkaccessitemlist.h networkaccessitemlist.cpp
   SOURCES
   SOURCES abstracterrorprocessing.h abstracterrorprocessing.cpp
-  SOURCES poststudentactivity.h poststudentactivity.cpp
+  # SOURCES poststudentactivity.h poststudentactivity.cpp
   SOURCES postactivity.h postactivity.cpp
 )
 
