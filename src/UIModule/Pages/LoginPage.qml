@@ -23,9 +23,7 @@ Page {
         id:core
         myText: "Tunde"
 
-        Component.onCompleted: {
-            console.log(core.myText)
-        }
+
     }
 
 

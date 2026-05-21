@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 import "../Components"
+import General
 
 Page {
 
@@ -10,9 +11,13 @@ Page {
 
      id: selectGamePage
      property string activeUserName: ""
+     property string userAge: ""
      // anchors.fill: parent
 
 
+     CoreSettings{
+          id: coreSettings
+     }
 
      Image {
           id: bg_image
@@ -61,7 +66,13 @@ Page {
                  labelText: "Phonics Fun"
                  imageSource: "qrc:/ui/images/phonics.png"
                  accentColor: "#FF8A65"
-                   onClicked: stackView.push("GameLoaderPage.qml")
+                   onClicked: stackView.push("GameLoaderPage.qml", {
+                                                  // "url": coreSettings.baseUrl+"/api/game-by-type"+"?type=1"+"age"+UserSession.userAge,
+                                                  "url":"https://mvp.dyxi.site/api/game-types"+"?type=1",
+                                                  "pageTitle":"Phonics",
+                                                  "avatar":"qrc:/ui/images/phonics.png"
+
+                                             })
              }
 
              GameItem {
@@ -91,6 +102,10 @@ Page {
                  accentColor: "#FFD54F"
                   onClicked: stackView.push("MainPlaygroundPage.qml")
              }
+         }
+         Component.onCompleted: {
+              // get userSession
+              // selectGamePage.userAge =
          }
 
          // Interactive Footer

@@ -9,8 +9,16 @@ Page {
  property bool isLoaded: false
  property bool isReady: false
  // required property int itemId
- // required property string  url
- // required property string queryName
+ required property string  url
+ required property string pageTitle
+ required property string avatar
+ // initiaize user session
+
+
+ NetworkAccessItemList{
+      id:itemConnection
+ }
+
 
  Loader{
      id:loader
@@ -21,6 +29,8 @@ Page {
 
 
  Component.onCompleted: {
+      // console.log(UserSession.userFullName)
+      itemConnection.getItemGameTypeApiRequest(url)
 
  }
 
@@ -31,11 +41,22 @@ Page {
  }
 
  Connections{
+      target: itemConnection
+      function onItemGameTypeChanged(){
+           pageLoader.isLoaded = true;
+           loader.setSource("GameListPage.qml", {
+                                  "model": itemConnection.itemGameType,
+                                  "avatar": pageLoader.avatar,
+                                  "pageTitle": pageLoader.pageTitle
+                            })
+      }
+
       function onRequestFailed(stt){
           // console.log(stt);
           errorDialog.text = stt;
           errorDialog.open();
       }
+
 
  }
 }

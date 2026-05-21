@@ -5,8 +5,8 @@ UserSession::UserSession(QObject *parent)
 {}
 
 UserSession* UserSession::instance() {
-    static UserSession instance;
-    return &instance;
+    static UserSession* instance = new UserSession();
+    return instance;
 }
 
 QString UserSession::userId() const

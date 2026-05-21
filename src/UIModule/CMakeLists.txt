@@ -36,6 +36,7 @@ qt_add_qml_module(UIModule
    QML_FILES Components/LoadingnPage.qml
    QML_FILES Components/LoadingPage.qml
    QML_FILES Pages/GameLoaderPage.qml
+   QML_FILES Pages/GameListPage.qml
 
 
 )

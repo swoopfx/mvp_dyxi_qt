@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QtQml/qqmlregistration.h>
 #include <QString>
 
 class UserSession : public QObject
@@ -12,11 +13,20 @@ class UserSession : public QObject
     QML_SINGLETON
     // Make it a Singleton Implementation
 
-     Q_PROPERTY(QString userId READ userId WRITE setUserId NOTIFY userIdChanged)
+    Q_PROPERTY(QString userId READ userId WRITE setUserId NOTIFY userIdChanged)
     Q_PROPERTY(QString userFullName READ userFullName WRITE setUserFullName NOTIFY userFullNameChanged FINAL)
-     Q_PROPERTY(QString userAge READ userAge WRITE setUserAge NOTIFY userAgeChanged FINAL)
+    Q_PROPERTY(QString userAge READ userAge WRITE setUserAge NOTIFY userAgeChanged FINAL)
 public:
     static UserSession* instance();
+
+    static UserSession *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
+        Q_UNUSED(qmlEngine)
+        Q_UNUSED(jsEngine)
+
+        // Ensure the engine doesn't delete your static instance
+        QJSEngine::setObjectOwnership(instance(), QJSEngine::CppOwnership);
+        return instance();
+    }
 
     QString userId() const;
     void setUserId(const QString &newUserId);

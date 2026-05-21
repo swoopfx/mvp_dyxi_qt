@@ -18,7 +18,7 @@ class NetworkAccessItemList : public AbstractErrorProcessing
     QML_ELEMENT
 
     Q_PROPERTY(bool isLoadedData READ isLoadedData WRITE setIsLoadedData NOTIFY isLoadedDataChanged FINAL)
-    Q_PROPERTY(QList<QVariantMap> itemGameType READ itemGameType  NOTIFY itemGameTypeChanged)
+    Q_PROPERTY(QVariantList itemGameType READ itemGameType  NOTIFY itemGameTypeChanged)
     Q_PROPERTY(bool isLoadingData READ isLoadingData  NOTIFY isLoadingDataChanged );
 public:
     explicit NetworkAccessItemList(QObject *parent = nullptr);
@@ -29,7 +29,7 @@ public:
     bool isLoadedData() const;
     void setIsLoadedData(bool newIsLoadedData);
 
-    QList<QVariantMap> itemGameType() const;
+   QVariantList itemGameType() const;
 
 
 
@@ -50,8 +50,8 @@ private:
 
 
     // List/ Array reference this references a list of data
-    QList<QVariantMap> m_itemGameType;
-    void setItemGameType(QList<QVariantMap> item);
+   QVariantList m_itemGameType;
+    void setItemGameType(QVariantList item);
 
     void setIsLoadingData(bool);
     bool m_isLoadingData;

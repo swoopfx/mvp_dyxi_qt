@@ -20,7 +20,7 @@ Page{
     // Audio
     SoundEffect { id: soundSuccess; source: "qrc:/recognition/ShapeExplorer/assets/success.wav" }
     SoundEffect { id: soundFailure; source: "qrc:/recognition/ShapeExplorer/assets/failure.wav" }
-    SoundEffect { id: soundRabbit; source: "../assets/rabbit_appear.wav" }
+    SoundEffect { id: soundRabbit; source: "qrc:/recognition/ShapeExplorer/assets/rabbit_appear.wav" }
 
     Rabbit {
         id: rabbit
@@ -42,34 +42,34 @@ Page{
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 50
 
-        TargetSlot { id: slotCircle; shapeType: "circle"; imageSource: "../assets/circle.png" }
-        TargetSlot { id: slotSquare; shapeType: "square"; imageSource: "../assets/square.png" }
+        TargetSlot { id: slotCircle; shapeType: "circle"; imageSource: "qrc:/recognition/ShapeExplorer/assets/circle.png" }
+        TargetSlot { id: slotSquare; shapeType: "square"; imageSource: "qrc:/recognition/ShapeExplorer/assets/square.png" }
         TargetSlot { id: slotTriangle; shapeType: "triangle"; imageSource: "../assets/triangle.png" }
-        TargetSlot { id: slotStar; shapeType: "star"; imageSource: "../assets/star.png" }
+        TargetSlot { id: slotStar; shapeType: "star"; imageSource: "qrc:/recognition/ShapeExplorer/assets/star.png" }
     }
 
     // Draggable Shapes
     Shape {
         id: shapeCircle
-        x: 100; y: 500; shapeType: "circle"; imageSource: "../assets/circle.png"
+        x: 100; y: 500; shapeType: "circle"; imageSource: "qrc:/recognition/ShapeExplorer/assets/circle.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeCircle, slotCircle)
     }
     Shape {
         id: shapeSquare
-        x: 300; y: 500; shapeType: "square"; imageSource: "../assets/square.png"
+        x: 300; y: 500; shapeType: "square"; imageSource: "qrc:/recognition/ShapeExplorer/assets/square.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeSquare, slotSquare)
     }
     Shape {
         id: shapeTriangle
-        x: 500; y: 500; shapeType: "triangle"; imageSource: "../assets/triangle.png"
+        x: 500; y: 500; shapeType: "triangle"; imageSource: "qrc:/recognition/ShapeExplorer/assets/triangle.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeTriangle, slotTriangle)
     }
     Shape {
         id: shapeStar
-        x: 700; y: 500; shapeType: "star"; imageSource: "../assets/star.png"
+        x: 700; y: 500; shapeType: "star"; imageSource: "qrc:/recognition/ShapeExplorer/assets/star.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeStar, slotStar)
     }

@@ -11,7 +11,8 @@ NetworkAccessItemList::NetworkAccessItemList(QObject *parent)
 void NetworkAccessItemList::getItemGameTypeApiRequest(const QString &url)
 {
     setIsLoadingData(true);
-    QNetworkRequest request(url);
+    qInfo() << url;
+    QNetworkRequest request(url.trimmed());
     manager->get(request);
 }
 
@@ -28,7 +29,7 @@ void NetworkAccessItemList::setIsLoadedData(bool newIsLoadedData)
     emit isLoadedDataChanged();
 }
 
-QList<QVariantMap> NetworkAccessItemList::itemGameType() const
+QVariantList NetworkAccessItemList::itemGameType() const
 {
     return m_itemGameType;
 }
@@ -68,18 +69,18 @@ void NetworkAccessItemList::onGetItemGameTypeFinished(QNetworkReply *reply)
                         //  convert to variant list
                         // QVariantList variantList = jsonArray.toVariantList();
 
-                        QList<QVariantMap> variantMapList;
-                        qInfo() << "VariantMap";
-                        foreach (const QVariant& variant, variantList) {
-                            if (variant.canConvert<QVariantMap>()) {
-                                variantMapList.append(variant.toMap());
-                                // setItemGameType(variantMapList);
-                            } else {
-                                //TODO  throw error if converting from and log error
-                                qWarning() << "QVariant is not a QVariantMap, skipping.";
-                                emit requestFailed("Data Conversion Error");
-                            }
-                        }
+                        // QList<QVariantMap> variantMapList;
+                        // qInfo() << "VariantMap";
+                        // foreach (const QVariant& variant, variantList) {
+                        //     if (variant.canConvert<QVariantMap>()) {
+                        //         variantMapList.append(variant.toMap());
+                        //         // setItemGameType(variantMapList);
+                        //     } else {
+                        //         //TODO  throw error if converting from and log error
+                        //         qWarning() << "QVariant is not a QVariantMap, skipping.";
+                        //         emit requestFailed("Data Conversion Error");
+                        //     }
+                        // }
 
                         // int index = 0;
                         // for (const QVariant &v : variantList) {
@@ -93,7 +94,7 @@ void NetworkAccessItemList::onGetItemGameTypeFinished(QNetworkReply *reply)
                         // }
 
                         // setItemGameType
-                        setItemGameType(variantMapList);
+                        setItemGameType(variantList);
                         setIsLoadedData(true);
                     }
                 }else{
@@ -121,7 +122,7 @@ void NetworkAccessItemList::setIsLoadingData(bool loading)
 
 
 
-void  NetworkAccessItemList::setItemGameType(QList<QVariantMap> item)
+void  NetworkAccessItemList::setItemGameType(QVariantList item)
 {
     m_itemGameType = item;
     emit itemGameTypeChanged();
