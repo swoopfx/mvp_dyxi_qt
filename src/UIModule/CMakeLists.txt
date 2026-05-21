@@ -55,6 +55,7 @@ target_link_libraries(UIModule
     # Qt6::TextToSpeech
     # Qt6::TextToSpeechQml
     Qt6::Core5Compat
+
     # coreLib
 
 )
@@ -105,6 +106,8 @@ qt_add_resources(UIModule
 
 
  )
+
+# target_link_libraries(UIModule PRIVATE Writingplugin)
 # Mark the QRC file so it is not processed by standard AUTORCC
 # set_property(SOURCE resources.qrc PROPERTY SKIP_AUTORCC ON)
 

@@ -25,12 +25,14 @@ target_link_libraries(AppController
     Generalplugin
     Datasetplugin
     Recognitionplugin
+    Writingplugin
 
 )
 
 target_link_libraries(AppController PRIVATE Generalplugin)
 target_link_libraries(AppController PRIVATE Datasetplugin)
 target_link_libraries(AppController PRIVATE Recognitionplugin)
+target_link_libraries(AppController PRIVATE Writingplugin)
 
 
 

@@ -4,6 +4,8 @@ import QtQuick.Layouts
 import QtQuick.Window
 import "../Components"
 import General
+import Recognition
+import Writing
 
 Page {
 
@@ -82,7 +84,8 @@ Page {
                  labelText: "Word Tracing"
                  imageSource: "qrc:/ui/images/tracing.png"
                  accentColor: "#4DB6AC"
-                 onClicked: stackView.push("ABC123.qml")
+                 // onClicked: stackView.push("ABC123.qml")
+                 onClicked: stackView.push("qrc:/writing/Writing/WritingMainPlayGround.qml")
              }
 
              GameItem {

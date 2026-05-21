@@ -12,13 +12,21 @@ qt_add_qml_module(
     Recognition
     STATIC
     URI Recognition
+    RESOURCE_PREFIX "/recognition"
     QML_FILES
        ShapeExplorer/QuitButton.qml
        ShapeExplorer/Rabbit.qml
        ShapeExplorer/Shape.qml
        ShapeExplorer/TargetSlot.qml
        ShapeExplorer/Telemetry.js
-       QML_FILES Shapes_Level1.qml
+
+       #Reognition Files
+       QML_FILES Recognition_Shape_Explorer_Level1.qml
+       QML_FILES Recognition_Shape_Explorer_Level2.qml
+       QML_FILES Recognition_Shape_Explorer_Level3.qml
+
+
+
 
 
 
@@ -52,7 +60,7 @@ qt_add_resources(Recognition
         FILES "ShapeExplorer/assets/triangle_original.png"
 )
 
-target_include_directories(Recognition PUBLIC src)
+# target_include_directories(Recognition PUBLIC src)
 
 # target_link_libraries(${PROJECT_NAME}lib PRIVATE Qt6::Core)
 
