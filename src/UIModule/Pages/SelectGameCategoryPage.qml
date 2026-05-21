@@ -12,12 +12,15 @@ Page {
      id: selectGamePage
      property string activeUserName: ""
      property string userAge: ""
+     property var gameTypeId: ""
      // anchors.fill: parent
 
 
      CoreSettings{
           id: coreSettings
      }
+
+
 
      Image {
           id: bg_image
@@ -206,6 +209,8 @@ Page {
 
 
      // }
+
+
 
 
 }

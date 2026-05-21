@@ -29,6 +29,7 @@ qt_add_qml_module(General
   SOURCES abstracterrorprocessing.h abstracterrorprocessing.cpp
   # SOURCES poststudentactivity.h poststudentactivity.cpp
   SOURCES postactivity.h postactivity.cpp
+  SOURCES networkaccesspresets.h networkaccesspresets.cpp
 )
 
 target_link_libraries(General

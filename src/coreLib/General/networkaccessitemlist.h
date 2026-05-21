@@ -20,6 +20,7 @@ class NetworkAccessItemList : public AbstractErrorProcessing
     Q_PROPERTY(bool isLoadedData READ isLoadedData WRITE setIsLoadedData NOTIFY isLoadedDataChanged FINAL)
     Q_PROPERTY(QVariantList itemGameType READ itemGameType  NOTIFY itemGameTypeChanged)
     Q_PROPERTY(bool isLoadingData READ isLoadingData  NOTIFY isLoadingDataChanged );
+
 public:
     explicit NetworkAccessItemList(QObject *parent = nullptr);
 
