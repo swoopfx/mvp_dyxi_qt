@@ -26,6 +26,9 @@ target_link_libraries(AppController
     Datasetplugin
     Recognitionplugin
     Writingplugin
+    modulesplugin
+    # ShapeExplorerplugin
+
 
 )
 
@@ -33,6 +36,7 @@ target_link_libraries(AppController PRIVATE Generalplugin)
 target_link_libraries(AppController PRIVATE Datasetplugin)
 target_link_libraries(AppController PRIVATE Recognitionplugin)
 target_link_libraries(AppController PRIVATE Writingplugin)
-
+target_link_libraries(AppController PRIVATE modulesplugin)
+# target_link_libraries(AppController PRIVATE ShapeExplorerplugin)
 
 

@@ -7,6 +7,7 @@ add_library(Dataset STATIC
 qt_add_qml_module(Dataset
   URI Dataset
   SOURCES tracinglevel1dataset.h tracinglevel1dataset.cpp
+  SOURCES recognitionshapeexplorerdataset.h recognitionshapeexplorerdataset.cpp
 )
 
 target_link_libraries(Dataset

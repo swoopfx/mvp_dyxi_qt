@@ -49,8 +49,8 @@ Page {
                                   "model": itemConnection.itemGameType,
                                   "avatar": pageLoader.avatar,
                                   "pageTitle": pageLoader.pageTitle,
-                                  "resoucesUrl":pageLoader.resoucesUrl,
-                                  "moduleName":"Recognition"
+                                  "resoucesUrl":"modules",
+                                  "moduleName":"modules"
                             })
       }
 

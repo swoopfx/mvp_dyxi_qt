@@ -91,14 +91,19 @@ Page {
                 labelText: "Recognition"
                 imageSource: "qrc:/ui/images/recognition.png"
                 accentColor: "#9575CD"
-                onClicked: stackView.push("Tracing.qml")
+                onClicked: stackView.push("GameLoaderPage.qml", {
+                                              "url": "https://mvp.dyxi.site/api/game-types" + "?type="+selectGamePage.gameTypeId[3].id,
+                                              "pageTitle": selectGamePage.gameTypeId[3].type,
+                                              "avatar": "qrc:/ui/images/recognition.png",
+                                              "resoucesUrl": selectGamePage.gameTypeId[3].type
+                                          })
             }
 
             GameItem {
                 labelText: "Reading Time"
                 imageSource: "qrc:/ui/images/reading.png"
                 accentColor: "#F06292"
-                onClicked: stackView.push("Tracing.qml")
+                onClicked: stackView.push("qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml")
             }
 
             GameItem {
