@@ -19,12 +19,12 @@ Page {
     //  ConnectionService{
     //     id:service
     // }
-    CoreSettings{
-        id:core
-        myText: "Tunde"
+    // CoreSettings{
+    //     id:core
+    //     myText: "Tunde"
 
 
-    }
+    // }
 
 
     NeworkAccessManager{

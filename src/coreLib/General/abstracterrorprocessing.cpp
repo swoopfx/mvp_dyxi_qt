@@ -2,7 +2,8 @@
 
 AbstractErrorProcessing::AbstractErrorProcessing(QObject *parent)
     : QObject{parent}
-{}
+{
+   }
 
 bool AbstractErrorProcessing::isLoadingData() const
 {
@@ -20,4 +21,12 @@ void AbstractErrorProcessing::setIsLoadedData(bool newIsLoadedData)
         return;
     m_isLoadedData = newIsLoadedData;
     emit isLoadedDataChanged();
+}
+
+void AbstractErrorProcessing::setIsLoadingData(bool newIsLoadingData)
+{
+    if (m_isLoadingData == newIsLoadingData)
+        return;
+    m_isLoadingData = newIsLoadingData;
+    emit isLoadingDataChanged();
 }

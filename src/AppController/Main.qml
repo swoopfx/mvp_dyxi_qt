@@ -23,7 +23,7 @@ Window {
     StackView {
         id: stackView
          anchors.fill: parent
-        initialItem: "../UIModule/Pages/WelcomePage.qml" // Relative path to the file
+        initialItem: "qrc:/ui/UIModule/Pages/WelcomePage.qml" // Relative path to the file
     }
 
 }

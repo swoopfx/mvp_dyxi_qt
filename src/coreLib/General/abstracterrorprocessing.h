@@ -11,7 +11,7 @@ class AbstractErrorProcessing : public QObject
     QML_ELEMENT
     QML_UNCREATABLE("Error Processing Abstract Class ")
 
-     Q_PROPERTY(bool isLoadingData READ isLoadingData  NOTIFY isLoadingDataChanged );
+     Q_PROPERTY(bool isLoadingData READ isLoadingData WRITE setIsLoadingData  NOTIFY isLoadingDataChanged );
      Q_PROPERTY(bool isLoadedData READ isLoadedData WRITE setIsLoadedData NOTIFY isLoadedDataChanged)
 public:
     explicit AbstractErrorProcessing(QObject *parent = nullptr);
@@ -22,6 +22,8 @@ public:
 
     bool isLoadedData() const;
     void setIsLoadedData(bool newIsLoadedData);
+
+    void setIsLoadingData(bool newIsLoadingData);
 
 signals:
     void requestFailed(const QString &error);

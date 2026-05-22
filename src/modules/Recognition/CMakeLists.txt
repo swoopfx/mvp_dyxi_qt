@@ -12,7 +12,7 @@ qt_add_qml_module(
     Recognition
     STATIC
     URI Recognition
-    RESOURCE_PREFIX "/recognition"
+    RESOURCE_PREFIX "/Recognition"
     QML_FILES
        ShapeExplorer/QuitButton.qml
        ShapeExplorer/Rabbit.qml
@@ -24,6 +24,7 @@ qt_add_qml_module(
        QML_FILES Recognition_Shape_Explorer_Level1.qml
        QML_FILES Recognition_Shape_Explorer_Level2.qml
        QML_FILES Recognition_Shape_Explorer_Level3.qml
+
 
 
 

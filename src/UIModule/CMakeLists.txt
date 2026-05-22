@@ -1,4 +1,4 @@
-project(UIModuleURI VERSION 0.1 LANGUAGES CXX)
+# project(UIModuleURI VERSION 0.1 LANGUAGES CXX)
 
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/)
 set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
@@ -21,7 +21,7 @@ qt_add_qml_module(UIModule
 
    URI UIModule
    VERSION 1.0
-
+    RESOURCE_PREFIX "/ui"
    QML_FILES Pages/WelcomePage.qml
    QML_FILES Pages/LoginPage.qml
    QML_FILES Pages/SelectGameCategoryPage.qml

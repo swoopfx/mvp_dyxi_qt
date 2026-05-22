@@ -12,6 +12,7 @@ Page {
  required property string  url
  required property string pageTitle
  required property string avatar
+ required property string resoucesUrl
  // initiaize user session
 
 
@@ -23,7 +24,7 @@ Page {
  Loader{
      id:loader
      anchors.fill: parent
-     source:"../Components/LoadingPage.qml"
+     source:"qrc:/ui/UIModule/Components/LoadingPage.qml"
  }
 
 
@@ -47,7 +48,9 @@ Page {
            loader.setSource("GameListPage.qml", {
                                   "model": itemConnection.itemGameType,
                                   "avatar": pageLoader.avatar,
-                                  "pageTitle": pageLoader.pageTitle
+                                  "pageTitle": pageLoader.pageTitle,
+                                  "resoucesUrl":pageLoader.resoucesUrl,
+                                  "moduleName":"Recognition"
                             })
       }
 
