@@ -81,3 +81,68 @@ void RecognitionShapeExplorerDataset::setActivity(const QString &newActivity)
     m_activity = newActivity;
     emit activityChanged();
 }
+
+QString RecognitionShapeExplorerDataset::userId() const
+{
+    return m_userId;
+}
+
+void RecognitionShapeExplorerDataset::setuserId(const QString &newUserId)
+{
+    if (m_userId == newUserId)
+        return;
+    m_userId = newUserId;
+    emit userIdChanged();
+}
+
+float RecognitionShapeExplorerDataset::problemSolvingIndex() const
+{
+    return m_problemSolvingIndex;
+}
+
+void RecognitionShapeExplorerDataset::setProblemSolvingIndex(float newProblemSolvingIndex)
+{
+    if (qFuzzyCompare(m_problemSolvingIndex, newProblemSolvingIndex))
+        return;
+    m_problemSolvingIndex = newProblemSolvingIndex;
+    emit problemSolvingIndexChanged();
+}
+
+float RecognitionShapeExplorerDataset::creativeIndex() const
+{
+    return m_creativeIndex;
+}
+
+void RecognitionShapeExplorerDataset::setCreativeIndex(float newCreativeIndex)
+{
+    if (qFuzzyCompare(m_creativeIndex, newCreativeIndex))
+        return;
+    m_creativeIndex = newCreativeIndex;
+    emit creativeIndexChanged();
+}
+
+float RecognitionShapeExplorerDataset::averageTimeCorrect() const
+{
+    return m_averageTimeCorrect;
+}
+
+void RecognitionShapeExplorerDataset::setAverageTimeCorrect(float newAverageTimeCorrect)
+{
+    if (qFuzzyCompare(m_averageTimeCorrect, newAverageTimeCorrect))
+        return;
+    m_averageTimeCorrect = newAverageTimeCorrect;
+    emit averageTimeCorrectChanged();
+}
+
+float RecognitionShapeExplorerDataset::averageTimeFailed() const
+{
+    return m_averageTimeFailed;
+}
+
+void RecognitionShapeExplorerDataset::setAverageTimeFailed(float newAverageTimeFailed)
+{
+    if (qFuzzyCompare(m_averageTimeFailed, newAverageTimeFailed))
+        return;
+    m_averageTimeFailed = newAverageTimeFailed;
+    emit averageTimeFailedChanged();
+}

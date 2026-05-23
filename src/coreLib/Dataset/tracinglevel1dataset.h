@@ -33,7 +33,7 @@ public:
 
 signals:
 
-    void postRequest(QByteArray, QNetworkRequest);
+    void postRequest(QByteArray &, QNetworkRequest &);
 
 private:
 
