@@ -1,5 +1,5 @@
-#ifndef POSTACTIVITY_H
-#define POSTACTIVITY_H
+#ifndef POSTACT_H
+#define POSTACT_H
 
 #include <QObject>
 #include <QQmlEngine>
@@ -9,12 +9,12 @@
 #include <QByteArray>
 #include <QJsonObject>
 
-class PostActivity : public QObject
+class PostAct : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
 public:
-    explicit PostActivity(QObject *parent = nullptr);
+    explicit PostAct(QObject *parent = nullptr);
 
 signals:
     void dataPostedSuccessfully(const QJsonObject &responseData);
@@ -22,7 +22,7 @@ signals:
 
 
 public slots:
-    void handlePostReqest(QByteArray &data, QNetworkRequest &request); // handles all post request by the app
+    void handlePostReqest(const QByteArray &data, const QNetworkRequest &request); // handles all post request by the app
 
 private slots:
     void onReplyFinished(QNetworkReply *reply);
@@ -30,7 +30,6 @@ private slots:
 
 private:
     QNetworkAccessManager *manager;
-
 };
 
-#endif // POSTACTIVITY_H
+#endif // POSTACT_H

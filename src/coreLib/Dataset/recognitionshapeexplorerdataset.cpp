@@ -2,7 +2,9 @@
 
 RecognitionShapeExplorerDataset::RecognitionShapeExplorerDataset(AbstractErrorProcessing *parent)
     : AbstractErrorProcessing{parent}
-{}
+{
+    postActivity = new PostAct(this);
+}
 
 QString RecognitionShapeExplorerDataset::pageName() const
 {
@@ -145,4 +147,25 @@ void RecognitionShapeExplorerDataset::setAverageTimeFailed(float newAverageTimeF
         return;
     m_averageTimeFailed = newAverageTimeFailed;
     emit averageTimeFailedChanged();
+}
+
+QString RecognitionShapeExplorerDataset::gameLevel() const
+{
+    return m_gameLevel;
+}
+
+void RecognitionShapeExplorerDataset::setgameLevel(const QString &newGameLevel)
+{
+    if (m_gameLevel == newGameLevel)
+        return;
+    m_gameLevel = newGameLevel;
+    emit gameLevelChanged();
+}
+
+void RecognitionShapeExplorerDataset::setUserId(const QString &newUserId)
+{
+    if (m_userId == newUserId)
+        return;
+    m_userId = newUserId;
+    emit userIdChanged();
 }

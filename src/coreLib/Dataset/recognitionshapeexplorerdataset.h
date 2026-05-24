@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
-#include "../General/postactivity.h"
+#include "../General/postact.h"
 #include "../General/abstracterrorprocessing.h"
 
 class RecognitionShapeExplorerDataset : public AbstractErrorProcessing
@@ -60,6 +60,11 @@ public:
     float averageTimeFailed() const;
     void setAverageTimeFailed(float newAverageTimeFailed);
 
+    QString gameLevel() const;
+    void setgameLevel(const QString &newGameLevel);
+
+    void setUserId(const QString &newUserId);
+
 signals:
     void pageNameChanged();
     void studentIdChanged();
@@ -84,6 +89,8 @@ signals:
 
     void postRequest(QByteArray, QNetworkRequest);
 
+    void gameLevelChanged();
+
 private:
     QString m_pageName;
     QString m_studentId;
@@ -92,12 +99,13 @@ private:
     QString m_gameCategory;
     QString m_activity;
 
-    PostActivity *postActivity;
+    PostAct *postActivity;
     QString m_userId;
     float m_problemSolvingIndex;
     float m_creativeIndex;
     float m_averageTimeCorrect;
     float m_averageTimeFailed;
+    QString m_gameLevel;
 };
 
 #endif // RECOGNITIONSHAPEEXPLORERDATASET_H

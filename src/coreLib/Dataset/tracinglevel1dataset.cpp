@@ -4,8 +4,8 @@
 TracingLevel1Dataset::TracingLevel1Dataset(AbstractErrorProcessing *parent)
     : AbstractErrorProcessing{parent}
 {
-    postActivity = new PostActivity(this);
-    connect(this, &TracingLevel1Dataset::postRequest, postActivity, &PostActivity::handlePostReqest);
+    postActivity = new PostAct(this);
+    connect(this, &TracingLevel1Dataset::postRequest, postActivity, &PostAct::handlePostReqest);
 }
 
 /**
@@ -14,18 +14,24 @@ TracingLevel1Dataset::TracingLevel1Dataset(AbstractErrorProcessing *parent)
  * @param data This is the data packet that will be submitted
  * @return
  */
-void TracingLevel1Dataset::gatherData(const QString &url, const QVariantMap &data)
+void TracingLevel1Dataset::gatherData(const QString &urlEnpoint, const QVariantMap &data)
 {
 
     QByteArray byte;
     QJsonObject jsonObject;
-    QUrl urlPost(url);
+    // QUrl urlPost(url);
+
+    QUrl url(urlEnpoint);
+    if (!url.isValid()) {
+        emit requestError("Invalid URL format: " +urlEnpoint);
+        return;
+    }
 
     // Validate The data Packests
     if(data.isEmpty()){
         // emit  validation Error
     }else{
-        QNetworkRequest request(urlPost);
+        QNetworkRequest request(url);
 
         //Set Headers
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

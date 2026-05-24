@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <QNetworkRequest>
 #include <QJsonObject>
-#include "../General/postactivity.h"
+#include "../General/postact.h"
 #include "../General/abstracterrorprocessing.h"
 
 
@@ -33,13 +33,14 @@ public:
 
 signals:
 
-    void postRequest(QByteArray &, QNetworkRequest &);
+    void postRequest(const QByteArray &, const QNetworkRequest &);
+    void requestError(const QString &);
 
 private:
 
     QByteArray postData;
 
-    PostActivity *postActivity;
+    PostAct *postActivity;
 
 
     // QString m_sessionId;

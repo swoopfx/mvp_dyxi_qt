@@ -1,13 +1,13 @@
-#include "postactivity.h"
+#include "postact.h"
 
-PostActivity::PostActivity(QObject *parent)
+PostAct::PostAct(QObject *parent)
     : QObject{parent}
 {
     manager = new QNetworkAccessManager(this);
-    connect(manager, &QNetworkAccessManager::finished, this, &PostActivity::onReplyFinished);
+    connect(manager, &QNetworkAccessManager::finished, this, &PostAct::onReplyFinished);
 }
 
-void PostActivity::handlePostReqest(QByteArray &data, QNetworkRequest &request)
+void PostAct::handlePostReqest(const QByteArray &data, const QNetworkRequest &request)
 {
     if(!data.isEmpty()){
         QNetworkReply *reply = manager->post(request, data);
@@ -18,10 +18,9 @@ void PostActivity::handlePostReqest(QByteArray &data, QNetworkRequest &request)
     }else{
 
     }
-
 }
 
-void PostActivity::onReplyFinished(QNetworkReply *reply)
+void PostAct::onReplyFinished(QNetworkReply *reply)
 {
     reply->deleteLater(); // Ensure cleanup to avoid memory leaks
 
@@ -57,7 +56,7 @@ void PostActivity::onReplyFinished(QNetworkReply *reply)
     emit dataPostedSuccessfully(jsonDoc.object());
 }
 
-void PostActivity::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
+void PostAct::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
 {
     QString errorList;
     for (const QSslError &error : errors) {
@@ -66,8 +65,3 @@ void PostActivity::onSslErrors(QNetworkReply *reply, const QList<QSslError> &err
     emit requestError("SSL Error(s): " + errorList.trimmed());
     reply->deleteLater();
 }
-
-// void PostActivity::handlePostReqest(QByteArray data, QNetworkRequest request)
-// {
-
-// }
