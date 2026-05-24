@@ -93,6 +93,8 @@ void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
                         UserSession::instance()->setUserId(dataMap.value("id").toString());
                         UserSession::instance()->setUserFullName(dataMap.value("studentName").toString());
                         UserSession::instance()->setUserAge(dataMap.value("age").toString());
+                        UserSession::instance()->setageBracket(dataMap.value("studentAge").toString());
+
                         // Get Student Age
 
                         // qDebug() << dataMap.value("studentName");

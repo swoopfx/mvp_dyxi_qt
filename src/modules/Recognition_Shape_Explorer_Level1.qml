@@ -4,9 +4,20 @@ import QtQuick.Layouts
 import QtMultimedia 6.4
 import "ShapeExplorer"
 import "ShapeExplorer/Telemetry.js" as Telemetry
+import Dataset
+import General
 
 Page{
  id: shape_level1
+
+ property int typeId: 0
+
+  RecognitionShapeExplorerDataset{
+      id: recogDataset
+  }
+  CoreSettings {
+      id: coreSettings
+  }
 
 
  Rectangle {
@@ -97,18 +108,26 @@ Page{
     property var lastPressPos: Qt.point(0,0)
 
     MouseArea {
+        // id:
         anchors.fill: parent
         propagateComposedEvents: true
-        onPressed: {
+         preventStealing: true
+        onPressed: (mouse) => {
+            // id: mouse
             lastPressTime = Date.now()
             lastPressPos = Qt.point(mouse.x, mouse.y)
-            mouse.accepted = false
+            mouse.accepted = false // change to true in other to trigger onRelease
+
+
         }
-        onReleased: {
+        onReleased: (mouse)=>{
             var duration = Date.now() - lastPressTime
             var dx = mouse.x - lastPressPos.x
             var dy = mouse.y - lastPressPos.y
             var direction = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up")
+            // console.log("start realease")
+            // console.log(duration)
+            // console.log(dx)
 
             var rabbitVisDur = rabbit.visible ? (Date.now() - rabbit.visibilityStartTime) : 0
             Telemetry.recordInput(lastPressTime, duration, direction, rabbit.visible, rabbitVisDur)
@@ -122,6 +141,24 @@ Page{
         anchors.margins: 20
         onClicked: {
             var result = Telemetry.getFinalJson()
+            // recogDataset.totalGameTime = Telemetry.gameData.total_game_time
+            // recogDataset.startTime = Telemetry.gameData.start_time
+            // recogDataset.totalCorrect = Telemetry.gameData.total_correct
+            // recogDataset.totalFailed = Telemetry.gameData.total_failed
+            // recogDataset.totalTries = Telemetry.gameData.total_tries
+            // recogDataset.creativeIndex = Telemetry.gameData.creative_index
+            // recogDataset.problemSolvingIndex = Telemetry.gameData.problem_solving_index
+            // console.log(UserSession.userId);
+
+            // Set Custom Data Here, like userId , Programe uuid or Id, Type, Category
+            recogDataset.userId = UserSession.userId
+            recogDataset.gameType = shape_level1.typeId
+            recogDataset.userAge = UserSession.userAge
+
+
+            console.log(UserSession.userId)
+
+            recogDataset.gatherData("http:", result);
             console.log("GAME_METRICS_START")
             console.log(result)
             console.log("GAME_METRICS_END")

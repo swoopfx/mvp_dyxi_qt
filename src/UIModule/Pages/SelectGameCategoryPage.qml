@@ -95,7 +95,8 @@ Page {
                                               "url": "https://mvp.dyxi.site/api/game-types" + "?type="+selectGamePage.gameTypeId[3].id,
                                               "pageTitle": selectGamePage.gameTypeId[3].type,
                                               "avatar": "qrc:/ui/images/recognition.png",
-                                              "resoucesUrl": selectGamePage.gameTypeId[3].type
+                                              "resoucesUrl": selectGamePage.gameTypeId[3].type,
+                                              "typeId": selectGamePage.gameTypeId[3].id
                                           })
             }
 

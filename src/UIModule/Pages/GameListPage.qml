@@ -10,6 +10,7 @@ Page {
     property string avatar: ""
     property string  resoucesUrl: ""
     property string moduleName: ""
+    property int typeId: ""
 
     Image {
         id: bg_image
@@ -48,7 +49,10 @@ Page {
                     onClicked: {
                         console.log("Main delegate clicked for item: " + String(modelData.gameName))
                         // You can add your main delegate click action here
-                        stackView.push("qrc:/"+gameListPage.resoucesUrl+"/"+gameListPage.moduleName+"/"+modelData.games.gamePage+".qml")
+                        stackView.push("qrc:/"+gameListPage.resoucesUrl+"/"+gameListPage.moduleName+"/"+modelData.games.gamePage+".qml", {
+                                           "id":modelData.games.id,
+                                           "typeId":gameListPage.typeId
+                                       })
                     }
                 }
 

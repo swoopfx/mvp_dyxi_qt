@@ -3,7 +3,47 @@
 RecognitionShapeExplorerDataset::RecognitionShapeExplorerDataset(AbstractErrorProcessing *parent)
     : AbstractErrorProcessing{parent}
 {
+    qInfo()<< "recog Instantuiated";
     postActivity = new PostAct(this);
+    connect(this, &RecognitionShapeExplorerDataset::postRequest, postActivity, &PostAct::handlePostReqest);
+}
+
+void RecognitionShapeExplorerDataset::gatherData(const QString &urlEnpoint, const QVariantMap &data)
+{
+    QByteArray byte;
+    QJsonObject jsonObject;
+    // QUrl urlPost(url);
+
+    QUrl url(urlEnpoint);
+    if (!url.isValid()) {
+        emit requestError("Invalid URL format: " +urlEnpoint);
+        return;
+    }
+
+    // Validate The data Packests
+    if(data.isEmpty()){
+        // emit  validation Error
+    }else{
+        QNetworkRequest request(url);
+
+        //Set Headers
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        // request.setRawHeader("Authorization", "Bearer AccessToken");
+
+        // Set and convert Data
+        jsonObject["session_id"] = data.value("sessionid").toString();
+        jsonObject["userid"] = data.value("userid").toString();
+        // jsonObject["dataPacket"] = data.value()
+        QJsonDocument doc(jsonObject);
+        byte = doc.toJson();
+        // The rest does to
+        //Trigger the Post
+        emit postRequest(byte, request);
+    }
+    // Serach For empty Data
+    //
+
+
 }
 
 QString RecognitionShapeExplorerDataset::pageName() const
@@ -45,12 +85,12 @@ void RecognitionShapeExplorerDataset::setGameId(const QString &newGameId)
     emit gameIdChanged();
 }
 
-QString RecognitionShapeExplorerDataset::gameType() const
+int RecognitionShapeExplorerDataset::gameType() const
 {
     return m_gameType;
 }
 
-void RecognitionShapeExplorerDataset::setGameType(const QString &newGameType)
+void RecognitionShapeExplorerDataset::setGameType(const int &newGameType)
 {
     if (m_gameType == newGameType)
         return;
@@ -97,12 +137,12 @@ void RecognitionShapeExplorerDataset::setuserId(const QString &newUserId)
     emit userIdChanged();
 }
 
-float RecognitionShapeExplorerDataset::problemSolvingIndex() const
+double RecognitionShapeExplorerDataset::problemSolvingIndex() const
 {
     return m_problemSolvingIndex;
 }
 
-void RecognitionShapeExplorerDataset::setProblemSolvingIndex(float newProblemSolvingIndex)
+void RecognitionShapeExplorerDataset::setProblemSolvingIndex(double newProblemSolvingIndex)
 {
     if (qFuzzyCompare(m_problemSolvingIndex, newProblemSolvingIndex))
         return;
@@ -110,12 +150,12 @@ void RecognitionShapeExplorerDataset::setProblemSolvingIndex(float newProblemSol
     emit problemSolvingIndexChanged();
 }
 
-float RecognitionShapeExplorerDataset::creativeIndex() const
+double RecognitionShapeExplorerDataset::creativeIndex() const
 {
     return m_creativeIndex;
 }
 
-void RecognitionShapeExplorerDataset::setCreativeIndex(float newCreativeIndex)
+void RecognitionShapeExplorerDataset::setCreativeIndex(double newCreativeIndex)
 {
     if (qFuzzyCompare(m_creativeIndex, newCreativeIndex))
         return;
@@ -123,12 +163,12 @@ void RecognitionShapeExplorerDataset::setCreativeIndex(float newCreativeIndex)
     emit creativeIndexChanged();
 }
 
-float RecognitionShapeExplorerDataset::averageTimeCorrect() const
+double RecognitionShapeExplorerDataset::averageTimeCorrect() const
 {
     return m_averageTimeCorrect;
 }
 
-void RecognitionShapeExplorerDataset::setAverageTimeCorrect(float newAverageTimeCorrect)
+void RecognitionShapeExplorerDataset::setAverageTimeCorrect(double newAverageTimeCorrect)
 {
     if (qFuzzyCompare(m_averageTimeCorrect, newAverageTimeCorrect))
         return;
@@ -136,12 +176,12 @@ void RecognitionShapeExplorerDataset::setAverageTimeCorrect(float newAverageTime
     emit averageTimeCorrectChanged();
 }
 
-float RecognitionShapeExplorerDataset::averageTimeFailed() const
+double RecognitionShapeExplorerDataset::averageTimeFailed() const
 {
     return m_averageTimeFailed;
 }
 
-void RecognitionShapeExplorerDataset::setAverageTimeFailed(float newAverageTimeFailed)
+void RecognitionShapeExplorerDataset::setAverageTimeFailed(double newAverageTimeFailed)
 {
     if (qFuzzyCompare(m_averageTimeFailed, newAverageTimeFailed))
         return;
@@ -168,4 +208,82 @@ void RecognitionShapeExplorerDataset::setUserId(const QString &newUserId)
         return;
     m_userId = newUserId;
     emit userIdChanged();
+}
+
+double RecognitionShapeExplorerDataset::totalGameTime() const
+{
+    return m_totalGameTime;
+}
+
+void RecognitionShapeExplorerDataset::setTotalGameTime(double newTotalGameTime)
+{
+    if (qFuzzyCompare(m_totalGameTime, newTotalGameTime))
+        return;
+    m_totalGameTime = newTotalGameTime;
+    emit totalGameTimeChanged();
+}
+
+double RecognitionShapeExplorerDataset::startTime() const
+{
+    return m_startTime;
+}
+
+void RecognitionShapeExplorerDataset::setStartTime(double newStartTime)
+{
+    if (qFuzzyCompare(m_startTime, newStartTime))
+        return;
+    m_startTime = newStartTime;
+    emit startTimeChanged();
+}
+
+int RecognitionShapeExplorerDataset::totalCorrect() const
+{
+    return m_totCorrect;
+}
+
+void RecognitionShapeExplorerDataset::setTotalCorrect(int newTotCorrect)
+{
+    if (m_totCorrect == newTotCorrect)
+        return;
+    m_totCorrect = newTotCorrect;
+    emit totalCorrectChanged();
+}
+
+int RecognitionShapeExplorerDataset::totalFailed() const
+{
+    return m_totalFailed;
+}
+
+void RecognitionShapeExplorerDataset::setTotalFailed(int newTotalFailed)
+{
+    if (m_totalFailed == newTotalFailed)
+        return;
+    m_totalFailed = newTotalFailed;
+    emit totalFailedChanged();
+}
+
+int RecognitionShapeExplorerDataset::totalTries() const
+{
+    return m_totalTries;
+}
+
+void RecognitionShapeExplorerDataset::setTotalTries(int newTotalTries)
+{
+    if (m_totalTries == newTotalTries)
+        return;
+    m_totalTries = newTotalTries;
+    emit totalTriesChanged();
+}
+
+QString RecognitionShapeExplorerDataset::userAge() const
+{
+    return m_userAge;
+}
+
+void RecognitionShapeExplorerDataset::setuserAge(const QString &newUserAge)
+{
+    if (m_userAge == newUserAge)
+        return;
+    m_userId = newUserAge;
+    emit userAgeChanged();
 }

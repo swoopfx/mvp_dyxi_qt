@@ -33,6 +33,7 @@ Item {
         onPressed: {
             root.startPos = Qt.point(root.x, root.y)
             root.dragStarted()
+             mouse.accepted = true
         }
         
         onReleased: {

@@ -13,6 +13,7 @@ Page {
  required property string pageTitle
  required property string avatar
  required property string resoucesUrl
+ property int typeId: ""
  // initiaize user session
 
 
@@ -50,7 +51,8 @@ Page {
                                   "avatar": pageLoader.avatar,
                                   "pageTitle": pageLoader.pageTitle,
                                   "resoucesUrl":"modules",
-                                  "moduleName":"modules"
+                                  "moduleName":"modules",
+                                  "typId":pageLoader.typeId
                             })
       }
 
