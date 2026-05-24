@@ -158,7 +158,7 @@ Page{
 
             console.log(UserSession.userId)
 
-            recogDataset.gatherData("http:", result);
+            // recogDataset.gatherData(coreSettings.dyxiRecognitionPostShapeExplorer, result);
             console.log("GAME_METRICS_START")
             console.log(result)
             console.log("GAME_METRICS_END")

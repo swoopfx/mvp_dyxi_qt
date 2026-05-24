@@ -14,7 +14,7 @@ class RecognitionShapeExplorerDataset : public AbstractErrorProcessing
     Q_PROPERTY(QString pageName READ pageName WRITE setPageName NOTIFY pageNameChanged FINAL)
     Q_PROPERTY(QString studentId READ studentId WRITE setStudentId NOTIFY studentIdChanged FINAL)
     Q_PROPERTY(QString userId READ userId WRITE setUserId NOTIFY userIdChanged FINAL)
-    Q_PROPERTY(QString userAge READ userAge WRITE setUserAge NOTIFY userAgeChanged FINAL)
+    Q_PROPERTY(QString userAge READ userAge WRITE setuserAge NOTIFY userAgeChanged FINAL)
     Q_PROPERTY(QString gameId READ gameId WRITE setGameId NOTIFY gameIdChanged FINAL)
     Q_PROPERTY(QString gameLevel READ gameLevel WRITE setgameLevel NOTIFY gameLevelChanged FINAL)
     Q_PROPERTY(int gameType READ gameType WRITE setGameType NOTIFY gameTypeChanged FINAL) // defaults to tracing

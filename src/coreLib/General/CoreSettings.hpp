@@ -8,9 +8,10 @@ class CoreSettings : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
-    Q_PROPERTY(QString myText READ myText WRITE setMyText NOTIFY myTextChanged)
+
     Q_PROPERTY(QString dyxiGameTypeIds READ dyxiGameTypeIds FINAL)
     Q_PROPERTY(QString dyxiGameByParam READ dyxiGameByParam FINAL)
+    Q_PROPERTY(QString dyxiRecognitionPostShapeExplorer READ dyxiRecognitionPostShapeExplorer FINAL)
 
 public:
     // explicit MyObject(QObject *parent = nullptr) : QObject(parent)/*, m_myText("Initial Value") {}*/
@@ -25,22 +26,13 @@ public:
         return m_dyxiGameByParam;
     }
 
+    QString dyxiRecognitionPostShapeExplorer(){
+        return m_dyxiRecognitionPostShapeExplorer;
 
-    // Setter
-    void setMyText(const QString &text) {
-        if (m_myText != text) {
-            m_myText = text;
-            emit myTextChanged(); // Notify QML of the change
-        }
     }
 
 signals:
     void myTextChanged();
-
-
-
-private:
-    QString m_myText;
 
 
 
@@ -77,9 +69,19 @@ public:
     static inline const QString activeUserUuid = QStringLiteral("active_user_uuid");
     static inline const QString activeUserLanguage = QStringLiteral("active_user_language");
 
-    // void setdyxiGameTypeIds(const QString &newDyxiGameTypeIds);
+    // Post Endpoint
+
+
+private:
+    QString m_myText;
+
+
+
+
+    QString m_dyxiRecognitionPostShapeExplorer = baseUrl+QStringLiteral("/api-post/");
 
 };
+
 
 
 

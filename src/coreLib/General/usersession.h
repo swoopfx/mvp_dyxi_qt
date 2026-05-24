@@ -16,7 +16,7 @@ class UserSession : public QObject
     Q_PROPERTY(QString userId READ userId WRITE setUserId NOTIFY userIdChanged)
     Q_PROPERTY(QString userFullName READ userFullName WRITE setUserFullName NOTIFY userFullNameChanged FINAL)
     Q_PROPERTY(QString userAge READ userAge WRITE setUserAge NOTIFY userAgeChanged FINAL)
-    Q_PROPERTY(QString ageBracket READ ageBracket WRITE setAgeBracket NOTIFY ageBracketChanged FINAL)
+    Q_PROPERTY(QString ageBracket READ ageBracket WRITE setageBracket NOTIFY ageBracketChanged FINAL)
 
     // Game Data
     Q_PROPERTY(int gameId READ gameId WRITE setGameId NOTIFY gameIdChanged FINAL)

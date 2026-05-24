@@ -3,7 +3,7 @@
 RecognitionShapeExplorerDataset::RecognitionShapeExplorerDataset(AbstractErrorProcessing *parent)
     : AbstractErrorProcessing{parent}
 {
-    qInfo()<< "recog Instantuiated";
+
     postActivity = new PostAct(this);
     connect(this, &RecognitionShapeExplorerDataset::postRequest, postActivity, &PostAct::handlePostReqest);
 }
