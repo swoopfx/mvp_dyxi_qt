@@ -30,13 +30,13 @@ Item {
         anchors.fill: parent
         drag.target: root
         
-        onPressed: {
+        onPressed:(mouse)=> {
             root.startPos = Qt.point(root.x, root.y)
             root.dragStarted()
              mouse.accepted = true
         }
         
-        onReleased: {
+        onReleased:(mouse)=> {
             root.dragEnded(root.x + root.width/2, root.y + root.height/2)
         }
         

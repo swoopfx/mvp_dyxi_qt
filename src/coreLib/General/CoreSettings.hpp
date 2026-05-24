@@ -78,7 +78,7 @@ private:
 
 
 
-    QString m_dyxiRecognitionPostShapeExplorer = baseUrl+QStringLiteral("/api-post/");
+    QString m_dyxiRecognitionPostShapeExplorer = baseUrl + QStringLiteral("/api-post/recognition-shared-explorer");
 
 };
 

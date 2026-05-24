@@ -7,7 +7,7 @@ import "ShapeExplorer"
 Page{
  id: shape_level1
 
-
+ property int id: 0
  Rectangle {
         anchors.fill: parent
         Image {
@@ -19,8 +19,8 @@ Page{
 
     // Audio
     SoundEffect { id: soundSuccess; source: "qrc:/recognition/ShapeExplorer/assets/success.wav" }
-    SoundEffect { id: soundFailure; source: "qrc:/recognition/ShapeExplorer/assets/failure.wav" }
-    SoundEffect { id: soundRabbit; source: "qrc:/recognition/ShapeExplorer/assets/rabbit_appear.wav" }
+    // SoundEffect { id: soundFailure; source: "qrc:/recognition/ShapeExplorer/assets/failure.wav" }
+    // SoundEffect { id: soundRabbit; source: "qrc:/recognition/ShapeExplorer/assets/rabbit_appear.wav" }
 
     Rabbit {
         id: rabbit

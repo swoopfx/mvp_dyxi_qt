@@ -11,6 +11,7 @@ Page{
  id: shape_level1
 
  property int typeId: 0
+ property int id: 0
 
   RecognitionShapeExplorerDataset{
       id: recogDataset
@@ -32,7 +33,7 @@ Page{
     // Audio
     SoundEffect { id: soundSuccess; source: "qrc:/Recognition/ShapeExplorer/assets/success.wav" }
     SoundEffect { id: soundFailure; source: "qrc:/Recognition/ShapeExplorer/assets/failure.wav" }
-    SoundEffect { id: soundRabbit; source: "qrc:/Recognition/ShapeExplorer/assets/rabbit_appear.wav" }
+    SoundEffect { id: soundRabbit; source: "qrc:/Recognition/ShapeExplorer/assets/rabbit_appear.wav"; volume: 0.15 }
 
     Rabbit {
         id: rabbit
@@ -158,7 +159,7 @@ Page{
 
             console.log(UserSession.userId)
 
-            // recogDataset.gatherData(coreSettings.dyxiRecognitionPostShapeExplorer, result);
+            recogDataset.gatherData(coreSettings.dyxiRecognitionPostShapeExplorer, result);
             console.log("GAME_METRICS_START")
             console.log(result)
             console.log("GAME_METRICS_END")

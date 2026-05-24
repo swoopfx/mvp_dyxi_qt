@@ -14,7 +14,7 @@ void RecognitionShapeExplorerDataset::gatherData(const QString &urlEnpoint, cons
     QJsonObject jsonObject;
     // QUrl urlPost(url);
 
-    QUrl url(urlEnpoint);
+    QUrl url(urlEnpoint.trimmed());
     if (!url.isValid()) {
         emit requestError("Invalid URL format: " +urlEnpoint);
         return;
@@ -24,6 +24,8 @@ void RecognitionShapeExplorerDataset::gatherData(const QString &urlEnpoint, cons
     if(data.isEmpty()){
         // emit  validation Error
     }else{
+
+        qInfo() << "Ready to send" << urlEnpoint ;
         QNetworkRequest request(url);
 
         //Set Headers

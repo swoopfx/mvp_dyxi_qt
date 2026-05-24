@@ -75,5 +75,6 @@ function calculateIndices() {
 function getFinalJson() {
     gameData.total_game_time = Date.now() - gameData.start_time;
     calculateIndices();
-    return JSON.stringify(gameData, null, 4);
+    // return JSON.stringify(gameData, null, 4);
+    return gameData;
 }

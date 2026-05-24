@@ -10,7 +10,8 @@ Page {
     property string avatar: ""
     property string  resoucesUrl: ""
     property string moduleName: ""
-    property int typeId: ""
+    property int typeId: 0
+    property int id: 0
 
     Image {
         id: bg_image
