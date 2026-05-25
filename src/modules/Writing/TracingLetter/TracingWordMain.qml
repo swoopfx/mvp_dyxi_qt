@@ -143,27 +143,7 @@ Item {
 
 
 
-                    // Text {
-                    //     id: actualLetter
-                    //     anchors.centerIn: parent
-                    //     // text: gameEngine.currentWord
-                    //     text: "A"
-                    //     font.pixelSize: leftRectangle.height - 20
-                    //     font.bold: true
-                    //     color: "#ff5722"
-                    //     style: Text.Raised
-                    //     styleColor: "#bf360c"
-
-                    //     // Behavior on text {
-                    //     //     SequentialAnimation {
-                    //     //         NumberAnimation { target: wordText; property: "scale"; from: 1.0; to: 1.2; duration: 200 }
-                    //     //         NumberAnimation { target: wordText; property: "scale"; from: 1.2; to: 1.0; duration: 200 }
-                    //     //     }
-                    //     // }
-
-
-
-                    // }
+ 
 
                     Image {
                         id: wordImage
