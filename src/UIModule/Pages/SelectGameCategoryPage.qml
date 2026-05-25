@@ -111,7 +111,35 @@ Page {
                 labelText: "Writing Practice"
                 imageSource: "qrc:/ui/images/writing.png"
                 accentColor: "#FFD54F"
-                onClicked: stackView.push("MainPlaygroundPage.qml")
+                onClicked: stackView.push("qrc:/modules/dyscalculia/mathdice/Dyscalculia/MathDice/MathDiceMain.qml")
+            }
+
+            GameItem {
+                labelText: "Writing Practice"
+                imageSource: "qrc:/ui/images/writing.png"
+                accentColor: "#FFD54F"
+                onClicked: stackView.push("qrc:/modules/dyscalculia/clumsythief/Dyscalculia/ClumsyThief/ClumsyMain.qml")
+            }
+
+            GameItem {
+                labelText: "Writing Practice"
+                imageSource: "qrc:/ui/images/writing.png"
+                accentColor: "#FFD54F"
+                onClicked: stackView.push("qrc:/modules/dyscalculia/tenframegame/Dyscalculia/TenFrames/TenFramesMain.qml")
+            }
+
+            GameItem {
+                labelText: "Writing Practice"
+                imageSource: "qrc:/ui/images/writing.png"
+                accentColor: "#FFD54F"
+                onClicked: stackView.push("qrc:/modules/dyscalculia/numicon1/Dyscalculia/Numicon1/NumiconMain.qml")
+            }
+
+            GameItem {
+                labelText: "Writing Practice"
+                imageSource: "qrc:/ui/images/reading.png"
+                accentColor: "#FFD54F"
+                onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
             }
         }
         Component.onCompleted: {

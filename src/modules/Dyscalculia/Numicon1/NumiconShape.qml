@@ -12,7 +12,7 @@ Item {
     Image {
         id: shapeImage
         anchors.fill: parent
-        source: "assets/images/numicon_" + value + ".png"
+        source: "qrc:/numicon1/assets/images/numicon_" + value + ".png"
         fillMode: Image.PreserveAspectFit
         
         Behavior on scale { NumberAnimation { duration: 200 } }

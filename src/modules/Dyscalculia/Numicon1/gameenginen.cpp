@@ -1,9 +1,9 @@
-#include "gameengine.h"
+#include "gameenginen.h"
 #include <QRandomGenerator>
 
-GameEngine::GameEngine(QObject *parent) : QObject(parent) {}
+GameEnginen::GameEnginen(QObject *parent) : QObject(parent) {}
 
-QVariantMap GameEngine::generateTask(int difficulty) {
+QVariantMap GameEnginen::generateTask(int difficulty) {
     QVariantMap task;
     int target, val1, val2;
 
@@ -30,6 +30,6 @@ QVariantMap GameEngine::generateTask(int difficulty) {
     return task;
 }
 
-bool GameEngine::checkAnswer(int target, int input) {
+bool GameEnginen::checkAnswer(int target, int input) {
     return target == input;
 }

@@ -1,14 +1,16 @@
-#ifndef GAMEENGINE_H
-#define GAMEENGINE_H
+#ifndef GAMEENGINEN_H
+#define GAMEENGINEN_H
 
 #include <QObject>
 #include <QVariantMap>
+#include <QQmlEngine>
 
-class GameEngine : public QObject
+class GameEnginen : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
-    explicit GameEngine(QObject *parent = nullptr);
+    explicit GameEnginen(QObject *parent = nullptr);
 
     Q_INVOKABLE QVariantMap generateTask(int difficulty);
     Q_INVOKABLE bool checkAnswer(int target, int input);
@@ -17,4 +19,4 @@ private:
     int m_difficulty = 1;
 };
 
-#endif // GAMEENGINE_H
+#endif // GAMEENGINEN_H

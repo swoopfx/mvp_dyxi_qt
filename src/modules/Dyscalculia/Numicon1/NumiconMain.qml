@@ -1,17 +1,27 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import  Dyscalculia.Numicon1
 
-ApplicationWindow {
+Page {
     id: window
     visible: true
     width: 800
     height: 600
     title: "Numicon Adventure"
-    color: "#f0f8ff"
+    // color: "#f0f8ff"
 
     property int difficulty: 1
     property var currentTask: null
+
+    GameEnginen{
+        id:gameEngine
+    }
+
+    MetricTracker{
+
+        id:metricTracker
+    }
 
     ColumnLayout {
         anchors.centerIn: parent

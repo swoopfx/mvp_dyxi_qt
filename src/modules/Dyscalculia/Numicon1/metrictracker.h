@@ -7,10 +7,12 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
+#include <QQmlEngine>
 
 class MetricTracker : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(int correctCount READ correctCount NOTIFY metricsChanged)
     Q_PROPERTY(int failedCount READ failedCount NOTIFY metricsChanged)
     Q_PROPERTY(double numberSenseIndex READ numberSenseIndex NOTIFY metricsChanged)

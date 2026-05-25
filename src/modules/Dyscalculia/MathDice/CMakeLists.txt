@@ -1,31 +1,22 @@
-cmake_minimum_required(VERSION 3.16)
-
-project(MathDice VERSION 0.1 LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(Qt6 REQUIRED COMPONENTS Quick Gui Core)
-
-qt_add_executable(MathDice
-    src/cpp/main.cpp
-    src/cpp/gameengine.h
-    src/cpp/gameengine.cpp
-)
-
+ 
 qt_add_qml_module(MathDice
-    URI MathDice
-    VERSION 1.0
-    QML_FILES 
-        src/qml/Main.qml
-        src/qml/AnimatedDice.qml
-        src/qml/MetricsDashboard.qml
-        src/qml/MetricRow.qml
+    STATIC
+    URI Dyscalculia.MathDice
+    RESOURCE_PREFIX "/modules/dyscalculia/mathdice"
+    QML_FILES  MathDiceMain.qml
+    QML_FILES MetricRow.qml
+    QML_FILES MetricsDashboard.qml
+    QML_FILES AnimatedDice.qml
+
+    SOURCES gameengine.cpp gameengine.h
 )
 
-target_link_libraries(MathDice PRIVATE Qt6::Quick Qt6::Gui Qt6::Core)
+qt_add_resources(MathDice
+    "mathdice_assets"
+     PREFIX "/mathdice"
+     FILES assets/images/background_main.png
+     FILES assets/images/dice_base.png
+     FILES assets/images/ui_button_base.png
 
-install(TARGETS MathDice
-    BUNDLE DESTINATION .
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     FILES assets/audio/game_soundtrack.mp3
 )

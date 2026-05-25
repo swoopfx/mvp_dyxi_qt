@@ -27,7 +27,13 @@ target_link_libraries(AppController
     Recognitionplugin
     Writingplugin
     modulesplugin
+    MathDiceplugin
+    ClumsyThiefplugin
+    Numicon1plugin
+    # TenFrameGameplugin
+    TenFramesplugin
     # ShapeExplorerplugin
+    WordRecognitionGameplugin
 
 
 )
@@ -37,6 +43,11 @@ target_link_libraries(AppController PRIVATE Datasetplugin)
 target_link_libraries(AppController PRIVATE Recognitionplugin)
 target_link_libraries(AppController PRIVATE Writingplugin)
 target_link_libraries(AppController PRIVATE modulesplugin)
-# target_link_libraries(AppController PRIVATE ShapeExplorerplugin)
+target_link_libraries(AppController PRIVATE MathDiceplugin)
+target_link_libraries(AppController PRIVATE ClumsyThiefplugin)
+target_link_libraries(AppController PRIVATE TenFramesplugin)
+target_link_libraries(AppController PRIVATE Numicon1plugin)
+target_link_libraries(AppController PRIVATE WordRecognitionGameplugin)
+
 
 

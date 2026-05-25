@@ -8,10 +8,12 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QFile>
+#include <QQmlEngine>
 #include <QDebug>
 
 class GameEngine : public QObject {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(int targetSum READ targetSum WRITE setTargetSum NOTIFY targetSumChanged)
     Q_PROPERTY(QVariantList metrics READ metrics NOTIFY metricsChanged)
 

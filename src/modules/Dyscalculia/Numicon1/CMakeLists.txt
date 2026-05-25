@@ -1,25 +1,24 @@
 
-qt_add_qml_module(Numicon
+qt_add_qml_module(Numicon1
     STATIC
-    URI Dyscalculia.Numicon
-    RESOURCE_PREFIX "/modules/dyscalculia/numicon"
+    URI Dyscalculia.Numicon1
+    RESOURCE_PREFIX "/modules/dyscalculia/numicon1"
     QML_FILES NumiconMain.qml
-    QML_FILES NumiconTile.qml
-    QML_FILES MetricItem.qml
-    QML_FILES LogViewer.qml
+    QML_FILES NumiconShape.qml
 
-    SOURCES gameengine.h
-    SOURCES ActivityLogger.h MetricsTracker.h
+    SOURCES metrictracker.cpp metrictracker.h
+    SOURCES gameenginen.cpp gameenginen.h
+
 )
 
-qt_add_resources(Numicon
-    "numicon_assets"
-     PREFIX "/numicon"
+qt_add_resources(Numicon1
+    "numicon1_assets"
+     PREFIX "/numicon1"
      FILES assets/audio/background_music.mp3
-     FILES assets/audio/correct.wav
-     FILES assets/audio/error.wav
+     FILES assets/audio/success.wav
+     FILES assets/audio/try_again.wav
 
-     FILES assets/images/game_background.jpg
+     # FILES assets/images/game_background.jpg
       FILES assets/images/numicon_1.png
        FILES assets/images/numicon_10.png
         FILES assets/images/numicon_10_original.png
@@ -41,3 +40,4 @@ qt_add_resources(Numicon
                         FILES assets/images/numicon_9.png
                          FILES assets/images/numicon_9_original.png
 )
+
