@@ -6,4 +6,8 @@ qt_add_qml_module(
     QML_FILES
       WritingMainPlayGround.qml
 
+
 )
+
+
+add_subdirectory(TracingLetter)

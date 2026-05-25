@@ -141,6 +141,13 @@ Page {
                 accentColor: "#FFD54F"
                 onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
             }
+
+            GameItem {
+                labelText: "Writing Practice"
+                imageSource: "qrc:/ui/images/reading.png"
+                accentColor: "#FFD54F"
+                onClicked: stackView.push("qrc:/modules/writing/tracingletter/Writing/TracingLetter/TracingLetterMain.qml")
+            }
         }
         Component.onCompleted: {
             console.log(coreSettings.dyxiGameTypeIds);

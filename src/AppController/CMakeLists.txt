@@ -34,6 +34,7 @@ target_link_libraries(AppController
     TenFramesplugin
     # ShapeExplorerplugin
     WordRecognitionGameplugin
+    TracingLetterplugin
 
 
 )
@@ -48,6 +49,8 @@ target_link_libraries(AppController PRIVATE ClumsyThiefplugin)
 target_link_libraries(AppController PRIVATE TenFramesplugin)
 target_link_libraries(AppController PRIVATE Numicon1plugin)
 target_link_libraries(AppController PRIVATE WordRecognitionGameplugin)
+target_link_libraries(AppController PRIVATE TracingLetterplugin)
+
 
 
 
