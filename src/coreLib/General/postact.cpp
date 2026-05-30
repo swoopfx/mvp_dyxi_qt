@@ -65,3 +65,9 @@ void PostAct::onSslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
     emit requestError("SSL Error(s): " + errorList.trimmed());
     reply->deleteLater();
 }
+
+void PostAct::onLogErrors(const QString &)
+{
+    // call all network functionality
+    // and log error
+}
