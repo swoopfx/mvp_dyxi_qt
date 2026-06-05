@@ -37,6 +37,42 @@ Page {
     //     color: gameListPage.colorBg
     // }
 
+    ColumnLayout {
+        anchors.fill: parent
+        anchors.margins: 20
+        spacing: 15
+
+    // Header Section
+    ColumnLayout {
+        Layout.fillWidth: true
+        spacing: 4
+
+        Text {
+            text: "Nexus Game Library"
+            font.pixelSize: 26
+            font.bold: true
+            color: gameListPage.colorText
+        }
+
+        Text {
+            text: "Archive of high-fidelity interactive experiences and technical benchmarks."
+            font.pixelSize: 14
+            color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, window.colorText.b, 0.6)
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+        }
+
+        // Separation line
+        Rectangle {
+            Layout.fillWidth: true
+            height: 2
+            color: gameListPagecolorAccent
+            opacity: 0.4
+            Layout.topMargin: 8
+            Layout.bottomMargin: 8
+        }
+    }
+
     ScrollView {
         Layout.fillWidth: true
         Layout.fillHeight: true
@@ -60,6 +96,7 @@ Page {
         // }
     }
     }
+}
 
     Component.onCompleted: {
         // console.log(gameItemListPage.model[0].gameName)
@@ -73,7 +110,7 @@ Page {
 
         Item {
             width: parent.width / 3
-            height: 200
+            height: 320
 
             // Main card container with padding around to create spacing between elements
             Rectangle {

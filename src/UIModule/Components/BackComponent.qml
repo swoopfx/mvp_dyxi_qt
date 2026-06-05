@@ -3,6 +3,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {
+ id : window
+    readonly property color colorBg: "#020617"
+    readonly property color colorCard: "#0f172a"
+    readonly property color colorAccent: "#38bdf8"
+    readonly property color colorText: "#f8fafc"
+    readonly property int gridSpacing: 24
+    readonly property int cardRadius: 16
 
     // Go Back Nav Button in detail page top left
     Rectangle {
