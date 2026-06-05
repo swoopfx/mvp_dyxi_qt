@@ -15,11 +15,6 @@ add_subdirectory(src)
 
 
 
-# qt_add_qml_module(mvpDyxiV1
-#     URI mvpDyxiV1
-#     # QML_FILES
-#     #     Main.qml
-# )
 
 
 
@@ -34,10 +29,6 @@ add_subdirectory(src)
 #     WIN32_EXECUTABLE TRUE
 # )
 
-# target_link_libraries(mvpDyxiV1
-#     PRIVATE Qt6::Quick
-#     # coreLib
-# )
 
 # install(TARGETS appmvpDyxiV1
 #     BUNDLE DESTINATION .

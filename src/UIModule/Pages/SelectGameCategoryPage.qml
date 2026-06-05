@@ -159,7 +159,7 @@ Page {
                         labelText: "Writing Practice"
                         imageSource: "qrc:/ui/images/reading.png"
                         accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/writing/tracingletter/Writing/TracingLetter/TracingLetterMain.qml")
+                        onClicked: stackView.push("qrc:/ui/UIModule/Pages/NewGamepPage.qml")
                     }
                 }
 

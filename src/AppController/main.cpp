@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 // #include "CoreSettings.hpp"
 #include <QIcon>
+#include <QSslSocket>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,10 @@ int main(int argc, char *argv[])
 
     // Set the application-wide icon (Used for main window and taskbar)
     app.setWindowIcon(QIcon("qrc:/ui/UIModule/images/logo.png"));
+
+    qDebug() << "Supports SSL: " << QSslSocket::supportsSsl();
+    qDebug() << "SSL Library Build Version: " << QSslSocket::sslLibraryBuildVersionString();
+    qDebug() << "SSL Library Runtime Version: " << QSslSocket::sslLibraryVersionString();
 
     QQmlApplicationEngine engine;
     // engine.addImportPath(QString("%1/src/UIModule").arg(QGuiApplication::applicationDirPath()));
