@@ -12,13 +12,13 @@ set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
 #         Main.qml
 # )
 
-find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick Multimedia
+     QuickDialogs2 )
 
 
 
 
 qt_add_qml_module(UIModule
-
    URI UIModule
    VERSION 1.0
     RESOURCE_PREFIX "/ui"
@@ -40,26 +40,33 @@ qt_add_qml_module(UIModule
 
 
 )
-
-target_include_directories(UIModule
-    PRIVATE ${CMAKE_SOURCE_DIR}/src/coreLib
-)
-
 target_link_libraries(UIModule
     PRIVATE
     Qt6::Qml
     Qt6::Gui
     Qt6::Quick
     Qt6::Network
-    Qt6::quickmultimedia
+    Qt6::QuickDialogs2
+    # Qt6::quickmultimedia
     # Qt6::TextToSpeech
+    Qt6::Multimedia
     # Qt6::TextToSpeechQml
     Qt6::Core5Compat
 
     # coreLib
 
 )
+
+target_include_directories(UIModule
+    PRIVATE ${CMAKE_SOURCE_DIR}/src/coreLib
+)
+
+
 set_property(TARGET UIModule PROPERTY QT_ANDROID_TARGET_SDK_VERSION 30)
+
+
+
+
 
 qt_add_resources(UIModule
     "assets"

@@ -43,7 +43,7 @@ target_link_libraries(Recognition
     Qt6::Gui
     Qt6::Quick
     Qt6::Network
-    Qt6::quickmultimedia
+     Qt6::Multimedia
 )
 
 # add_subdirectory(ShapeExplorer)

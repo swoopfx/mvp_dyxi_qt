@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
-import UIModule
+// import UIModule
+import QtQuick.Window
+
 
 Window {
     id: main_window
@@ -10,7 +12,7 @@ Window {
     // title: qsTr("Stack")
     visibility: Window.Maximized
     property int screen_maximumHeight: 600
-    property int screen_maximumWidth: 1280
+    property int screen_maximumWidth: 800
     // readonly property real aspectRatio: 4.0/3.0
 
     // maximumHeight: Screen.desktopAvailaleHeight
@@ -18,6 +20,12 @@ Window {
 
     minimumHeight: main_window.screen_maximumHeight
     minimumWidth: main_window.screen_maximumWidth
+
+    // Lock app screen orientation to Landscape
+       // Screen.orientationUpdateMask: Qt.LandscapeOrientation | Qt.InvertedLandscapeOrientation
+       // Screen.contentOrientation: Qt.LandscapeOrientation
+       contentOrientation: Qt.LandscapeOrientation
+
 
     // WelcomePage{}
     StackView {

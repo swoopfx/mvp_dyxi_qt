@@ -1,8 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Shapes 1.15
-import Qt5Compat.GraphicalEffects
-import UIModule
+// import Qt5Compat.GraphicalEffects
+// import UIModule
 
 Page{
     Rectangle {
@@ -11,19 +11,19 @@ Page{
         color: "#0a0a0a" // Dark professional background
 
         // --- Background Glow ---
-        RadialGradient {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.0
-                    color: "#1a1a2e"
-                }
-                GradientStop {
-                    position: 1.0
-                    color: "#0a0a0a"
-                }
-            }
-        }
+        // RadialGradient {
+        //     anchors.fill: parent
+        //     // gradient: Gradient {
+        //     //     GradientStop {
+        //     //         position: 0.0
+        //     //         color: "#1a1a2e"
+        //     //     }
+        //     //     GradientStop {
+        //     //         position: 1.0
+        //     //         color: "#0a0a0a"
+        //     //     }
+        //     // }
+        // }
 
         // --- Laser Vector Strip Animation ---
         Canvas {
@@ -163,12 +163,12 @@ Page{
                 radius: 25
 
                 layer.enabled: true
-                layer.effect: DropShadow {
-                    transparentBorder: true
-                    color: "#4000f2ff"
-                    radius: 10
-                    samples: 17
-                }
+                // layer.effect: DropShadow {
+                //     transparentBorder: true
+                //     color: "#4000f2ff"
+                //     radius: 10
+                //     samples: 17
+                // }
             }
 
             SequentialAnimation {
