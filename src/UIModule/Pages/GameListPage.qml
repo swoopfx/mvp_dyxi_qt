@@ -49,19 +49,13 @@ Page {
 
 
         Text {
-            text: "Gme List"
+            text: ""
             font.pixelSize: 26
             font.bold: true
             color: gameListPage.colorText
         }
 
-        Text {
-            text: "Archive of high-fidelity interactive experiences and technical benchmarks."
-            font.pixelSize: 14
-            color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, window.colorText.b, 0.6)
-            Layout.fillWidth: true
-            wrapMode: Text.WordWrap
-        }
+
 
         // Separation line
         Rectangle {
