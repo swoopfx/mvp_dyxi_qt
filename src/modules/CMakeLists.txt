@@ -16,6 +16,7 @@ qt_add_qml_module(modules
      QML_FILES  ShapeExplorer/Shape.qml
       QML_FILES ShapeExplorer/TargetSlot.qml
      QML_FILES  ShapeExplorer/Telemetry.js
+     QML_FILES EntryPoint.qml
 
        # #Reognition Files
        # QML_FILES Recognition_Shape_Explorer_Level1.qml

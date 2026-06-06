@@ -76,8 +76,16 @@ message(STATUS "Crypto path: ${CMAKE_SOURCE_DIR}/libs/arm64-v8a/libcrypto_3.so")
 #     include(${android_openssl_SOURCE_DIR}/android_openssl.cmake)
 # endif()
 
+if (ANDROID)
+set_target_properties(AppController PROPERTIES
+    # Sets the human-readable app name on the launcher
+    QT_ANDROID_APP_NAME "Dyxi"
 
+    # Sets the app icon (points to your custom drawable or mipmap resource)
+    # QT_ANDROID_APP_ICON "qrc:/ui/images/logo.png"
+)
 
+endif()
 target_link_libraries(AppController
     PRIVATE Qt6::Quick
     PRIVATE Qt6::Core

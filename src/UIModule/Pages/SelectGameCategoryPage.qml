@@ -76,36 +76,51 @@ Page {
                 Grid {
                     id: grid
                     width: parent.width
-                    spacing: 30
+                    spacing: 20
                     // anchors.horizontalCenter: parent.horizontalCenter
                     // flow: Flow.LeftToRight
+
+                    //Begin tpe collection
                     GameItem {
                         labelText: "Phonics Fun"
                         imageSource: "qrc:/ui/images/phonics.png"
                         accentColor: "#FF8A65"
                         onClicked: stackView.push("GameLoaderPage.qml", {
                             // "url": coreSettings.baseUrl+"/api/game-by-type"+"?type=1"+"age"+UserSession.userAge,
-                            "url": "https://mvp.dyxi.site/api/game-types" + "?type=1",
+                            "url":coreSettings.dyxiGetGameList + "?type="+gameTypeId[0].id,
                             "pageTitle": selectGamePage.gameTypeId[0].type,
                             "avatar": "qrc:/ui/images/phonics.png",
-                            "resoucesUrl": selectGamePage.gameTypeId[4].type
+                            "resoucesUrl": selectGamePage.gameTypeId[0].type
                         })
                     }
 
                     GameItem {
                         labelText: "Word Tracing"
                         imageSource: "qrc:/ui/images/tracing.png"
-                        accentColor: "#4DB6AC"
-                        // onClicked: stackView.push("ABC123.qml")
-                        onClicked: stackView.push("qrc:/Writing/Writing/WritingMainPlayGround.qml")
+                        accentColor: "#FF8A65"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+
+                            "url":coreSettings.dyxiGetGameList + "?type="+gameTypeId[2].id,
+                            "pageTitle": selectGamePage.gameTypeId[2].type,
+                            "avatar": "qrc:/ui/images/phonics.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[2].type
+                        })
                     }
+
+                    // GameItem {
+                    //     labelText: "Word Tracing"
+                    //     imageSource: "qrc:/ui/images/tracing.png"
+                    //     accentColor: "#4DB6AC"
+                    //     // onClicked: stackView.push("ABC123.qml")
+                    //     onClicked: stackView.push("qrc:/Writing/Writing/WritingMainPlayGround.qml")
+                    // }
 
                     GameItem {
                         labelText: "Recognition"
                         imageSource: "qrc:/ui/images/recognition.png"
                         accentColor: "#9575CD"
                         onClicked: stackView.push("GameLoaderPage.qml", {
-                            "url": "https://mvp.dyxi.site/api/game-types" + "?type=" + selectGamePage.gameTypeId[3].id,
+                            "url": coreSettings.dyxiGetGameList+ "?type=" + selectGamePage.gameTypeId[3].id,
                             "pageTitle": selectGamePage.gameTypeId[3].type,
                             "avatar": "qrc:/ui/images/recognition.png",
                             "resoucesUrl": selectGamePage.gameTypeId[3].type,
@@ -114,53 +129,88 @@ Page {
                     }
 
                     GameItem {
-                        labelText: "Reading Time"
+                        labelText: "Reading"
                         imageSource: "qrc:/ui/images/reading.png"
-                        accentColor: "#F06292"
-                        onClicked: stackView.push("qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml")
+                        accentColor: "#9575CD"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameList+ "?type=" + selectGamePage.gameTypeId[4].id,
+                            "pageTitle": selectGamePage.gameTypeId[4].type,
+                            "avatar": "qrc:/ui/images/reading.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[4].type,
+                            "typeId": selectGamePage.gameTypeId[3].id
+                        })
+                    }
+
+                    Rectangle {
+                        Layout.fillWidth: true
+                        height: 2
+                        color: "#38bdf8"
+                        opacity: 0.4
+                        Layout.topMargin: 8
+                        Layout.bottomMargin: 8
                     }
 
                     GameItem {
-                        labelText: "Writing Practice"
-                        imageSource: "qrc:/ui/images/writing.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/dyscalculia/mathdice/Dyscalculia/MathDice/MathDiceMain.qml")
-                    }
-
-                    GameItem {
-                        labelText: "Writing Practice"
-                        imageSource: "qrc:/ui/images/writing.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/dyscalculia/clumsythief/Dyscalculia/ClumsyThief/ClumsyMain.qml")
-                    }
-
-                    GameItem {
-                        labelText: "Writing Practice"
-                        imageSource: "qrc:/ui/images/writing.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/dyscalculia/tenframegame/Dyscalculia/TenFrames/TenFramesMain.qml")
-                    }
-
-                    GameItem {
-                        labelText: "Writing Practice"
-                        imageSource: "qrc:/ui/images/writing.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/dyscalculia/numicon1/Dyscalculia/Numicon1/NumiconMain.qml")
-                    }
-
-                    GameItem {
-                        labelText: "Writing Practice"
+                        labelText: "Reading"
                         imageSource: "qrc:/ui/images/reading.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
+                        accentColor: "#9575CD"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameList+ "?type=" + selectGamePage.gameTypeId[4].id,
+                            "pageTitle": selectGamePage.gameTypeId[4].type,
+                            "avatar": "qrc:/ui/images/reading.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[4].type,
+                            "typeId": selectGamePage.gameTypeId[3].id
+                        })
                     }
 
-                    GameItem {
-                        labelText: "Writing Practice"
-                        imageSource: "qrc:/ui/images/reading.png"
-                        accentColor: "#FFD54F"
-                        onClicked: stackView.push("qrc:/ui/UIModule/Pages/NewGamepPage.qml")
-                    }
+                    // GameItem {
+                    //     labelText: "Reading Time"
+                    //     imageSource: "qrc:/ui/images/reading.png"
+                    //     accentColor: "#F06292"
+                    //     onClicked: stackView.push("qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/writing.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/mathdice/Dyscalculia/MathDice/MathDiceMain.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/writing.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/clumsythief/Dyscalculia/ClumsyThief/ClumsyMain.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/writing.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/tenframegame/Dyscalculia/TenFrames/TenFramesMain.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/writing.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/numicon1/Dyscalculia/Numicon1/NumiconMain.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/reading.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
+                    // }
+
+                    // GameItem {
+                    //     labelText: "Writing Practice"
+                    //     imageSource: "qrc:/ui/images/reading.png"
+                    //     accentColor: "#FFD54F"
+                    //     onClicked: stackView.push("qrc:/ui/UIModule/Pages/NewGamepPage.qml")
+                    // }
                 }
 
                 // GridView{
@@ -174,6 +224,7 @@ Page {
         Component.onCompleted: {
             console.log(coreSettings.dyxiGameTypeIds);
             networkPresets.getGameTypeIdRequest(coreSettings.dyxiGameTypeIds);
+            networkPresets.getGameCategoryIdRequest(coreSettings.dyxiGetGameCategoryList);
         }
 
         Connections {

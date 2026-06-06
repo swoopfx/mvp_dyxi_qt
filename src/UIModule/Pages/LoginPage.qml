@@ -156,8 +156,8 @@ Page {
             // console.log("Select Page Emitted")
             // if(pageName === "SelectGamePage"){ // define the page that needs  to go to
                 stackView.push(pageName+".qml", { //
-                                   "activeUserName" : dashboard.activeUserName,
-                                   "stackView": stackView // Pass the stackView to the categoryPage
+                                   "activeUserName" : dashboard.activeUserName
+                                   // "stackView": stackView // Pass the stackView to the categoryPage
 
                                });
             // }

@@ -12,6 +12,8 @@ class CoreSettings : public QObject
     Q_PROPERTY(QString dyxiGameTypeIds READ dyxiGameTypeIds FINAL)
     Q_PROPERTY(QString dyxiGameByParam READ dyxiGameByParam FINAL)
     Q_PROPERTY(QString dyxiRecognitionPostShapeExplorer READ dyxiRecognitionPostShapeExplorer FINAL)
+    Q_PROPERTY(QString  dyxiGetGameList READ  dyxiGetGameList FINAL)
+    Q_PROPERTY(QString dyxiGetGameCategoryList READ dyxiGetGameCategoryList  FINAL)
 
 public:
     // explicit MyObject(QObject *parent = nullptr) : QObject(parent)/*, m_myText("Initial Value") {}*/
@@ -30,6 +32,16 @@ public:
         return m_dyxiRecognitionPostShapeExplorer;
 
     }
+    QString dyxiGetGameCategoryList()
+    {
+        return m_dyxiGetGameCategoryList;
+    }
+
+
+ QString dyxiGetGameList()
+    {
+        return m_dyxiGetGameList;
+    }
 
 signals:
     void myTextChanged();
@@ -38,16 +50,16 @@ signals:
 
 
 public:
-    static inline const QString appName=QStringLiteral("MVP Dyxi");
-    static inline const QString companyName = QStringLiteral("Orula Deviant");
-    static inline const QString organisationDomain = QStringLiteral("https://dyxi.site");
+   QString appName=QStringLiteral("MVP Dyxi");
+   QString companyName = QStringLiteral("Orula Deviant");
+    QString organisationDomain = QStringLiteral("https://dyxi.site");
 
 
 
 
 
     // Endpoints
-    const QString baseUrl=QStringLiteral("https://mvp.dyxi.site");
+    QString baseUrl=QStringLiteral("https://mvp.dyxi.site");
     const QString dyxiApiLogin = baseUrl+QStringLiteral("/api/login");
     const QString dyxiApiregistration = baseUrl+ QStringLiteral("/api/register");
 
@@ -72,15 +84,21 @@ public:
     // Post Endpoint
 
 
+    QString dyxiGetGameList() const;
+
+
+
 private:
     QString m_myText;
-
-
-
-
     QString m_dyxiRecognitionPostShapeExplorer = baseUrl + QStringLiteral("/api-post/recognition-shared-explorer");
 
+    QString m_dyxiGetGameList= baseUrl+QStringLiteral("/api/game-types");
+    QString m_dyxiGetGameCategoryList=baseUrl+QStringLiteral("/api/game-category/");
 };
+
+
+
+
 
 
 

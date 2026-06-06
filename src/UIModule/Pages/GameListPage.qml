@@ -61,7 +61,7 @@ Page {
         Rectangle {
             Layout.fillWidth: true
             height: 2
-            color: gameListPagecolorAccent
+            color: gameListPage.colorAccent
             opacity: 0.4
             Layout.topMargin: 8
             Layout.bottomMargin: 8
@@ -78,8 +78,8 @@ Page {
         anchors.fill: parent
 
         anchors.margins: 10
-        cellWidth: parent.width / 3
-        cellHeight: 200
+        cellWidth: parent.width / 3.2
+        cellHeight: 320
         model: gameListPage.model
         delegate: delegate
 
@@ -104,7 +104,7 @@ Page {
         id: delegate
 
         Item {
-            width: parent.width / 3
+            width: parent.width / 3.2
             height: 320
 
             // Main card container with padding around to create spacing between elements
@@ -224,24 +224,24 @@ Page {
                             Layout.fillWidth: true
                         }
 
-                        // RowLayout {
-                        //     Layout.fillWidth: true
-                        //     spacing: 4
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 4
 
-                        //     // Text {
-                        //     //     text: "⭐ " + model.rating
-                        //     //     font.pixelSize: 11
-                        //     //     color: "#FFCA28" // Gold rating star
-                        //     // }
+                            // Text {
+                            //     text: "⭐ " + model.rating
+                            //     font.pixelSize: 11
+                            //     color: "#FFCA28" // Gold rating star
+                            // }
 
-                        //     // Text {
-                        //     //     text: "• " + model.developer
-                        //     //     font.pixelSize: 11
-                        //     //     color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.5)
-                        //     //     elide: Text.ElideRight
-                        //     //     Layout.fillWidth: true
-                        //     // }
-                        // }
+                            // Text {
+                            //     text: "• " + model.developer
+                            //     font.pixelSize: 11
+                            //     color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.5)
+                            //     elide: Text.ElideRight
+                            //     Layout.fillWidth: true
+                            // }
+                        }
                     }
                 }
 

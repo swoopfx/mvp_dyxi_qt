@@ -4,7 +4,7 @@ import QtQuick.Controls
 import QtQuick.Window
 
 
-Window {
+ApplicationWindow {
     id: main_window
     visible: true
     // width: 640
@@ -33,5 +33,15 @@ Window {
          anchors.fill: parent
         initialItem: "qrc:/ui/UIModule/Pages/WelcomePage.qml" // Relative path to the file
     }
+    onClosing: function(closeEvent) {
+            if (stackView.depth > 1) {
+                // We are deeper in the stack; go back one screen
+                stackView.pop();
+                closeEvent.accepted = false; // Prevent the app from closing
+            } else {
+                // We are on the root view; let the app close normally
+                closeEvent.accepted = true;
+            }
+        }
 
 }

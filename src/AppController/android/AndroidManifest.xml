@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.qtproject.example"
+    package="org.qtproject.oruladyxi"
     android:installLocation="auto"
     android:versionCode="-- %%INSERT_VERSION_CODE%% --"
     android:versionName="-- %%INSERT_VERSION_NAME%% --">
     <!-- %%INSERT_PERMISSIONS -->
     <!-- %%INSERT_FEATURES -->
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -14,8 +18,8 @@
     <application
         android:name="org.qtproject.qt.android.bindings.QtApplication"
         android:hardwareAccelerated="true"
-        android:label="-- %%INSERT_APP_NAME%% --"
-        android:icon="-- %%INSERT_APP_ICON%% --"
+        android:label="Dyxi"
+         android:icon="@drawable/logo"
         android:enableOnBackInvokedCallback="false"
         android:allowBackup="true"
         android:fullBackupOnly="false">
@@ -51,7 +55,6 @@
                 android:resource="@xml/qtprovider_paths"/>
         </provider>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 
 </manifest>
