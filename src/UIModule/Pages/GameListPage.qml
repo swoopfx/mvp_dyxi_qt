@@ -45,10 +45,11 @@ Page {
     // Header Section
     ColumnLayout {
         Layout.fillWidth: true
-        spacing: 4
+        spacing: 20
+
 
         Text {
-            text: "Nexus Game Library"
+            text: "Gme List"
             font.pixelSize: 26
             font.bold: true
             color: gameListPage.colorText
@@ -147,32 +148,32 @@ Page {
                             asynchronous: true
                             opacity: hoverMouseArea.containsMouse ? 0.95 : 0.8
 
-                            Behavior on opacity {
-                                NumberAnimation {
-                                    duration: 150
-                                }
-                            }
+                            // B/*ehavior on opacity {
+                            //     NumberAnimation {
+                            //         duration: 150
+                            //     }
+                            // }*/
                         }
 
                         // Genre visual tag in card top
-                        Rectangle {
-                            anchors.top: parent.top
-                            anchors.left: parent.left
-                            anchors.margins: 10
-                            color: Qt.rgba(0, 0, 0, 0.7)
-                            radius: 4
-                            width: genreText.contentWidth + 12
-                            height: genreText.contentHeight + 6
+                        // Rectangle {
+                        //     anchors.top: parent.top
+                        //     anchors.left: parent.left
+                        //     anchors.margins: 10
+                        //     color: Qt.rgba(0, 0, 0, 0.7)
+                        //     radius: 4
+                        //     width: genreText.contentWidth + 12
+                        //     height: genreText.contentHeight + 6
 
-                            Text {
-                                id: genreText
-                                anchors.centerIn: parent
-                                text: ""
-                                color: gameListPage.colorText
-                                font.pixelSize: 10
-                                font.bold: true
-                            }
-                        }
+                        //     Text {
+                        //         id: genreText
+                        //         anchors.centerIn: parent
+                        //         text: ""
+                        //         color: gameListPage.colorText
+                        //         font.pixelSize: 10
+                        //         font.bold: true
+                        //     }
+                        // }
 
                         // Info Icon Overlay in top-right for Popup
                         Rectangle {
@@ -229,24 +230,24 @@ Page {
                             Layout.fillWidth: true
                         }
 
-                        RowLayout {
-                            Layout.fillWidth: true
-                            spacing: 4
+                        // RowLayout {
+                        //     Layout.fillWidth: true
+                        //     spacing: 4
 
-                            // Text {
-                            //     text: "⭐ " + model.rating
-                            //     font.pixelSize: 11
-                            //     color: "#FFCA28" // Gold rating star
-                            // }
+                        //     // Text {
+                        //     //     text: "⭐ " + model.rating
+                        //     //     font.pixelSize: 11
+                        //     //     color: "#FFCA28" // Gold rating star
+                        //     // }
 
-                            // Text {
-                            //     text: "• " + model.developer
-                            //     font.pixelSize: 11
-                            //     color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.5)
-                            //     elide: Text.ElideRight
-                            //     Layout.fillWidth: true
-                            // }
-                        }
+                        //     // Text {
+                        //     //     text: "• " + model.developer
+                        //     //     font.pixelSize: 11
+                        //     //     color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.5)
+                        //     //     elide: Text.ElideRight
+                        //     //     Layout.fillWidth: true
+                        //     // }
+                        // }
                     }
                 }
 
@@ -258,216 +259,39 @@ Page {
                     // Make sure info icon clicked area doesnt bubble up to the card page transition
                     propagateComposedEvents: true
 
+                    // onClicked: {
+                    //     // Ignore if clicking on info icon
+                    //     var infoGlobalPos = infoIconButton.mapToItem(cardContainer, 0, 0);
+                    //     if (mouseX >= infoGlobalPos.x && mouseX <= infoGlobalPos.x + infoIconButton.width && mouseY >= infoGlobalPos.y && mouseY <= infoGlobalPos.y + infoIconButton.height) {
+                    //         return;
+                    //     }
+
+                    //     // Leads to detail screen
+                    //     // mainStack.push(gameDetailComponent, {
+                    //     //     "gameTitle": model.title,
+                    //     //     "gameGenre": model.genre,
+                    //     //     "gameRating": model.rating,
+                    //     //     "gameCover": model.coverImage,
+                    //     //     "gameScreenshot": model.screenshot,
+                    //     //     "gameRelease": model.releaseDate,
+                    //     //     "gameDev": model.developer,
+                    //     //     "gameDesc": model.description
+                    //     // });
+                    // }
+
                     onClicked: {
-                        // Ignore if clicking on info icon
-                        var infoGlobalPos = infoIconButton.mapToItem(cardContainer, 0, 0);
-                        if (mouseX >= infoGlobalPos.x && mouseX <= infoGlobalPos.x + infoIconButton.width && mouseY >= infoGlobalPos.y && mouseY <= infoGlobalPos.y + infoIconButton.height) {
-                            return;
-                        }
-
-                        // Leads to detail screen
-                        // mainStack.push(gameDetailComponent, {
-                        //     "gameTitle": model.title,
-                        //     "gameGenre": model.genre,
-                        //     "gameRating": model.rating,
-                        //     "gameCover": model.coverImage,
-                        //     "gameScreenshot": model.screenshot,
-                        //     "gameRelease": model.releaseDate,
-                        //     "gameDev": model.developer,
-                        //     "gameDesc": model.description
-                        // });
-                    }
+                                          console.log("Main delegate clicked for item: " + String(modelData.gameName))
+                                          // You can add your main delegate click action here
+                                          stackView.push("qrc:/"+gameListPage.resoucesUrl+"/"+gameListPage.moduleName+"/"+modelData.games.gamePage+".qml", {
+                                                             "id":modelData.games.id,
+                                                             "typeId":gameListPage.typeId
+                                                         })
+                                      }
                 }
             }
         }
 
     }
 
-
-    // ==========================================
-    // 1. GAME GRID SCREEN COMPONENT (Main View)
-    // ==========================================
-    Component {
-        id: gameGridComponent
-
-        Page {
-            background: Rectangle {
-                color: gameListPage.colorBg
-            }
-
-            // Split into Header and Scrollable Grid Layout
-            ColumnLayout {
-                anchors.fill: parent
-                anchors.margins: 20
-                spacing: 15
-
-                // Header Section
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    spacing: 4
-
-                    Text {
-                        text: "Nexus Game Library"
-                        font.pixelSize: 26
-                        font.bold: true
-                        color: gameListPage.colorText
-                    }
-
-                    Text {
-                        text: "Archive of high-fidelity interactive experiences and technical benchmarks."
-                        font.pixelSize: 14
-                        color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.6)
-                        Layout.fillWidth: true
-                        wrapMode: Text.WordWrap
-                    }
-
-                    // Separation line
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 2
-                        color: gameListPage.colorAccent
-                        opacity: 0.4
-                        Layout.topMargin: 8
-                        Layout.bottomMargin: 8
-                    }
-                }
-
-                // Scrollable Grid Showcase
-                ScrollView {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    clip: true
-                    ScrollBar.vertical.policy: ScrollBar.AsNeeded
-
-                    GridView {
-                        id: gridView
-                        anchors.fill: parent
-                        model: gamesModel
-                        cellWidth: parent.width / 3
-                        cellHeight: 320
-                        snapMode: GridView.SnapToRow
-
-                        }
-                }
-            }
-
-            // ==========================================
-            // POPUP OVERLAY FOR FILE METADATA & ARGS
-            // ==========================================
-            Popup {
-                id: descriptionPopup
-                x: (parent.width - width) / 2
-                y: (parent.height - height) / 2
-                width: Math.min(parent.width * 0.8, 480)
-                height: contentLayout.implicitHeight + 40
-                modal: true
-                focus: true
-                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
-
-                background: Rectangle {
-                    color: gameListPage.colorCard
-                    radius: gameListPage.cardRadius
-                    border.color: gameListPage.colorAccent
-                    border.width: 1.5
-                }
-
-                property string popupTitle: ""
-                property string popupDesc: ""
-
-                function showPopup(tName, tDesc) {
-                    popupTitle = tName;
-                    popupDesc = tDesc;
-                    descriptionPopup.open();
-                }
-
-                ColumnLayout {
-                    id: contentLayout
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    spacing: 12
-
-                    RowLayout {
-                        Layout.fillWidth: true
-
-                        Text {
-                            text: descriptionPopup.popupTitle
-                            font.pixelSize: 18
-                            font.bold: true
-                            color: gameListPage.colorText
-                            Layout.fillWidth: true
-                            elide: Text.ElideRight
-                        }
-
-                        // Close "X" Button
-                        Rectangle {
-                            width: 24
-                            height: 24
-                            radius: 12
-                            color: closeMouse.containsMouse ? Qt.rgba(255, 0, 0, 0.2) : "transparent"
-
-                            Text {
-                                anchors.centerIn: parent
-                                text: "×"
-                                color: "white"
-                                font.pixelSize: 18
-                            }
-
-                            MouseArea {
-                                id: closeMouse
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                onClicked: descriptionPopup.close()
-                            }
-                        }
-                    }
-
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 1
-                        color: gameListPage.colorAccent
-                        opacity: 0.3
-                    }
-
-                    Text {
-                        text: descriptionPopup.popupDesc
-                        font.pixelSize: 13
-                        lineHeight: 1.2
-                        color: Qt.rgba(gameListPage.colorText.r, gameListPage.colorText.g, gameListPage.colorText.b, 0.8)
-                        Layout.fillWidth: true
-                        wrapMode: Text.WordWrap
-                    }
-
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 10
-                        color: "transparent"
-                    }
-
-                    Button {
-                        text: "Close"
-                        Layout.alignment: Qt.AlignRight
-
-                        contentItem: Text {
-                            text: "Close Details"
-                            font.pixelSize: 12
-                            font.bold: true
-                            color: gameListPage.colorBg
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                        }
-
-                        background: Rectangle {
-                            implicitWidth: 100
-                            implicitHeight: 32
-                            color: parent.hovered ? Qt.lighter(gameListPage.colorAccent, 1.1) : gameListPage.colorAccent
-                            radius: 4
-                        }
-
-                        onClicked: descriptionPopup.close()
-                    }
-                }
-            }
-        }
-    }
 
 }
