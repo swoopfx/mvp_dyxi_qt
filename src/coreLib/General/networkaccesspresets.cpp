@@ -90,7 +90,7 @@ void NetworkAccessPresets::onGamecategoryIdFinished(QNetworkReply *reply)
 
         if(statusCodeVariant.isValid()){
             int statusCode = statusCodeVariant.toInt();
-            qInfo() << "RProcessingd";
+            // qInfo() << "RProcessingd";
             if(statusCode >=200 && statusCode <300){
                 QByteArray responseData = reply->readAll(); // extract all data
                 QJsonDocument doc = QJsonDocument::fromJson(responseData);
@@ -98,7 +98,7 @@ void NetworkAccessPresets::onGamecategoryIdFinished(QNetworkReply *reply)
                 if(!doc.isNull() && doc.isObject()){
                     //Convert the document to array
                     // QJsonArray jsonArray = doc.array();
-                    qInfo() << "isObjectd";
+                    // qInfo() << "isObjectd";
                     QJsonObject jsonObject = doc.object();
 
                     //Convert to QVariantMap

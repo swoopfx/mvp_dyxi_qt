@@ -106,6 +106,7 @@ target_link_libraries(AppController
     # ShapeExplorerplugin
     WordRecognitionGameplugin
     TracingLetterplugin
+    MathDice2plugin
 
 
 )
@@ -125,6 +126,7 @@ target_link_libraries(AppController PRIVATE TenFramesplugin)
 target_link_libraries(AppController PRIVATE Numicon1plugin)
 target_link_libraries(AppController PRIVATE WordRecognitionGameplugin)
 target_link_libraries(AppController PRIVATE TracingLetterplugin)
+target_link_libraries(AppController PRIVATE MathDice2plugin)
 
 
 
