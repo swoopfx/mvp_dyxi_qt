@@ -7,6 +7,8 @@ Page {
 
        // Route passed from the previous page
        property string routeName: ""
+       property int typeId: 0
+       property int id: 0
 
        // String -> QML page mapping
        readonly property var pageMap: ({

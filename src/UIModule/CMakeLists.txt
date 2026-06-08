@@ -22,6 +22,11 @@ qt_add_qml_module(UIModule
    URI UIModule
    VERSION 1.0
     RESOURCE_PREFIX "/ui"
+
+    DEPENDENCIES
+           QtQuick
+           QtMultimedia #
+
    QML_FILES Pages/WelcomePage.qml
    QML_FILES Pages/LoginPage.qml
    QML_FILES Pages/SelectGameCategoryPage.qml
@@ -115,6 +120,8 @@ qt_add_resources(UIModule
 
 
  )
+
+# qt_import_qml_plugins(UIModule)
 
 # target_link_libraries(UIModule PRIVATE Writingplugin)
 # Mark the QRC file so it is not processed by standard AUTORCC

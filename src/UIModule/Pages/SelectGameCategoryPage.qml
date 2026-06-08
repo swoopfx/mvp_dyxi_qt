@@ -6,6 +6,7 @@ import "../Components"
 import General
 import Recognition
 import Writing
+import MathDice2
 
 Page {
     id: selectGamePage
@@ -170,19 +171,19 @@ Page {
                     //     onClicked: stackView.push("qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml")
                     // }
 
-                    // GameItem {
-                    //     labelText: "Writing Practice"
-                    //     imageSource: "qrc:/ui/images/writing.png"
-                    //     accentColor: "#FFD54F"
-                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/mathdice/Dyscalculia/MathDice/MathDiceMain.qml")
-                    // }
+                    GameItem {
+                        labelText: "Writing Practice"
+                        imageSource: "qrc:/ui/images/writing.png"
+                        accentColor: "#FFD54F"
+                        onClicked: stackView.push("qrc:/modules/dyscalculia/mathdice2/MathDice2/MathDice2Main.qml")
+                    }
 
-                    // GameItem {
-                    //     labelText: "Writing Practice"
-                    //     imageSource: "qrc:/ui/images/writing.png"
-                    //     accentColor: "#FFD54F"
-                    //     onClicked: stackView.push("qrc:/modules/dyscalculia/clumsythief/Dyscalculia/ClumsyThief/ClumsyMain.qml")
-                    // }
+                    GameItem {
+                        labelText: "Word Recog"
+                        imageSource: "qrc:/ui/images/writing.png"
+                        accentColor: "#FFD54F"
+                        onClicked: stackView.push("qrc:/modules/phonetics/wordrecog2/Phonetics/WordRecognitionGame2/WordRecog2Main.qml")
+                    }
 
                     // GameItem {
                     //     labelText: "Writing Practice"
@@ -198,12 +199,12 @@ Page {
                     //     onClicked: stackView.push("qrc:/modules/dyscalculia/numicon1/Dyscalculia/Numicon1/NumiconMain.qml")
                     // }
 
-                    // GameItem {
-                    //     labelText: "Writing Practice"
-                    //     imageSource: "qrc:/ui/images/reading.png"
-                    //     accentColor: "#FFD54F"
-                    //     onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
-                    // }
+                    GameItem {
+                        labelText: "Writing Practice"
+                        imageSource: "qrc:/ui/images/reading.png"
+                        accentColor: "#FFD54F"
+                        onClicked: stackView.push("qrc:/modules/phonetics/wordrecog/Phonetics/WordRecognitionGame/WordRecognitionMain.qml")
+                    }
 
                     // GameItem {
                     //     labelText: "Writing Practice"

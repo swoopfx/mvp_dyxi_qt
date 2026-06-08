@@ -1,2 +1,3 @@
  
 add_subdirectory(WordRecognitionGame)
+add_subdirectory(WordRecognitionGame2)

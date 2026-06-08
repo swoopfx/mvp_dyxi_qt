@@ -7,6 +7,7 @@
 
 # Define QML resources and files to bundle
 qt_add_qml_module(MathDice2
+       STATIC
     URI MathDice2
     RESOURCE_PREFIX "/modules/dyscalculia/mathdice2"
     VERSION 1.0

@@ -4,9 +4,14 @@
 #include <QIcon>
 #include <QSslSocket>
 #include <QDebug>
+#include <QTextToSpeech>
+#include <QtQml/qqml.h>
 
 int main(int argc, char *argv[])
 {
+
+    qputenv("QML_IMPORT_TRACE", "1");
+
     QGuiApplication app(argc, argv);
 
     app.setApplicationName("Dyxi Mvp");
@@ -18,6 +23,11 @@ int main(int argc, char *argv[])
     qDebug() << "Supports SSL: " << QSslSocket::supportsSsl();
     qDebug() << "SSL Library Build Version: " << QSslSocket::sslLibraryBuildVersionString();
     qDebug() << "SSL Library Runtime Version: " << QSslSocket::sslLibraryVersionString();
+
+    QTextToSpeech speech;
+    qDebug() << "State:" << speech.state();
+    qDebug() << "Available engines:"
+             << QTextToSpeech::availableEngines();
 
     QQmlApplicationEngine engine;
     // engine.addImportPath(QString("%1/src/UIModule").arg(QGuiApplication::applicationDirPath()));

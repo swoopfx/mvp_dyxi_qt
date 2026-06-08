@@ -15,6 +15,12 @@ qt_add_qml_module(WordRecognitionGame
 
         STATIC
         URI Phonetics.WordRecognitionGame
+
+        DEPENDENCIES
+              QtQuick
+              QtMultimedia
+              QtTextToSpeech
+
         RESOURCE_PREFIX "/modules/phonetics/wordrecog"
 
         SOURCES gameenginew.cpp gameenginew.h
@@ -43,7 +49,7 @@ target_link_libraries(WordRecognitionGame PRIVATE
     Qt6::TextToSpeech
 )
 
-# install(TARGETS WordRecognitionGame
-#     BUNDLE DESTINATION .
-#     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-# )
+install(TARGETS WordRecognitionGame
+    BUNDLE DESTINATION .
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)

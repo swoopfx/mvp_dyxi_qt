@@ -4,6 +4,8 @@ find_package(Qt6 REQUIRED COMPONENTS
     Quick
     Multimedia
     Core5Compat
+    Multimedia
+    TextToSpeech
 )
 
 qt_add_executable(AppController
@@ -86,11 +88,18 @@ set_target_properties(AppController PROPERTIES
 )
 
 endif()
+
+# if (ANDROID)
+#     target_link_libraries(AppController
+#          crypto3
+#     )
+# endif()
 target_link_libraries(AppController
     PRIVATE Qt6::Quick
     PRIVATE Qt6::Core
     PRIVATE    Qt6::Multimedia
     PRIVATE  Qt6::Core5Compat
+    PRIVATE Qt6::TextToSpeech
      crypto3
     UIModule
     Generalplugin
@@ -107,8 +116,7 @@ target_link_libraries(AppController
     WordRecognitionGameplugin
     TracingLetterplugin
     MathDice2plugin
-
-
+    WordRecognitionGame2plugin
 )
 
 # qt_add_android_permission(AppController NAME  "android.permission.INTERNET")
@@ -127,7 +135,9 @@ target_link_libraries(AppController PRIVATE Numicon1plugin)
 target_link_libraries(AppController PRIVATE WordRecognitionGameplugin)
 target_link_libraries(AppController PRIVATE TracingLetterplugin)
 target_link_libraries(AppController PRIVATE MathDice2plugin)
+target_link_libraries(AppController PRIVATE WordRecognitionGame2plugin)
 
 
 
+qt_import_qml_plugins(AppController)
 

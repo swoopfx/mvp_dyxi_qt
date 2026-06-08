@@ -236,7 +236,7 @@ Item {
                                 // Dynamic formula evaluations in pure expressions QML
                                 try {
                                     var cleaned = activeEquation;
-                                    var calculated = eval(cleaned);
+                                    var calculated = cleaned;
                                     if (calculated === targetNumber) {
                                         feedbackColor = "#2bc4c3";
                                         feedbackMessage = "Correct answer! Beautiful math solving!";
