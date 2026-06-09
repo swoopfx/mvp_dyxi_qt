@@ -31,6 +31,8 @@ qt_add_qml_module(General
   # SOURCES postactivity.h postactivity.cpp
   SOURCES networkaccesspresets.h networkaccesspresets.cpp
   SOURCES postact.h postact.cpp
+  SOURCES comparestrings.h comparestrings.cpp
+  SOURCES audiomanipulator.h audiomanipulator.cpp
 )
 
 target_link_libraries(General

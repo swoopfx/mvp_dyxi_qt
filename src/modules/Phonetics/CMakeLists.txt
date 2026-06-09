@@ -1,3 +1,4 @@
  
 add_subdirectory(WordRecognitionGame)
 add_subdirectory(WordRecognitionGame2)
+add_subdirectory(RobotTalk2)

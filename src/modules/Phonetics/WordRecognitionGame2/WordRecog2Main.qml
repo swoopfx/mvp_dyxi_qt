@@ -21,6 +21,10 @@ Page {
     property int repetitionCounter: 0
     property real timeTakenStart: 0
 
+    property int currentLetterIndex: 0
+    property bool speakingWholeWord: false
+    property bool waitingForQuestionTts: false
+
     // Database of 80 colourful animal, object, and thing 3 and 4 letter words
     ListModel {
         id: wordDatabaseList
@@ -101,7 +105,8 @@ Page {
         onTriggered: {
             window.listenCountdown--
             if (window.listenCountdown <= 0) {
-                listeningTimer.stop()
+                // listeningTimer.stop()
+                stop();
                 window.stopAudioCaptureAndAnalyze()
             }
         }
@@ -121,32 +126,246 @@ Page {
     }
 
     function readWordProgressively() {
-        if (window.gameState !== "reading") return;
-        var element = wordDatabaseList.get(currentWordIndex);
+        // if (window.gameState !== "reading") return;
+        // var element = wordDatabaseList.get(currentWordIndex);
 
-        console.log("Pronouncing repetition round: " + window.repetitionCounter + " for " + element.word);
-        cppSpeechProcessor.speak(element.word);
+        // console.log("Pronouncing repetition round: " + window.repetitionCounter + " for " + element.word);
+        // cppSpeechProcessor.speak(element.word);
+
+        if (window.gameState !== "reading")
+                return;
+
+            var word = wordDatabaseList.get(window.currentWordIndex).word;
+
+            window.currentLetterIndex = 0;
+            window.speakingWholeWord = false;
+
+            console.log("Starting spelling sequence for:", word);
+
+            window.highlightCharIndex = 0;
+
+            cppSpeechProcessor.speak(word.charAt(0));
     }
 
-    function handleTTSFinished() {
+    function handleTTSFinished()
+    {
+        var word = wordDatabaseList.get(window.currentWordIndex).word;
+
+        // Welcome completed
         if (window.gameState === "welcome") {
             welcomePauseTimer.start();
-        } else if (window.gameState === "reading") {
-            if (window.repetitionCounter < 3) {
-                window.repetitionCounter++;
-                // Slight delay before next spelling track
-                Qt.callLater(1000, window.readWordProgressively);
-            } else {
-                // Ask question
-                window.gameState = "listening"
-                cppSpeechProcessor.speak("What is this?")
-                Qt.callLater(1200, window.startAudioCapture);
+            return;
+        }
+
+        // Question prompt completed
+        if (window.waitingForQuestionTts) {
+
+            window.waitingForQuestionTts = false;
+
+            console.log("Starting recording");
+
+            window.startAudioCapture();
+            return;
+        }
+
+        // Reading sequence
+        if (window.gameState === "reading") {
+
+            // Still spelling letters
+            if (!window.speakingWholeWord) {
+
+                window.currentLetterIndex++;
+
+                if (window.currentLetterIndex < word.length) {
+
+                    window.highlightCharIndex =
+                        window.currentLetterIndex;
+
+                    cppSpeechProcessor.speak(
+                        word.charAt(window.currentLetterIndex)
+                    );
+
+                    return;
+                }
+
+                // Finished letters -> speak whole word
+                window.speakingWholeWord = true;
+                window.highlightCharIndex = -1;
+
+                console.log("Letters completed. Speaking word:", word);
+
+                cppSpeechProcessor.speak(word);
+
+                return;
             }
+
+            // Whole word completed
+            if (window.speakingWholeWord) {
+
+                if (window.repetitionCounter < 3) {
+
+                    window.repetitionCounter++;
+
+                    window.currentLetterIndex = 0;
+                    window.speakingWholeWord = false;
+                    window.highlightCharIndex = 0;
+
+                    cppSpeechProcessor.speak(
+                        word.charAt(0)
+                    );
+
+                    return;
+                }
+
+                console.log("Reading cycle complete.");
+
+                window.highlightCharIndex = -1;
+
+                window.gameState = "listening";
+                window.waitingForQuestionTts = true;
+
+                cppSpeechProcessor.speak("So!!!! How do you pronounce this? Its your Turn");
+
+                return;
+            }
+        }
+
+        // Success feedback completed
+        if (window.gameState === "success") {
+
+            if (window.currentWordIndex <
+                    wordDatabaseList.count - 1) {
+
+                window.currentWordIndex++;
+                window.startGameCycleCurrentWord();
+
+            } else {
+
+                window.gameState = "idle";
+            }
+
+            return;
+        }
+
+        // Reprompt completed
+        if (window.gameState === "comical_reprompt") {
+
+            window.gameState = "listening";
+            window.startAudioCapture();
         }
     }
 
+    // function handleTTSFinished() {
+
+    //     // if (window.waitingForQuestionTts) {
+    //     //        window.waitingForQuestionTts = false
+    //     //        window.startAudioCapture()
+    //     //        return
+    //     //    }
+
+    //     // if (window.gameState === "welcome") {
+    //     //     welcomePauseTimer.start();
+    //     // } else if (window.gameState === "reading") {
+    //     //     if (window.repetitionCounter < 3) {
+    //     //         window.repetitionCounter++;
+    //     //         // Slight delay before next spelling track
+    //     //         Qt.callLater(window.readWordProgressively);
+    //     //     } else {
+    //     //         // Ask question
+    //     //         // window.gameState = "listening"
+    //     //         // cppSpeechProcessor.speak("What is this?")
+    //     //         // Qt.callLater(window.startAudioCapture);
+    //     //         window.gameState = "listening"
+    //     //         window.waitingForQuestionTts = true
+    //     //         cppSpeechProcessor.speak("What is this?")
+    //     //     }
+    //     // }
+
+    //     console.log("TTS finished. Current state:", window.gameState)
+
+    //        // Question prompt has completed, now start listening
+    //        if (window.waitingForQuestionTts) {
+    //            window.waitingForQuestionTts = false
+
+    //            console.log("Question TTS completed. Starting audio capture.")
+
+    //            window.startAudioCapture()
+    //            return
+    //        }
+
+    //        // Welcome message completed
+    //        if (window.gameState === "welcome") {
+    //            console.log("Welcome message finished.")
+
+    //            welcomePauseTimer.start()
+    //            return
+    //        }
+
+    //        // Reading cycle completed
+    //        if (window.gameState === "reading") {
+
+    //            if (window.repetitionCounter < 3) {
+
+    //                window.repetitionCounter++
+
+    //                console.log(
+    //                    "Starting repetition " +
+    //                    window.repetitionCounter +
+    //                    " for word " +
+    //                    wordDatabaseList.get(window.currentWordIndex).word
+    //                )
+
+    //                Qt.callLater(function() {
+    //                    window.readWordProgressively()
+    //                })
+
+    //            } else {
+
+    //                console.log("Finished reading word 3 times.")
+
+    //                window.gameState = "listening"
+    //                window.waitingForQuestionTts = true
+
+    //                cppSpeechProcessor.speak("What is this?")
+    //            }
+
+    //            return
+    //        }
+
+    //        // Success feedback finished
+    //        if (window.gameState === "success") {
+
+    //            console.log("Success message completed.")
+
+    //            if (window.currentWordIndex < wordDatabaseList.count - 1) {
+
+    //                window.currentWordIndex++
+    //                window.startGameCycleCurrentWord()
+
+    //            } else {
+
+    //                console.log("All words completed.")
+    //                window.gameState = "idle"
+    //            }
+
+    //            return
+    //        }
+
+    //        // Comical reprompt finished
+    //        if (window.gameState === "comical_reprompt") {
+
+    //            console.log("Reprompt finished. Restarting listening.")
+
+    //            window.gameState = "listening"
+    //            window.startAudioCapture()
+
+    //            return
+    //        }
+    // }
+
     function startAudioCapture() {
         window.listenCountdown = 5;
+        listeningTimer.start();
         window.timeTakenStart = Date.now();
         // Trigger C++ Audio Engine hardware record
         cppSpeechProcessor.startRecording("rec_" + window.childName + "_" + wordDatabaseList.get(currentWordIndex).word);

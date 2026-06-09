@@ -13,6 +13,7 @@ SpeechProcessor::SpeechProcessor(QObject *parent)
     : QObject(parent), m_sessionId("ses-qml-default"), m_audioSource(nullptr)
 {
     m_networkManager = new QNetworkAccessManager(this);
+    speech  = new QTextToSpeech(this);
     qDebug() << "C++ Whisper.cpp audio analyzer successfully mounted.";
 }
 
@@ -360,5 +361,7 @@ void SpeechProcessor::speak(const QString &text)
     // Calculate simulated delay based on length of the sentence (approx 75ms per char, min 1200ms)
     int delayMs = qMax(1200, text.length() * 75);
     QTimer::singleShot(delayMs, this, &SpeechProcessor::ttsPlayFinished);
+    speech->say(text);
+
 }
 

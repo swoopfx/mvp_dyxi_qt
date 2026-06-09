@@ -11,6 +11,7 @@
 #include <QAudioSource>
 #include <QFile>
 #include <QQmlEngine>
+#include<QTextToSpeech>
 
 /**
  * @brief SpeechProcessor translates recorded audio via local-first Whisper.cpp,
@@ -61,6 +62,7 @@ private:
     QFile m_tempFile;
     QString m_currentFileName;
     QNetworkAccessManager *m_networkManager;
+    QTextToSpeech *speech;
 
     // Computational Metrics Engines (C++ heavy logic helpers)
     int calculateSpellAccuracy(const QString &expected, const QString &spoken);
