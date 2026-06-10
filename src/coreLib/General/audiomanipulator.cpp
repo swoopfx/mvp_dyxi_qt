@@ -61,3 +61,50 @@ QVector<qint16> AudioManipulator::convertToPcm16kMono(const QByteArray &inputDat
 
     return pcmData;
 }
+
+QVector<float> AudioManipulator::convertToPcm16kMonoFloat(const QByteArray &inputData, int originalSampleRate, int originalChannels, int bytesPerSample)
+{
+
+}
+
+QVector<float> AudioManipulator::convertToNormalizedMono(const QByteArray &inputData, const QAudioFormat &sourceFormat)
+{
+
+    QVector<float> normalizedAudio;
+
+    // 1. Initialize input buffer
+    QAudioBuffer audioBuffer(inputData, sourceFormat);
+
+    // 2. We need mono, 16-bit signed PCM (S16LE is standard for 16kHz)
+    QAudioFormat targetFormat;
+    targetFormat.setSampleRate(16000);
+    targetFormat.setChannelCount(1);
+    targetFormat.setSampleFormat(QAudioFormat::Int16); // or QAudioFormat::Float
+
+    // NOTE: For Qt 6, utilize QAudioConverter for format & sample rate conversion.
+    // Ensure the input audio data is converted/resampled to the target spec before processing.
+    // (Assuming audioBuffer now contains 16kHz mono PCM data due to your prior resampling step)
+
+    // 3. Setup normalization boundary
+    // Max value for 16-bit signed is 32767.0
+    const float normalizationFactor = 1.0f / 32767.0f;
+
+    // 4. Retrieve audio data to normalize
+    const qint16* data = audioBuffer.constData<qint16>();
+    int sampleCount = audioBuffer.frameCount() * audioBuffer.format().channelCount();
+
+    normalizedAudio.reserve(sampleCount);
+
+    // 5. Convert and normalize
+    for (int i = 0; i < sampleCount; ++i) {
+        // Convert to float, then scale down to [-1.0, 1.0]
+        float sample = static_cast<float>(data[i]) * normalizationFactor;
+
+        // Ensure bounds are strictly clipped between -1.0 and 1.0
+        sample = qBound(-1.0f, sample, 1.0f);
+
+        normalizedAudio.append(sample);
+    }
+
+    return normalizedAudio;
+}

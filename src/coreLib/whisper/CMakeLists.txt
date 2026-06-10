@@ -1,48 +1,45 @@
- 
-cmake_minimum_required(VERSION 3.16)
-project(Whisper VERSION 1.0 LANGUAGES C CXX)
+cmake_minimum_required(VERSION 3.20)
+project(WhisperQtApp LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find Qt 6 Packages
-find_package(Qt6 REQUIRED COMPONENTS Core )
+# -------------------------
+# Qt
+# -------------------------
+find_package(Qt6 REQUIRED COMPONENTS Core Qml Network)
 qt_standard_project_setup()
 
-# Define paths to whisper.cpp files
+# -------------------------
+# Whisper.cpp (IMPORTANT)
+# -------------------------
 set(WHISPER_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/whisper.cpp)
 
+# Build whisper.cpp as a subproject (THIS FIXES EVERYTHING)
+add_subdirectory(${WHISPER_ROOT})
 
-
-
-# Include Whisper and GGML sources
-set(WHISPER_SRCS
-    ${WHISPER_ROOT}/src/whisper.cpp
-    ${WHISPER_ROOT}/ggml/src/ggml.c
-    ${WHISPER_ROOT}/ggml/src/ggml-alloc.c
-    ${WHISPER_ROOT}/ggml/src/ggml-backend.cpp
-    ${WHISPER_ROOT}/ggml/src/ggml-quants.c
-)
-
-# App target
-qt_add_executable(Whisper
-   # main.cpp
-   whisperworker.h
-   whisperworker.cpp
-   ${WHISPER_SRCS}
-)
-
-# Include headers path
-target_include_directories(Whisper PRIVATE
-    ${WHISPER_ROOT}/include
-    ${WHISPER_ROOT}/src
-    ${WHISPER_ROOT}/ggml/include
+# -------------------------
+# App
+# -------------------------
+qt_add_executable(WhisperApp
+    whisperworker.cpp
+    whisperworker.h
+    # main.cpp
 )
 
 # Link Libraries (whisper requires threading capabilities)
 find_package(Threads REQUIRED)
 
-target_link_libraries(Whisper PRIVATE    Qt6::Core
+target_link_libraries(WhisperApp PRIVATE
+    Qt6::Core
     Qt6::Qml
     Qt6::Network
-    Threads::Threads)
+    whisper
+    Threads::Threads
+)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:DebugDLL>")
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+
+set(GGML_BACKEND_CPU ON CACHE BOOL "" FORCE)
+set(GGML_OPENMP OFF CACHE BOOL "" FORCE)
+set(GGML_VULKAN ON)

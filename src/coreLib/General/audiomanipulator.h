@@ -6,6 +6,11 @@
 #include <QVector>
 #include <QByteArray>
 #include <QtMath>
+#include <QAudioFormat>
+#include <QAudioBuffer>
+#include <QVector>
+#include <QtEndian>
+
 
 class AudioManipulator : public QObject
 {
@@ -16,6 +21,8 @@ public:
     QVector<qint16> convertToPcm16kMono(const QByteArray &inputData, int originalSampleRate, int originalChannels, int bytesPerSample);
 
     QVector<float> convertToPcm16kMonoFloat(const QByteArray &inputData, int originalSampleRate, int originalChannels, int bytesPerSample);
+
+    QVector<float> convertToNormalizedMono(const QByteArray& inputData, const QAudioFormat& sourceFormat);
 
 signals:
 };

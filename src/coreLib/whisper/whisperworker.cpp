@@ -67,3 +67,47 @@ void whisperworker::processAudio(const QString &modelPath, const QVector<float> 
 
     emit transcriptionFinished(resultText.trimmed());
 }
+
+
+
+// implementation exmle
+
+// // Setup Safe Multi-threaded Operations Architecture
+// QThread *workerThread = new QThread();
+// WhisperWorker *worker = new WhisperWorker();
+// worker->moveToThread(workerThread);
+
+// // Wire Core Engine Communications
+// QObject::connect(startBtn, &QPushButton::clicked, [=]() {
+//     startBtn->setEnabled(false);
+//     // Replace this path with your downloaded local custom whisper model file path
+//     QString modelPath = "./ggml-base.en.bin";
+//     QVector<float> audioBuffer = generateMockAudio();
+
+//     // Invoke execution safely on the dedicated worker thread line
+//     QMetaObject::invokeMethod(worker, "processAudio", Qt::QueuedConnection,
+//                               Q_ARG(QString, modelPath),
+//                               Q_ARG(QVector<float>, audioBuffer));
+// });
+
+// QObject::connect(worker, &WhisperWorker::statusMessage, statusLabel, &QLabel::setText);
+
+// QObject::connect(worker, &WhisperWorker::transcriptionFinished, [=](const QString &text) {
+//     textEdit->setText(text);
+//     statusLabel->setText("Status: Finished!");
+//     startBtn->setEnabled(true);
+// });
+
+// QObject::connect(worker, &WhisperWorker::errorOccurred, [=](const QString &error) {
+//     QMessageBox::critical(&window, "Inference Failure", error);
+//     statusLabel->setText("Status: Error occurred");
+//     startBtn->setEnabled(true);
+// });
+
+// // Handle Thread Cleanup safely on close
+// QObject::connect(&app, &QApplication::aboutToQuit, [=]() {
+//     workerThread->quit();
+//     workerThread->wait();
+//     delete worker;
+//     delete workerThread;
+// });

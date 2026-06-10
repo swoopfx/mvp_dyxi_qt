@@ -1,6 +1,10 @@
 # find_package(Qt6 REQUIRED COMPONENTS Quick Gui Multimedia QuickControls2  Network Core TextToSpeech )#This provides
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+
+
+find_package(Qt6 REQUIRED COMPONENTS Multimedia)
+
 add_library(General STATIC
 
   # CoreSettings.hpp
@@ -10,11 +14,6 @@ add_library(General STATIC
   # usersession.cpp
 
 )
-# qt_add_executable(coreLib
-  # General/CoreSettings.hpp
-  # General/neworkaccessmanager.h General/neworkaccessmanager.cpp
-  # General/usersession.h General/usersession.cpp
-# )
 
 qt_add_qml_module(General
   URI General
@@ -33,6 +32,7 @@ qt_add_qml_module(General
   SOURCES postact.h postact.cpp
   SOURCES comparestrings.h comparestrings.cpp
   SOURCES audiomanipulator.h audiomanipulator.cpp
+  SOURCES audiotranscoder.h audiotranscoder.cpp
 )
 
 target_link_libraries(General
@@ -40,6 +40,7 @@ target_link_libraries(General
   Qt6::Core
   Qt6::Qml
   Qt6::Network
+  Qt6::Multimedia
 )
 # set(CMAKE_AUTOMOC ON)
 

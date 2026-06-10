@@ -1,10 +1,11 @@
 include(FetchContent)
 
 find_package(Qt6 REQUIRED COMPONENTS
+    Core
+    Gui
     Quick
     Multimedia
     Core5Compat
-    Multimedia
     TextToSpeech
 )
 
@@ -97,9 +98,11 @@ endif()
 target_link_libraries(AppController
     PRIVATE Qt6::Quick
     PRIVATE Qt6::Core
-    PRIVATE    Qt6::Multimedia
+    PRIVATE   Qt6::Multimedia
     PRIVATE  Qt6::Core5Compat
     PRIVATE Qt6::TextToSpeech
+    PRIVATE Qt6::Core
+    PRIVATE Qt6::Gui
      crypto3
     UIModule
     Generalplugin

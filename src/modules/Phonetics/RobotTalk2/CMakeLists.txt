@@ -1,6 +1,6 @@
  
 qt_add_executable(RobotTalk2
-    main.cpp
+    # main.cpp
     speechengine.h
     speechengine.cpp
 )
