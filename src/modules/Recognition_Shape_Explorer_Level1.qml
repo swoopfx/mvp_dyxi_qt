@@ -1,9 +1,10 @@
 import QtQuick 2.15
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtMultimedia 6.4
+// import QtMultimedia 6.4
 import "ShapeExplorer"
 import "ShapeExplorer/Telemetry.js" as Telemetry
+import modules
 import Dataset
 import General
 
@@ -12,12 +13,17 @@ Page{
 
  property int typeId: 0
  property int id: 0
+ property int yPosition: shape_level1.height - 120
 
   RecognitionShapeExplorerDataset{
       id: recogDataset
   }
   CoreSettings {
       id: coreSettings
+  }
+
+RecogAudioManager{
+      id: audioManager
   }
 
 
@@ -31,9 +37,9 @@ Page{
     }
 
     // Audio
-    SoundEffect { id: soundSuccess; source: "qrc:/Recognition/ShapeExplorer/assets/success.wav" }
-    SoundEffect { id: soundFailure; source: "qrc:/Recognition/ShapeExplorer/assets/failure.wav" }
-    SoundEffect { id: soundRabbit; source: "qrc:/Recognition/ShapeExplorer/assets/rabbit_appear.wav"; volume: 0.15 }
+    // SoundEffect { id: soundSuccess; source: "qrc:/Recognition/ShapeExplorer/assets/success.wav" }
+    // SoundEffect { id: soundFailure; source: "qrc:/Recognition/ShapeExplorer/assets/failure.wav" }
+    // SoundEffect { id: soundRabbit; source: "qrc:/Recognition/ShapeExplorer/assets/rabbit_appear.wav"; volume: 0.15 }
 
     Rabbit {
         id: rabbit
@@ -44,7 +50,7 @@ Page{
         interval: 5000; running: true; repeat: true
         onTriggered: {
             rabbit.show()
-            soundRabbit.play()
+           audioManager.playRabbit()
         }
     }
 
@@ -64,27 +70,31 @@ Page{
     // Draggable Shapes
     Shape {
         id: shapeCircle
-        x: 100; y: 500; shapeType: "circle"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/circle.png"
+        x: 100; y: yPosition; shapeType: "circle"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/circle.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeCircle, slotCircle)
+
     }
     Shape {
         id: shapeSquare
-        x: 300; y: 500; shapeType: "square"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/square.png"
+        x: 300; y: yPosition; shapeType: "square"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/square.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeSquare, slotSquare)
+
     }
     Shape {
         id: shapeTriangle
-        x: 500; y: 500; shapeType: "triangle"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/triangle.png"
+        x: 500; y: yPosition; shapeType: "triangle"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/triangle.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeTriangle, slotTriangle)
+
     }
     Shape {
         id: shapeStar
-        x: 700; y: 500; shapeType: "star"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/star.png"
+        x: 700; y: yPosition; shapeType: "star"; imageSource: "qrc:/Recognition/ShapeExplorer/assets/star.png"
         onDragStarted: Telemetry.recordSelection()
         onDragEnded: checkMatch(shapeStar, slotStar)
+
     }
 
     function checkMatch(shape, slot) {
@@ -93,13 +103,13 @@ Page{
 
         if (distance < 80) {
             shape.isMatched = true
-            soundSuccess.play()
+            audioManager.playSuccess()
             Telemetry.recordMatch(shape.shapeType, true, 2000) // Simplified duration for demo
         } else {
             // Return to start
             shape.x = shape.startPos.x
             shape.y = shape.startPos.y
-            soundFailure.play()
+            audioManager.playFailure()
             Telemetry.recordMatch(shape.shapeType, false, 1000)
         }
     }

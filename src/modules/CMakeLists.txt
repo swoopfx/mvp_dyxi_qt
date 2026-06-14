@@ -1,7 +1,7 @@
 # add_library(modules STATIC
 #     #login.cpp
 # )
-
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Network Multimedia)
 qt_add_qml_module(modules
     STATIC
     URI modules
@@ -17,6 +17,10 @@ qt_add_qml_module(modules
       QML_FILES ShapeExplorer/TargetSlot.qml
      QML_FILES  ShapeExplorer/Telemetry.js
      QML_FILES EntryPoint.qml
+     # SOURCES ShapeExplorer/audiomanagerx.h ShapeExplorer/audiomanagerx.cpp
+
+     SOURCES recogaudiomanager.h
+     SOURCES recogaudiomanager.cpp
 
        # #Reognition Files
        # QML_FILES Recognition_Shape_Explorer_Level1.qml
@@ -49,6 +53,15 @@ qt_add_resources(modules
         FILES "ShapeExplorer/assets/success.wav"
         FILES "ShapeExplorer/assets/triangle.png"
         FILES "ShapeExplorer/assets/triangle_original.png"
+)
+
+target_link_libraries(modules PRIVATE
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
+    Qt6::Network
+    Qt6::Multimedia
 )
 
 add_subdirectory(ADHD)

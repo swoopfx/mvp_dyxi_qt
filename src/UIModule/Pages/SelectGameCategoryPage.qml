@@ -87,7 +87,7 @@ Page {
 
                         Text {
                             anchors.centerIn: parent
-                            text: "📚 Literacy Games"
+                            text: "📚 Game type"
                             font.pixelSize: 22
                             font.bold: true
                             color: "#2E7D32"
@@ -170,7 +170,7 @@ Page {
 
                         Text {
                             anchors.centerIn: parent
-                            text: "📚 Literacy Games"
+                            text: "🧠 Choose mode"
                             font.pixelSize: 22
                             font.bold: true
                             color: "#2E7D32"
@@ -235,3 +235,49 @@ Page {
         }
     }
 }
+
+/**
+
+🧠 Brain Training
+📖 Reading Practice
+🔤 Letter Learning
+🌟 Reading Helper
+💙 Learning Support
+🧩 Word Builder
+🚀 Learning Journey
+
+🤝 Learning Support
+💙 Reading Support
+🌟 Guided Learning
+🧭 Learning Path
+🔤 Letter Helper
+📖 Reading Companion
+🧠 Brain Support
+🌈 Learning Adventure
+🚀 Learning Journey
+⭐ Star Learner
+🎉 Fun Learning
+🦉 Wise Owl Mode
+🌻 Growth Mode
+🎨 Creative Learning
+✨ Discovery Time
+
+🧠 Memory Training
+🎴 Memory Match
+⚡ Brain Boost
+🔄 Recall Practice
+🎯 Concentration Mode
+🏅 Skill Builder
+🧩 Cognitive Challenge
+
+🌟 Reading Helper
+📖 Reading Practice
+🔤 Letter Learning
+🔡 Word Builder
+📝 Reading Skills
+🎯 Focus Reading
+🧩 Word Puzzle
+💡 Learn & Read
+🌈 Easy Reading
+
+  **/
