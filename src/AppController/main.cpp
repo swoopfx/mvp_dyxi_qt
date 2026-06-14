@@ -11,12 +11,25 @@
 #include <QGuiApplication>
 // #include <QMicrophonePermission>
 #include <QPermission>
+// #include "../General/"
 
 
 int main(int argc, char *argv[])
 {
 
-    qputenv("QML_IMPORT_TRACE", "1");
+    // qputenv("QML_IMPORT_TRACE", "1");
+
+
+    // QThread *networkThread = new QThread();
+    // NetworkWorker *worker = new NetworkWorker();
+
+    // // Move the worker object to the thread
+    // worker->moveToThread(networkThread);
+
+    // // Clean up the thread and worker when finished
+    // connect(networkThread, &QThread::finished, worker, &QObject::deleteLater);
+    // connect(networkThread, &QThread::finished, networkThread, &QObject::deleteLater);
+
 
     QGuiApplication app(argc, argv);
 

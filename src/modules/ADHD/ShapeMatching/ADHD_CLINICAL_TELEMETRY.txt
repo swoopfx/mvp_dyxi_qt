@@ -1,0 +1,115 @@
+========================================================================
+ADHD COGNITIVE PROFILE & CLINICAL TELEMETRY SPECIFICATION
+Child Shape Matcher — C++ Backend & QML Modular Engine
+========================================================================
+
+1. ADHD EXPERIENTIAL FRAMEWORK: DESIGNING FOR NEURODIVERGENCY
+------------------------------------------------------------------------
+Children with Attention-Deficit/Hyperactivity Disorder (ADHD) experience 
+unique differences in neurochemistry (such as dopamine regulation) and 
+cognitive processing. Traditional learning utilities often fail them due 
+to monotonous structures and high delay of reinforcement. This game is 
+architected from the ground up to support, engage, and help children with 
+ADHD through several specific psychological design pillars:
+
+A. Optimal Stimulation & Immediate Praise:
+   ADHD is often characterized by a baseline deficit in tonic dopamine levels, 
+   rendering standard educational interfaces dry or taxing. By offering 
+   instant magnetic snapping, highly encouraging and colorful QML 
+   transitions, and satisfying synthetic sound effects (triggered on-demand 
+   via the C++ backend), the game supplies an optimal flow of micro-rewards. 
+   These frequent positive reinforcements help maintain task-oriented arousal 
+   without overwhelming the child's sensory threshold.
+
+B. Mitigated Cognitive Load & Executive Scaffolding:
+   ADHD directly impacts executive functions, including working memory and 
+   organization. The clean, zero-clutter workspace eliminates competing visual 
+   stimuli that usually cause cognitive fatigue. Additionally, the task 
+   demands are crystal clear, reducing the "initiation paralysis" common in 
+   schoolwork.
+
+C. Physical/Tactile Feedback:
+   The draggable shape elements mimic tangible blocks. Having clear physical-like 
+   targets (glowing transparent stencils) provides visual anchoring that guides 
+   motor control and sustained spatial attention.
+
+
+2. NON-INVASIVE BEHAVIORAL SAMPLING (HOW IT GATHERS & UTILIZES DATA)
+------------------------------------------------------------------------
+Rather than utilizing artificial, stress-inducing assessments, the system 
+collects clinical-grade interaction telemetry silently during standard, joyful play:
+
+- Physical Screen Swipes & Micro-Press events: Measures drag distances, hover 
+  densities, and fine-motor tremor or erratic drift (logPress).
+- Accurate Durations: Tracks times elapsed from initial touch of a shape to a 
+  satisfactory snap, or to an incorrect release.
+- Chronological Match Streams: Logs the exact path of shapes the child attempts, 
+  success distributions, and chronological time logs.
+
+HOW THE DATA IS INVALUABLE FOR THE CHILD:
+1. Adapting Learning Rhythms: If telemetry shows a sudden drop-off in Speed 
+   and an increase in Failed Matches after 2 minutes of play, this is a clear 
+   indicator of attention fatigue. Teachers or parents can use this to schedule 
+   preventative micro-breaks in their actual homework schedules.
+2. Motor Coordination Screening: Tracking average selection-to-match gaps 
+   and drift distances lets specialists monitor fine-motor trajectory control, 
+   acting as a safe, continuous metric for physical progression.
+3. Task Patience & Self-Regulation Tracking: Analyzing the ratio of correct 
+   snaps to rapid, erratic trial-and-error attempts offers direct visibility 
+   into impulse control and cognitive persistence.
+
+
+3. C++ BACKEND ANALYTICAL METRICS SPECIFICTION & MATHEMATICAL DERIVATION
+------------------------------------------------------------------------
+All data points are offloaded from the QML rendering thread and processed in 
+the C++ TelemetryBackend engine (telemetrybackend.cpp) to guarantee high-precision 
+indexing and ensure zero UI stutter.
+
+The three primary high-level indices are derived as follows:
+
+A. PROBLEM SOLVING INDEX (COGNITIVE PERSISTENCE / TASK STYLE)
+   - Focus: Measures precision, planning, and task accuracy. Helps flag 
+     high impulsivity vs. mindful planning.
+   - Equation:
+     Let C = Total Correct Match Successes.
+     Let F = Total Failed Match Attempts.
+     Let T = Total Match Attempts = C + F.
+
+     If T > 0:
+         Raw_Index = (C / T) * 100.0 - (F * 2.5)
+         Problem_Solving_Index = Clamp(Raw_Index, 10.0, 100.0)
+     Otherwise:
+         Problem_Solving_Index = 100.0
+
+   - ADHD Interpretation: Children who act very impulsively will have clean, 
+     rapid dragging but a high rate of failures (F), resulting in a lower 
+     solving index. Over time, as self-regulation strategies take hold, F 
+     decreases, or C/T improves, causing this index to climb towards 100%.
+
+B. SPEED SCORE (PROCESSING SPEED & MOTOR CONVERGENCY)
+   - Focus: Evaluates the rate of mental translation and spatial action.
+   - Equation:
+     Let S_correct = Cumulative sum of durations (in milliseconds) for all C.
+     Let Average_Correct_Time_Sec = (S_correct / C) / 1000.0 (if C > 0; else 5.0)
+
+     Raw_Score = 100.0 - (Average_Correct_Time_Sec * 6.5)
+     Speed_Score = Clamp(Raw_Score, 15.0, 100.0)
+
+   - ADHD Interpretation: Very low speeds (prolonged times) may reflect lapses in 
+     vigilance, inattentive drifting, or physical hesitation. Overly high speeds 
+     coupled with high failure rates describe hyperactive-impulsive approaches.
+
+C. CREATIVE INDEX (EXPLORATION DENSITY & CURIOSITY KINETICS)
+   - Focus: Maps the child's spatial exploration behavior, tactile curiosity, 
+     and gameplay playfulness.
+   - Equation:
+     Let N_press = The total count of screen click/press/drag events logged.
+     Let F = Total Failed Match attempts.
+
+     Raw_Score = 50.0 + (N_press * 2.5) - (F * 1.5)
+     Creative_Index = Clamp(Raw_Score, 20.0, 100.0)
+
+   - ADHD Interpretation: This index tracks interaction energy. Instead of 
+     punishing errors, it rewards active spatial exploration (N_press). Active, 
+     curious touch is a healthy sign of sensory-motor experimentation, balanced 
+     by a mild penalty for uncalculated, repetitive fails out of frustration.

@@ -120,6 +120,8 @@ target_link_libraries(AppController
     TracingLetterplugin
     MathDice2plugin
     WordRecognitionGame2plugin
+    Jigsawplugin
+    CogniMazeplugin
 )
 
 # qt_add_android_permission(AppController NAME  "android.permission.INTERNET")
@@ -139,6 +141,9 @@ target_link_libraries(AppController PRIVATE WordRecognitionGameplugin)
 target_link_libraries(AppController PRIVATE TracingLetterplugin)
 target_link_libraries(AppController PRIVATE MathDice2plugin)
 target_link_libraries(AppController PRIVATE WordRecognitionGame2plugin)
+target_link_libraries(AppController PRIVATE Jigsawplugin)
+target_link_libraries(AppController PRIVATE CogniMazeplugin)
+
 
 
 

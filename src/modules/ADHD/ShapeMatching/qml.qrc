@@ -1,0 +1,13 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file>Main.qml</file>
+    <file>EasyPage.qml</file>
+    <file>MediumPage.qml</file>
+    <file>HardPage.qml</file>
+    <file>ShapeItem.qml</file>
+    <file>assets/cloud.svg</file>
+    <file>assets/audio/select.wav</file>
+    <file>assets/audio/correct.wav</file>
+    <file>assets/audio/fail.wav</file>
+</qresource>
+</RCC>

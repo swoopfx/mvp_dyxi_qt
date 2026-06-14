@@ -33,6 +33,8 @@ qt_add_qml_module(General
   SOURCES comparestrings.h comparestrings.cpp
   SOURCES audiomanipulator.h audiomanipulator.cpp
   SOURCES audiotranscoder.h audiotranscoder.cpp
+  SOURCES networkinformation.h networkinformation.cpp
+  # SOURCES networinfo.h networinfo.cpp
 )
 
 target_link_libraries(General
