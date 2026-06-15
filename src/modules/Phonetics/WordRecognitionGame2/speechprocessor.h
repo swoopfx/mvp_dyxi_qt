@@ -46,6 +46,9 @@ public slots:
     // Controls
     void startRecording(const QString &fileName);
     void stopAndAnalyze(const QString &expectedWord, qint64 timeTakenMs);
+    void processSpeechAnalysis(const QString &expectedWord,
+                               qint64 timeTakenMs);
+    void uploadMetrics(  const QJsonObject &activityMetrics);
     void speak(const QString &text);
     
     // Reset and export sessions

@@ -13,6 +13,8 @@ Page {
     property string activeUserName: ""
     property string userAge: ""
     property var gameTypeId: ""
+    property var gameCategoryId: ""
+    property var gameProgrmId: ""
 
     // property var gameTypeId: {}
     // anchors.fill: parent
@@ -34,205 +36,196 @@ Page {
         anchors.fill: parent
     }
 
-    Column {
+    ScrollView {
+        // anchors.fill: parent
         anchors.fill: parent
         anchors.margins: 40
-        anchors.centerIn: parent
-        spacing: 40
 
-        // Header
-        // Rectangle {
-        //     width: parent.width
-        //     height: 60
-        //     color: "white"
-        //     radius: 60
-        //     border.color: "#AED581"
-        //     border.width: 5
-
-        //     Text {
-        //         anchors.centerIn: parent
-        //         text: "Dyxi Learning World"
-        //         color: "#558B2F"
-        //         font.family: "Verdana", "Arial"
-        //         font.pixelSize: 12
-        //         font.bold: true
-        //         // letterSpacing: 2
-        //     }
-        // }
-
-        // contentHeight:
-
-        ScrollView {
+        Flickable {
+            id: flick
             anchors.fill: parent
+            contentHeight: contentColumn.implicitHeight
+            clip: true
 
-            Flickable {
-                id: flick
-                anchors.fill: parent
-                contentHeight: contentColumn.implicitHeight
-                clip: true
+            Column {
+                id: contentColumn
+                width: flick.width
+                spacing: 20
 
-                Column {
-                    id: contentColumn
-                    width: flick.width
-                    spacing: 20
+                // =========================
+                // Literacy Games
+                // =========================
+                Rectangle {
+                    width: parent.width
+                    height: 50
+                    radius: 10
+                    color: "#E8F5E9"
 
-                    // =========================
-                    // Literacy Games
-                    // =========================
-                    Rectangle {
-                        width: parent.width
-                        height: 50
-                        radius: 10
-                        color: "#E8F5E9"
+                    Text {
+                        anchors.centerIn: parent
+                        text: "📚 Game type"
+                        font.pixelSize: 22
+                        font.bold: true
+                        color: "#2E7D32"
+                    }
+                }
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: "📚 Game type"
-                            font.pixelSize: 22
-                            font.bold: true
-                            color: "#2E7D32"
-                        }
+                // First section
+                GridLayout {
+                    id: gridTop
+                    width: parent.width
+                    // columns: 4
+                    columnSpacing: 15
+                    rowSpacing: 15
+
+                    GameItem {
+                        labelText: "Phonics Fun"
+                        imageSource: "qrc:/ui/images/phonics.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            // "url": coreSettings.baseUrl+"/api/game-by-type"+"?type=1"+"age"+UserSession.userAge,
+                            "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[0].id,
+                            "pageTitle": selectGamePage.gameTypeId[0].type,
+                            "avatar": "qrc:/ui/images/phonics.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[0].type,
+                            "stackView": stackView
+                        })
                     }
 
-                    // First section
-                    GridLayout {
-                        id: gridTop
-                        width: parent.width
-                        // columns: 4
-                        columnSpacing: 15
-                        rowSpacing: 15
-
-                        GameItem {
-                            labelText: "Phonics Fun"
-                            imageSource: "qrc:/ui/images/phonics.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                // "url": coreSettings.baseUrl+"/api/game-by-type"+"?type=1"+"age"+UserSession.userAge,
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[0].id,
-                                "pageTitle": selectGamePage.gameTypeId[0].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[0].type,
-                                "stackView": stackView
-                            })
-                        }
-
-                        GameItem {
-                            labelText: "Word Tracing"
-                            imageSource: "qrc:/ui/images/tracing.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[2].id,
-                                "pageTitle": selectGamePage.gameTypeId[2].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[2].type,
-                                "stackView": stackView
-                            })
-                        }
-
-                        GameItem {
-                            labelText: "Recognition"
-                            imageSource: "qrc:/ui/images/recognition.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[2].id,
-                                "pageTitle": selectGamePage.gameTypeId[2].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[2].type,
-                                "stackView": stackView
-                            })
-                        }
-
-                        GameItem {
-                            labelText: "Reading"
-                            imageSource: "qrc:/ui/images/reading.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[2].id,
-                                "pageTitle": selectGamePage.gameTypeId[2].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[2].type
-                            })
-                        }
+                    GameItem {
+                        labelText: "Word Tracing"
+                        imageSource: "qrc:/ui/images/tracing.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[2].id,
+                            "pageTitle": selectGamePage.gameTypeId[2].type,
+                            "avatar": "qrc:/ui/images/tracing.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[2].type,
+                            "stackView": stackView
+                        })
                     }
 
-                    // Horizontal spacer / divider
-                    Rectangle {
-                        width: parent.width
-                        height: 3
-                        color: "#38bdf8"
-                        opacity: 0.4
+                    GameItem {
+                        labelText: "Recognition"
+                        imageSource: "qrc:/ui/images/recognition.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[3].id,
+                            "pageTitle": selectGamePage.gameTypeId[3].type,
+                            "avatar": "qrc:/ui/images/recognition.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[3].type,
+                            "stackView": stackView
+                        })
                     }
 
-                    // =========================
-                    // Literacy Games
-                    // =========================
-                    Rectangle {
-                        width: parent.width
-                        height: 50
-                        radius: 10
-                        color: "#E8F5E9"
+                    GameItem {
+                        labelText: "Reading"
+                        imageSource: "qrc:/ui/images/reading.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[5].id,
+                            "pageTitle": selectGamePage.gameTypeId[5].type,
+                            "avatar": "qrc:/ui/images/reading.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[5].type
+                        })
+                    }
+                }
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: "🧠 Choose mode"
-                            font.pixelSize: 22
-                            font.bold: true
-                            color: "#2E7D32"
-                        }
+                // Horizontal spacer / divider
+                Rectangle {
+                    width: parent.width
+                    height: 3
+                    color: "#38bdf8"
+                    opacity: 0.4
+                }
+
+                // =========================
+                // Literacy Games
+                // =========================
+                Rectangle {
+                    width: parent.width
+                    height: 50
+                    radius: 10
+                    color: "#E8F5E9"
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: "🧠 Game Category"
+                        font.pixelSize: 22
+                        font.bold: true
+                        color: "#2E7D32"
+                    }
+                }
+
+                // Second section
+                GridLayout {
+                    id: gridBottom
+                    width: parent.width
+                    // columns: 4
+                    columnSpacing: 20
+                    rowSpacing: 20
+
+                    GameItem {
+                        labelText: "Dyscalculia"
+                        imageSource: "qrc:/ui/images/dyscalculia.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameCategoryList + "?cat=" + gameCategoryId[2].id,
+                            "pageTitle": selectGamePage.gameTypeId[0].gameCategory,
+                            "avatar": "qrc:/ui/images/dyscalculia.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[0].gameCategory
+                        })
                     }
 
-                    // Second section
-                    GridLayout {
-                        id: gridBottom
-                        width: parent.width
-                        // columns: 4
-                        columnSpacing: 20
-                        rowSpacing: 20
-
-                        GameItem {
-                            labelText: "Writing Practice"
-                            imageSource: "qrc:/ui/images/writing.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[0].id,
-                                "pageTitle": selectGamePage.gameTypeId[0].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[0].type
-                            })
-                        }
-
-                        GameItem {
-                            labelText: "Word Recog"
-                            imageSource: "qrc:/ui/images/writing.png"
-                            onClicked: stackView.push("GameLoaderPage.qml", {
-                                "url": coreSettings.dyxiGetGameList + "?type=" + gameTypeId[2].id,
-                                "pageTitle": selectGamePage.gameTypeId[2].type,
-                                "avatar": "qrc:/ui/images/phonics.png",
-                                "resoucesUrl": selectGamePage.gameTypeId[2].type
-                            })
-                        }
-
-                        GameItem {
-                            labelText: "Writing Practice"
-                            imageSource: "qrc:/ui/images/reading.png"
-                        }
+                    GameItem {
+                        labelText: "Dyslexia"
+                        imageSource: "qrc:/ui/images/dyslexia.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameCategoryList + "?cat=" + gameCategoryId[0].id,
+                            "pageTitle": selectGamePage.gameTypeId[2].gameCategory,
+                            "avatar": "qrc:/ui/images/dyslexia.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[2].gameCategory
+                        })
+                    }
+                    GameItem {
+                        labelText: "ADHD"
+                        imageSource: "qrc:/ui/images/adhd.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameCategoryList + "?cat=" + gameCategoryId[1].id,
+                            "pageTitle": selectGamePage.gameTypeId[2].gameCategory,
+                            "avatar": "qrc:/ui/images/adhd.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[2].gameCategory
+                        })
+                    }
+                    GameItem {
+                        labelText: "Dysgraphia"
+                        imageSource: "qrc:/ui/images/writing.png"
+                        onClicked: stackView.push("GameLoaderPage.qml", {
+                            "url": coreSettings.dyxiGetGameCategoryList + "?cat=" + gameCategoryId[3].id,
+                            "pageTitle": selectGamePage.gameTypeId[2].gameCategory,
+                            "avatar": "qrc:/ui/images/writing.png",
+                            "resoucesUrl": selectGamePage.gameTypeId[2].gameCategory
+                        })
                     }
                 }
             }
         }
+    }
 
-        Component.onCompleted: {
-            // console.log(coreSettings.dyxiGameTypeIds);
-            networkPresets.getGameTypeIdRequest(coreSettings.dyxiGameTypeIds);
-            networkPresets.getGameCategoryIdRequest(coreSettings.dyxiGetGameCategoryList);
-        }
+    Component.onCompleted: {
+        // console.log(coreSettings.dyxiGameTypeIds);
+        networkPresets.getGameTypeIdRequest(coreSettings.dyxiGameTypeIds);
+        networkPresets.getGameCategoryIdRequest(coreSettings.dyxiGameCategoryIds);
+        networkPresets.getProgramsIdRequest(coreSettings.dyxiGameProgramIds);
+    }
 
-        Connections {
-            target: networkPresets
-            function onGameTypeIdsChanged() {
-                if (true) {
-                    selectGamePage.gameTypeId = networkPresets.gameTypeIds;
-                    console.log(selectGamePage.gameTypeId[0].type);
-                }
+    Connections {
+        target: networkPresets
+        function onGameTypeIdsChanged() {
+            if (true) {
+                selectGamePage.gameTypeId = networkPresets.gameTypeIds;
+                selectGamePage.gameCategoryId = networkPresets.gameCategoryIds;
+                selectGamePage.gameProgrmId = networkPresets.gameProgramIds;
+                console.log(selectGamePage.gameCategoryId[0].gameCategory);
             }
-
-            // function
         }
+
+        // function
     }
 }
 

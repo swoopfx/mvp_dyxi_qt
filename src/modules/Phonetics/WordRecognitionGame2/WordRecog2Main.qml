@@ -28,24 +28,144 @@ Page {
     // Database of 80 colourful animal, object, and thing 3 and 4 letter words
     ListModel {
         id: wordDatabaseList
-        ListElement { word: "CAT"; category: "animal"; difficulty: 3; emoji: "🐱"; colorBegin: "#FF9E9E"; colorEnd: "#FF6F6F"; shape: "cat" }
-        ListElement { word: "DOG"; category: "animal"; difficulty: 3; emoji: "🐶"; colorBegin: "#FFD384"; colorEnd: "#F1AA41"; shape: "dog" }
-        ListElement { word: "PIG"; category: "animal"; difficulty: 3; emoji: "🐷"; colorBegin: "#FFAAAA"; colorEnd: "#FF8B94"; shape: "pig" }
-        ListElement { word: "COW"; category: "animal"; difficulty: 3; emoji: "🐮"; colorBegin: "#D8D8D8"; colorEnd: "#9B9B9B"; shape: "cow" }
-        ListElement { word: "FOX"; category: "animal"; difficulty: 3; emoji: "🦊"; colorBegin: "#FFAE68"; colorEnd: "#FF7844"; shape: "fox" }
-        ListElement { word: "OWL"; category: "animal"; difficulty: 3; emoji: "🦉"; colorBegin: "#B983FF"; colorEnd: "#94B3FD"; shape: "owl" }
-        ListElement { word: "BAT"; category: "animal"; difficulty: 3; emoji: "🦇"; colorBegin: "#4E31AA"; colorEnd: "#379237"; shape: "bat" }
-        ListElement { word: "BEE"; category: "animal"; difficulty: 3; emoji: "🐝"; colorBegin: "#FFF56D"; colorEnd: "#FFC715"; shape: "bee" }
-        ListElement { word: "BUG"; category: "animal"; difficulty: 3; emoji: "🐛"; colorBegin: "#9EFF9E"; colorEnd: "#55C355"; shape: "bug" }
-        ListElement { word: "SUN"; category: "thing"; difficulty: 3; emoji: "☀️"; colorBegin: "#FFE082"; colorEnd: "#E65100"; shape: "sun" }
-        ListElement { word: "CAR"; category: "object"; difficulty: 3; emoji: "🚗"; colorBegin: "#FF5D5D"; colorEnd: "#C70039"; shape: "car" }
-        ListElement { word: "CAKE"; category: "thing"; difficulty: 4; emoji: "🍰"; colorBegin: "#F8BBD0"; colorEnd: "#C2185B"; shape: "cake" }
-        ListElement { word: "TREE"; category: "object"; difficulty: 4; emoji: "🌳"; colorBegin: "#A5D6A7"; colorEnd: "#2E7D32"; shape: "tree" }
-        ListElement { word: "MOON"; category: "thing"; difficulty: 4; emoji: "🌙"; colorBegin: "#ECEFF1"; colorEnd: "#455A64"; shape: "moon" }
-        ListElement { word: "BALL"; category: "object"; difficulty: 4; emoji: "⚽"; colorBegin: "#FF8A80"; colorEnd: "#FF5252"; shape: "ball" }
+        ListElement {
+            word: "CAT"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐱"
+            colorBegin: "#FF9E9E"
+            colorEnd: "#FF6F6F"
+            shape: "cat"
+        }
+        ListElement {
+            word: "DOG"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐶"
+            colorBegin: "#FFD384"
+            colorEnd: "#F1AA41"
+            shape: "dog"
+        }
+        ListElement {
+            word: "PIG"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐷"
+            colorBegin: "#FFAAAA"
+            colorEnd: "#FF8B94"
+            shape: "pig"
+        }
+        ListElement {
+            word: "COW"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐮"
+            colorBegin: "#D8D8D8"
+            colorEnd: "#9B9B9B"
+            shape: "cow"
+        }
+        ListElement {
+            word: "FOX"
+            category: "animal"
+            difficulty: 3
+            emoji: "🦊"
+            colorBegin: "#FFAE68"
+            colorEnd: "#FF7844"
+            shape: "fox"
+        }
+        ListElement {
+            word: "OWL"
+            category: "animal"
+            difficulty: 3
+            emoji: "🦉"
+            colorBegin: "#B983FF"
+            colorEnd: "#94B3FD"
+            shape: "owl"
+        }
+        ListElement {
+            word: "BAT"
+            category: "animal"
+            difficulty: 3
+            emoji: "🦇"
+            colorBegin: "#4E31AA"
+            colorEnd: "#379237"
+            shape: "bat"
+        }
+        ListElement {
+            word: "BEE"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐝"
+            colorBegin: "#FFF56D"
+            colorEnd: "#FFC715"
+            shape: "bee"
+        }
+        ListElement {
+            word: "BUG"
+            category: "animal"
+            difficulty: 3
+            emoji: "🐛"
+            colorBegin: "#9EFF9E"
+            colorEnd: "#55C355"
+            shape: "bug"
+        }
+        ListElement {
+            word: "SUN"
+            category: "thing"
+            difficulty: 3
+            emoji: "☀️"
+            colorBegin: "#FFE082"
+            colorEnd: "#E65100"
+            shape: "sun"
+        }
+        ListElement {
+            word: "CAR"
+            category: "object"
+            difficulty: 3
+            emoji: "🚗"
+            colorBegin: "#FF5D5D"
+            colorEnd: "#C70039"
+            shape: "car"
+        }
+        ListElement {
+            word: "CAKE"
+            category: "thing"
+            difficulty: 4
+            emoji: "🍰"
+            colorBegin: "#F8BBD0"
+            colorEnd: "#C2185B"
+            shape: "cake"
+        }
+        ListElement {
+            word: "TREE"
+            category: "object"
+            difficulty: 4
+            emoji: "🌳"
+            colorBegin: "#A5D6A7"
+            colorEnd: "#2E7D32"
+            shape: "tree"
+        }
+        ListElement {
+            word: "MOON"
+            category: "thing"
+            difficulty: 4
+            emoji: "🌙"
+            colorBegin: "#ECEFF1"
+            colorEnd: "#455A64"
+            shape: "moon"
+        }
+        ListElement {
+            word: "BALL"
+            category: "object"
+            difficulty: 4
+            emoji: "⚽"
+            colorBegin: "#FF8A80"
+            colorEnd: "#FF5252"
+            shape: "ball"
+        }
     }
 
-    SpeechProcessor{
+    SpeechProcessor {
         id: cppSpeechProcessor
     }
 
@@ -55,18 +175,18 @@ Page {
         target: cppSpeechProcessor
 
         onSpeechEvaluationCompleted: (accuracy, fluency, vocab, memory, consistency, speechRate, pronunciationGrade, logJson) => {
-            console.log("C++ Engine Analysis returned: Accuracy=" + accuracy + " Fluency=" + fluency + " Consistency=" + consistency + " Grade=" + pronunciationGrade)
+            console.log("C++ Engine Analysis returned: Accuracy=" + accuracy + " Fluency=" + fluency + " Consistency=" + consistency + " Grade=" + pronunciationGrade);
             if (accuracy >= 65) {
-                window.gameState = "success"
-                cppSpeechProcessor.speak("Awesome job " + childName + "! You read that word perfectly!")
+                window.gameState = "success";
+                cppSpeechProcessor.speak("Awesome job " + childName + "! You read that word perfectly!");
             } else {
-                window.gameState = "comical_reprompt"
-                cppSpeechProcessor.speak("I can't hear you!") // Comical Reprompt
+                window.gameState = "comical_reprompt";
+                cppSpeechProcessor.speak("I can't hear you!"); // Comical Reprompt
             }
         }
 
-        onRecordingFailed: (errorMsg) => {
-            console.log("Local audio hardware failure: " + errorMsg)
+        onRecordingFailed: errorMsg => {
+            console.log("Local audio hardware failure: " + errorMsg);
         }
 
         // Receives event from core when backend audio playback completes!
@@ -81,8 +201,8 @@ Page {
         interval: 2000 // 2 seconds welcome pause
         repeat: false
         onTriggered: {
-            window.gameState = "welcome"
-            cppSpeechProcessor.speak("Welcome " + window.childName + ", I would like you to read what you see.")
+            window.gameState = "welcome";
+            cppSpeechProcessor.speak("Welcome " + window.childName + ", I would like you to read what you see.");
         }
     }
 
@@ -91,9 +211,9 @@ Page {
         interval: 1000 // 1 second gap
         repeat: false
         onTriggered: {
-            window.repetitionCounter = 1
-            window.gameState = "reading"
-            window.readWordProgressively()
+            window.repetitionCounter = 1;
+            window.gameState = "reading";
+            window.readWordProgressively();
         }
     }
 
@@ -103,11 +223,11 @@ Page {
         repeat: true
         running: window.gameState === "listening"
         onTriggered: {
-            window.listenCountdown--
+            window.listenCountdown--;
             if (window.listenCountdown <= 0) {
                 // listeningTimer.stop()
                 stop();
-                window.stopAudioCaptureAndAnalyze()
+                window.stopAudioCaptureAndAnalyze();
             }
         }
     }
@@ -133,22 +253,21 @@ Page {
         // cppSpeechProcessor.speak(element.word);
 
         if (window.gameState !== "reading")
-                return;
+            return;
 
-            var word = wordDatabaseList.get(window.currentWordIndex).word;
+        var word = wordDatabaseList.get(window.currentWordIndex).word;
 
-            window.currentLetterIndex = 0;
-            window.speakingWholeWord = false;
+        window.currentLetterIndex = 0;
+        window.speakingWholeWord = false;
 
-            console.log("Starting spelling sequence for:", word);
+        console.log("Starting spelling sequence for:", word);
 
-            window.highlightCharIndex = 0;
+        window.highlightCharIndex = 0;
 
-            cppSpeechProcessor.speak(word.charAt(0));
+        cppSpeechProcessor.speak(word.charAt(0));
     }
 
-    function handleTTSFinished()
-    {
+    function handleTTSFinished() {
         var word = wordDatabaseList.get(window.currentWordIndex).word;
 
         // Welcome completed
@@ -159,7 +278,6 @@ Page {
 
         // Question prompt completed
         if (window.waitingForQuestionTts) {
-
             window.waitingForQuestionTts = false;
 
             console.log("Starting recording");
@@ -173,17 +291,12 @@ Page {
 
             // Still spelling letters
             if (!window.speakingWholeWord) {
-
                 window.currentLetterIndex++;
 
                 if (window.currentLetterIndex < word.length) {
+                    window.highlightCharIndex = window.currentLetterIndex;
 
-                    window.highlightCharIndex =
-                        window.currentLetterIndex;
-
-                    cppSpeechProcessor.speak(
-                        word.charAt(window.currentLetterIndex)
-                    );
+                    cppSpeechProcessor.speak(word.charAt(window.currentLetterIndex));
 
                     return;
                 }
@@ -201,18 +314,14 @@ Page {
 
             // Whole word completed
             if (window.speakingWholeWord) {
-
                 if (window.repetitionCounter < 3) {
-
                     window.repetitionCounter++;
 
                     window.currentLetterIndex = 0;
                     window.speakingWholeWord = false;
                     window.highlightCharIndex = 0;
 
-                    cppSpeechProcessor.speak(
-                        word.charAt(0)
-                    );
+                    cppSpeechProcessor.speak(word.charAt(0));
 
                     return;
                 }
@@ -232,15 +341,10 @@ Page {
 
         // Success feedback completed
         if (window.gameState === "success") {
-
-            if (window.currentWordIndex <
-                    wordDatabaseList.count - 1) {
-
+            if (window.currentWordIndex < wordDatabaseList.count - 1) {
                 window.currentWordIndex++;
                 window.startGameCycleCurrentWord();
-
             } else {
-
                 window.gameState = "idle";
             }
 
@@ -249,7 +353,6 @@ Page {
 
         // Reprompt completed
         if (window.gameState === "comical_reprompt") {
-
             window.gameState = "listening";
             window.startAudioCapture();
         }
@@ -451,8 +554,16 @@ Page {
                             border.width: 4
                             scale: window.highlightCharIndex === index ? 1.25 : 1.0
 
-                            Behavior on scale { NumberAnimation { duration: 150 } }
-                            Behavior on color { ColorAnimation { duration: 150 } }
+                            Behavior on scale {
+                                NumberAnimation {
+                                    duration: 150
+                                }
+                            }
+                            Behavior on color {
+                                ColorAnimation {
+                                    duration: 150
+                                }
+                            }
 
                             Text {
                                 anchors.centerIn: parent

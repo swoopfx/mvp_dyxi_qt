@@ -5,7 +5,7 @@ Item {
     id: rootGrid
     property int gridSize: 2
     property string pieceShape: "jigsaw"
-    property string sourceImage: "qrc:/assets/koala.png"
+    property string sourceImage: "qrc:/modules/jigsaw/assets/fox.png"
     property var engineBridge
 
     width: 360
@@ -53,27 +53,27 @@ Item {
 
             // Initial random scatter coordinates
             Component.onCompleted: {
-                x = Math.random() * (rootGrid.width - cellSize)
-                y = Math.random() * (rootGrid.height - cellSize)
+                x = Math.random() * (rootGrid.width - cellSize);
+                y = Math.random() * (rootGrid.height - cellSize);
             }
         }
     }
 
     // Helper function to solve nearest slot snap evaluation
     function findNearestSlot(px, py) {
-        var cellSize = rootGrid.width / gridSize
-        var col = Math.round(px / cellSize)
-        var row = Math.round(py / cellSize)
-        
+        var cellSize = rootGrid.width / gridSize;
+        var col = Math.round(px / cellSize);
+        var row = Math.round(py / cellSize);
+
         // Clamp bounds
-        col = Math.max(0, Math.min(col, gridSize - 1))
-        row = Math.max(0, Math.min(row, gridSize - 1))
+        col = Math.max(0, Math.min(col, gridSize - 1));
+        row = Math.max(0, Math.min(row, gridSize - 1));
 
         return {
             "row": row,
             "col": col,
             "targetX": col * cellSize,
             "targetY": row * cellSize
-        }
+        };
     }
 }

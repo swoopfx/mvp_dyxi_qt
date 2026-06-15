@@ -8,6 +8,7 @@ NeworkAccessManager::NeworkAccessManager(QObject *parent)
     setIsLoadingData(false);
     manager = new QNetworkAccessManager(this);
     connect(manager, &QNetworkAccessManager::finished, this, &NeworkAccessManager::onGetProfileDetailsApiFinished );
+
 }
 
 void NeworkAccessManager::getProfileApiRequest(const QString &url)
@@ -15,6 +16,7 @@ void NeworkAccessManager::getProfileApiRequest(const QString &url)
     setIsLoadingData(true);
     QNetworkRequest request(url);
     manager->get(request);
+     qDebug() << "SFinished Request";
 
 }
 
@@ -71,14 +73,16 @@ void NeworkAccessManager::setprofileDataMap(const QVariantMap &newProfileDataMap
  */
 void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
 {
+    qDebug() << "Started processing";
     QVariant statusCodeVariant = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     if(reply->error() == QNetworkReply::NoError){
         if(statusCodeVariant.isValid()){
             int statusCode = statusCodeVariant.toInt();  // extract status code
+             qDebug() << "SCode status";
             if(statusCode >= 200 && statusCode < 300){
                 QByteArray responseData = reply->readAll(); // extract all data
                 QJsonDocument doc = QJsonDocument::fromJson(responseData);
-
+ qDebug() << "Dat Processing";
                 if(!doc.isNull() && doc.isObject()){
                     setIsLoadingData(false);
                     m_profile = doc.object().toVariantMap();
@@ -87,7 +91,7 @@ void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
                         QVariantMap dataMap = data.toMap();
                         // setStudentDataMap(dataMap);
                         setprofileDataMap(dataMap);
-
+ qDebug() << "Profile setup";
                         // setUser Session Here which include age name and id
 
                         UserSession::instance()->setUserId(dataMap.value("id").toString());
@@ -116,7 +120,14 @@ void NeworkAccessManager::onGetProfileDetailsApiFinished(QNetworkReply *reply)
             }
 
 
+        }else{
+            // qDebug() << statusCodeVariant.isValid().
+             qDebug() << "invalid Statuscode";
+             emit requestFailed("nvalid Statuscode");
         }
+    }else{
+        qDebug() << "Network Error";
+          emit requestFailed("Network Error");
     }
      reply->deleteLater();
 }

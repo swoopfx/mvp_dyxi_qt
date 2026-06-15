@@ -14,6 +14,7 @@ class CoreSettings : public QObject
     Q_PROPERTY(QString dyxiRecognitionPostShapeExplorer READ dyxiRecognitionPostShapeExplorer FINAL)
     Q_PROPERTY(QString  dyxiGetGameList READ  dyxiGetGameList FINAL)
     Q_PROPERTY(QString dyxiGetGameCategoryList READ dyxiGetGameCategoryList  FINAL)
+    Q_PROPERTY(QString dyxiGetGameProgramsList READ dyxiGetGameProgramsList  FINAL)
 
 public:
     // explicit MyObject(QObject *parent = nullptr) : QObject(parent)/*, m_myText("Initial Value") {}*/
@@ -43,6 +44,11 @@ public:
         return m_dyxiGetGameList;
     }
 
+QString dyxiGetGameProgramsList()
+    {
+        return m_dyxiGetGameProgramsList;
+    }
+
 signals:
     void myTextChanged();
 
@@ -68,7 +74,8 @@ public:
     QString m_dyxiGameByParam = baseUrl+QStringLiteral("/api/game-types");
 
     QString m_dyxiGameTypeIds = baseUrl + QStringLiteral("/api/game-type-id");
-    const QString syxiGameCategoryIds = baseUrl+QStringLiteral("/api/game-category-id");
+    const QString dyxiGameCategoryIds = baseUrl+QStringLiteral("/api/game-category-id");
+    const QString dyxiGameProgramIds = baseUrl+QStringLiteral("/api/game-programs-id");
 
     // Pages
     // all pages should be relative to the Page/SelectPage.qml
@@ -88,13 +95,18 @@ public:
 
 
 
+    QString dyxiGetGameProgramsList() const;
+
 private:
     QString m_myText;
     QString m_dyxiRecognitionPostShapeExplorer = baseUrl + QStringLiteral("/api-post/recognition-shared-explorer");
 
     QString m_dyxiGetGameList= baseUrl+QStringLiteral("/api/game-types");
     QString m_dyxiGetGameCategoryList=baseUrl+QStringLiteral("/api/game-category/");
+    QString m_dyxiGetGameProgramsList = baseUrl+QStringLiteral("/api/game-programs");
 };
+
+
 
 
 

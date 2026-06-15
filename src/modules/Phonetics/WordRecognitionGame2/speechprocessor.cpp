@@ -43,7 +43,96 @@ void SpeechProcessor::startRecording(const QString &fileName)
     m_audioSource->start(&m_tempFile);
 }
 
-void SpeechProcessor::stopAndAnalyze(const QString &expectedWord, qint64 timeTakenMs)
+// void SpeechProcessor::stopAndAnalyze(const QString &expectedWord, qint64 timeTakenMs)
+// {
+//     if (m_audioSource) {
+//         m_audioSource->stop();
+//         m_tempFile.close();
+//         m_audioSource->deleteLater();
+//         m_audioSource = nullptr;
+//     }
+
+//     qDebug() << "C++ Recording stopped. Audio saved. Heavy computational diagnostics initialized.";
+
+//     // Simulating Local-First Whisper.cpp decoding speech output!
+//     // Kids occasionally swap vowels or stutter slightly, e.g. "KA-AT" or "DA-AG"
+//     QString spokenPhonetics = expectedWord; // simulated match
+//     if (QRandomGenerator::global()->generateDouble() > 0.85) {
+//         spokenPhonetics = (expectedWord == "DOG") ? "DOGGIE" : expectedWord + "E"; // simulated phoneme shift mismatch
+//     }
+
+//     // Heavy Metrics Calculations (C++ Exclusive Algorithm)
+//     int accuracy = calculateSpellAccuracy(expectedWord, spokenPhonetics);
+//     int fluency = computeFluencyIndex(timeTakenMs, accuracy);
+//     int vocab = computeVocabularyScore(m_sessionId, expectedWord);
+//     int memory = computeMemoryCapacity(expectedWord, timeTakenMs);
+//     int consistency = computePhonicConsistency(expectedWord, accuracy);
+//     double speechRate = computeSpeechRate(expectedWord, timeTakenMs);
+//     QString pGrade = computePronunciationGrade(accuracy, expectedWord.length());
+
+//     // Form Event Json Packet
+//     QJsonObject activityMetrics;
+//     activityMetrics["sessionId"] = m_sessionId;
+//     activityMetrics["wordSpoken"] = spokenPhonetics;
+//     activityMetrics["expectedWord"] = expectedWord;
+//     activityMetrics["timeTakenToRespond"] = static_cast<double>(timeTakenMs);
+//     activityMetrics["accuracy"] = accuracy;
+//     activityMetrics["fluencyIndex"] = fluency;
+//     activityMetrics["vocabularyKnowledge"] = vocab;
+//     activityMetrics["memoryCapacity"] = memory;
+//     activityMetrics["phonicConsistency"] = consistency;
+//     activityMetrics["speechRate"] = speechRate;
+//     activityMetrics["pronunciationGrade"] = pGrade;
+//     activityMetrics["audioFileName"] = m_currentFileName;
+//     activityMetrics["timestamp"] = QDateTime::currentDateTime().toString(Qt::ISODate);
+
+//     m_activitiesArray.append(activityMetrics);
+
+//     // Save Event Log
+//     QJsonObject eventLog;
+//     eventLog["id"] = QString::number(QDateTime::currentMSecsSinceEpoch());
+//     eventLog["sessionId"] = m_sessionId;
+//     eventLog["timestamp"] = QDateTime::currentDateTime().toString(Qt::ISODate);
+//     eventLog["eventType"] = "API_SYNC_START";
+//     eventLog["details"] = QString("C++ phonetic match [Acc: %1%, Fluency: %2%, Consistency: %3%, Grade: %4%]").arg(accuracy).arg(fluency).arg(consistency).arg(pGrade);
+//     m_eventHistory.append(eventLog);
+
+//     // Prepare HTTP Multipart POST payload to remote analytics repository
+//     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
+
+//     // JSON portion
+//     QHttpPart jsonPart;
+//     jsonPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
+//     jsonPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"metrics\""));
+//     QJsonDocument doc(activityMetrics);
+//     jsonPart.setBody(doc.toJson());
+//     multiPart->append(jsonPart);
+
+//     // Send mock POST variable file stream
+//     QHttpPart audioPart;
+//     audioPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("audio/wave"));
+//     audioPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant(QString("form-data; name=\"audioFile\"; filename=\"%1\"").arg(m_currentFileName)));
+
+//     QFile *file = new QFile(m_currentFileName);
+//     file->open(QIODevice::ReadOnly);
+//     file->setParent(multiPart); // will be deleted when multiPart is deleted
+//     audioPart.setBodyDevice(file);
+//     multiPart->append(audioPart);
+
+//     QUrl url("http://localhost:3000/api/metrics");
+//     QNetworkRequest request(url);
+
+//     QNetworkReply *reply = m_networkManager->post(request, multiPart);
+//     multiPart->setParent(reply); // delete multipart with reply
+
+//     connect(reply, &QNetworkReply::finished, this, &SpeechProcessor::handleUploadFinished);
+
+//     // Emit back parameters to QML UI for immediate kid feedback
+//     emit speechEvaluationCompleted(accuracy, fluency, vocab, memory, consistency, speechRate, pGrade, doc.toJson(QJsonDocument::Compact));
+// }
+
+void SpeechProcessor::stopAndAnalyze(const QString &expectedWord,
+                                     qint64 timeTakenMs)
 {
     if (m_audioSource) {
         m_audioSource->stop();
@@ -52,30 +141,48 @@ void SpeechProcessor::stopAndAnalyze(const QString &expectedWord, qint64 timeTak
         m_audioSource = nullptr;
     }
 
-    qDebug() << "C++ Recording stopped. Audio saved. Heavy computational diagnostics initialized.";
+    qDebug() << "Recording stopped.";
 
-    // Simulating Local-First Whisper.cpp decoding speech output!
-    // Kids occasionally swap vowels or stutter slightly, e.g. "KA-AT" or "DA-AG"
-    QString spokenPhonetics = expectedWord; // simulated match
+    processSpeechAnalysis(expectedWord, timeTakenMs);
+}
+
+void SpeechProcessor::processSpeechAnalysis(const QString &expectedWord,
+                                            qint64 timeTakenMs)
+{
+    // Simulated speech recognition result
+    QString spokenPhonetics = expectedWord;
+
     if (QRandomGenerator::global()->generateDouble() > 0.85) {
-        spokenPhonetics = (expectedWord == "DOG") ? "DOGGIE" : expectedWord + "E"; // simulated phoneme shift mismatch
+        spokenPhonetics =
+            (expectedWord == "DOG")
+                ? "DOGGIE"
+                : expectedWord + "E";
     }
 
-    // Heavy Metrics Calculations (C++ Exclusive Algorithm)
+    // Calculate metrics
     int accuracy = calculateSpellAccuracy(expectedWord, spokenPhonetics);
     int fluency = computeFluencyIndex(timeTakenMs, accuracy);
     int vocab = computeVocabularyScore(m_sessionId, expectedWord);
     int memory = computeMemoryCapacity(expectedWord, timeTakenMs);
     int consistency = computePhonicConsistency(expectedWord, accuracy);
-    double speechRate = computeSpeechRate(expectedWord, timeTakenMs);
-    QString pGrade = computePronunciationGrade(accuracy, expectedWord.length());
 
-    // Form Event Json Packet
+    double speechRate =
+        computeSpeechRate(expectedWord, timeTakenMs);
+
+    QString pGrade =
+        computePronunciationGrade(
+            accuracy,
+            expectedWord.length());
+
+    // Build metrics JSON
     QJsonObject activityMetrics;
+
     activityMetrics["sessionId"] = m_sessionId;
     activityMetrics["wordSpoken"] = spokenPhonetics;
     activityMetrics["expectedWord"] = expectedWord;
-    activityMetrics["timeTakenToRespond"] = static_cast<double>(timeTakenMs);
+    activityMetrics["timeTakenToRespond"] =
+        static_cast<double>(timeTakenMs);
+
     activityMetrics["accuracy"] = accuracy;
     activityMetrics["fluencyIndex"] = fluency;
     activityMetrics["vocabularyKnowledge"] = vocab;
@@ -84,51 +191,115 @@ void SpeechProcessor::stopAndAnalyze(const QString &expectedWord, qint64 timeTak
     activityMetrics["speechRate"] = speechRate;
     activityMetrics["pronunciationGrade"] = pGrade;
     activityMetrics["audioFileName"] = m_currentFileName;
-    activityMetrics["timestamp"] = QDateTime::currentDateTime().toString(Qt::ISODate);
 
+    activityMetrics["timestamp"] =
+        QDateTime::currentDateTime().toString(Qt::ISODate);
+
+    // Store locally
     m_activitiesArray.append(activityMetrics);
 
-    // Save Event Log
+    // Event log
     QJsonObject eventLog;
-    eventLog["id"] = QString::number(QDateTime::currentMSecsSinceEpoch());
+
+    eventLog["id"] =
+        QString::number(
+            QDateTime::currentMSecsSinceEpoch());
+
     eventLog["sessionId"] = m_sessionId;
-    eventLog["timestamp"] = QDateTime::currentDateTime().toString(Qt::ISODate);
+
+    eventLog["timestamp"] =
+        QDateTime::currentDateTime().toString(Qt::ISODate);
+
     eventLog["eventType"] = "API_SYNC_START";
-    eventLog["details"] = QString("C++ phonetic match [Acc: %1%, Fluency: %2%, Consistency: %3%, Grade: %4%]").arg(accuracy).arg(fluency).arg(consistency).arg(pGrade);
+
+    eventLog["details"] =
+        QString("C++ phonetic match "
+                "[Acc: %1%, Fluency: %2%, Consistency: %3%, Grade: %4]")
+            .arg(accuracy)
+            .arg(fluency)
+            .arg(consistency)
+            .arg(pGrade);
+
     m_eventHistory.append(eventLog);
 
-    // Prepare HTTP Multipart POST payload to remote analytics repository
-    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
+    // Send to server
+    // uploadMetrics(activityMetrics);
 
-    // JSON portion
+    // Send results to QML
+    emit speechEvaluationCompleted(
+        accuracy,
+        fluency,
+        vocab,
+        memory,
+        consistency,
+        speechRate,
+        pGrade,
+        QJsonDocument(activityMetrics)
+            .toJson(QJsonDocument::Compact));
+}
+
+void SpeechProcessor::uploadMetrics(
+    const QJsonObject &activityMetrics)
+{
+    QHttpMultiPart *multiPart =
+        new QHttpMultiPart(
+            QHttpMultiPart::FormDataType,
+            this);
+
+    // JSON Part
     QHttpPart jsonPart;
-    jsonPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
-    jsonPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"metrics\""));
-    QJsonDocument doc(activityMetrics);
-    jsonPart.setBody(doc.toJson());
+
+    jsonPart.setHeader(
+        QNetworkRequest::ContentTypeHeader,
+        QVariant("application/json"));
+
+    jsonPart.setHeader(
+        QNetworkRequest::ContentDispositionHeader,
+        QVariant("form-data; name=\"metrics\""));
+
+    jsonPart.setBody(
+        QJsonDocument(activityMetrics).toJson());
+
     multiPart->append(jsonPart);
 
-    // Send mock POST variable file stream
+    // Audio Part
     QHttpPart audioPart;
-    audioPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("audio/wave"));
-    audioPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant(QString("form-data; name=\"audioFile\"; filename=\"%1\"").arg(m_currentFileName)));
-    
+
+    audioPart.setHeader(
+        QNetworkRequest::ContentTypeHeader,
+        QVariant("audio/wave"));
+
+    audioPart.setHeader(
+        QNetworkRequest::ContentDispositionHeader,
+        QVariant(
+            QString(
+                "form-data; name=\"audioFile\"; filename=\"%1\"")
+                .arg(m_currentFileName)));
+
     QFile *file = new QFile(m_currentFileName);
-    file->open(QIODevice::ReadOnly);
-    file->setParent(multiPart); // will be deleted when multiPart is deleted
-    audioPart.setBodyDevice(file);
-    multiPart->append(audioPart);
 
-    QUrl url("http://localhost:3000/api/metrics");
-    QNetworkRequest request(url);
-    
-    QNetworkReply *reply = m_networkManager->post(request, multiPart);
-    multiPart->setParent(reply); // delete multipart with reply
+    if (file->open(QIODevice::ReadOnly)) {
+        file->setParent(multiPart);
+        audioPart.setBodyDevice(file);
+        multiPart->append(audioPart);
+    } else {
+        file->deleteLater();
+    }
 
-    connect(reply, &QNetworkReply::finished, this, &SpeechProcessor::handleUploadFinished);
+    QNetworkRequest request(
+        QUrl("http://localhost:3000/api/metrics"));
 
-    // Emit back parameters to QML UI for immediate kid feedback
-    emit speechEvaluationCompleted(accuracy, fluency, vocab, memory, consistency, speechRate, pGrade, doc.toJson(QJsonDocument::Compact));
+    QNetworkReply *reply =
+        m_networkManager->post(
+            request,
+            multiPart);
+
+    multiPart->setParent(reply);
+
+    connect(reply,
+            &QNetworkReply::finished,
+            this,
+            &SpeechProcessor::handleUploadFinished);
 }
 
 int SpeechProcessor::calculateSpellAccuracy(const QString &expected, const QString &spoken)

@@ -19,10 +19,13 @@ Page {
            "settings": "SettingsPage.qml",
            "profile": "ProfilePage.qml",
            "about": "AboutPage.qml",
-        "tracing1":"qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml"
-
-
-       })
+           "tracing1":"qrc:/modules/modules/Recognition_Shape_Explorer_Level1.qml",
+            // "tracing1":"qrc:/modules/dysgraphia/jigsaw/Jigsaw/JigsawMain.qml",
+           "cognimaze1":"qrc:/modules/adhd/cognimaze/CogniMaze/CogniMazeMain.qml",
+           "wordregnition1":"qrc:/modules/phonetics/wordrecog2/Phonetics/WordRecognitionGame2/WordRecog2Main.qml",
+            "Numicon1":"qrc:/modules/dyscalculia/numicon1/Dyscalculia/Numicon1/NumiconMain.qml",
+              "ClumsyThief":"qrc:/modules/dyscalculia/clumsythief/Dyscalculia/ClumsyThief/ClumsyMain.qml"
+   })
 
 
 

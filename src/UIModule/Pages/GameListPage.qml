@@ -8,7 +8,7 @@ Page {
 
     property string pageTitle: ""
     required property var model
-    property string avatar: ""
+    property string avatar: "qrc:/ui/images/writing.png"
     property string  resoucesUrl: ""
     property string moduleName: ""
     property int typeId: 0
@@ -129,11 +129,20 @@ Page {
 
                     // Well-spaced Cover Image Area
                     Rectangle {
+                        // Layout.fillWidth: true
+                        // Layout.fillHeight: true
+                        // color: Qt.lighter(gameListPage.colorCard, 1.2)
+                        // radius: gameListPage.cardRadius
+                        // clip: true
+
                         Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        color: Qt.lighter(gameListPage.colorCard, 1.2)
-                        radius: gameListPage.cardRadius
-                        clip: true
+                           Layout.preferredHeight: 230
+                           Layout.maximumHeight: 230
+                           Layout.minimumHeight: 230
+
+                           color: Qt.lighter(gameListPage.colorCard, 1.2)
+                           radius: gameListPage.cardRadius
+                           clip: true
 
                         Image {
                             anchors.fill: parent
@@ -281,7 +290,7 @@ Page {
                                               "qrc:/modules/modules/EntryPoint.qml",
                                                          {
                                                              "id":modelData.games.id,
-                                                             "routeName":"tracing1",
+                                                             "routeName":modelData.games.gamePage,
                                                              "typeId":gameListPage.typeId,
                                                   "stackView":stackView
                                                          })
